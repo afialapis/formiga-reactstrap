@@ -1,0 +1,14 @@
+/**
+ * feedback
+ **/
+.formiga-reactstrap-form-group .formiga-reactstrap-feedback {
+  padding-top: $input-padding-y;
+  color: $red;
+  font-style: italic;
+  padding-left: $formiga-label-padding;
+  text-align: left;
+}
+
+.formiga-reactstrap-form-group .formiga-reactstrap-feedback.hidden {
+  visibility: hidden;
+}

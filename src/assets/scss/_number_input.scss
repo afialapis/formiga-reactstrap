@@ -1,0 +1,75 @@
+
+.formiga-reactstrap-input-number-addon {
+  cursor: pointer;
+  display: flex;
+
+  .formiga-reactstrap-input-number-incr {
+    opacity: 1;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &.read-only {
+    cursor: 'not-allowed';
+    
+    .formiga-reactstrap-input-number-incr { 
+      opacity: 0.25;
+    }
+  }
+
+}
+
+
+
+
+
+
+.formiga-reactstrap-float-sum {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;  
+
+  .formiga-reactstrap-float-sum-box {
+    align-self: center;  
+    flex: 0 1  auto;
+    width: auto;
+
+    &.positive::before,
+    &.negative::before {
+      content: "+";
+      left: 1em;
+      position: relative;
+      color: #a4a4a4;
+      font-weight: bold;      
+    }
+
+    &.positive::before {
+      content: "+";
+    }
+    &.negative::before {
+      content: "-";
+    }
+    &.negative::before,
+    &.negative input {
+      color: #e77777;
+    }
+
+
+    input.formiga-reactstrap-float-sum-input {
+      text-align: right;
+      width: auto;
+
+      display: inline-block;   
+    }
+  }
+
+  .formiga-reactstrap-float-sum-total {
+    align-self: center;  
+
+    color: #a4a4a4;
+    vertical-align: middle;
+    padding-left: 1em;
+  }  
+}

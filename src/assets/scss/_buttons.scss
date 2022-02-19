@@ -1,0 +1,40 @@
+/**
+ * buttons
+ */
+/*
+ button {
+  cursor: pointer;
+}
+*/
+/*
+.btn {
+  .badge {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    font-size: 9px;
+  }
+}
+
+.btn-transparent {
+  color: #fff;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn {
+  [class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    margin-top: -2px;
+    vertical-align: middle;
+  }
+} 
+*/
+
+.formiga-reactstrap .formiga-reactstrap-buttons button:not(:first-child) {
+  margin-left: $input-btn-padding-x;
+}
+
+.formiga-reactstrap .formiga-reactstrap-buttons button svg {
+  margin-right: $input-btn-padding-x;
+}

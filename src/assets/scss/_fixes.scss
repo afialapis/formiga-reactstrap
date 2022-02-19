@@ -1,0 +1,38 @@
+.formiga-reactstrap .formiga-reactstrap-form-group {
+  text-align: left;
+}
+
+/**
+ * fix inline
+ */
+ .formiga-reactstrap.inline {
+  display: inline-block;
+  vertical-align: top;
+ }
+
+.formiga-reactstrap.inline .formiga-reactstrap-form-group,
+.formiga-reactstrap.inline .formiga-reactstrap-buttons,
+.formiga-reactstrap-form-group.form-group.inline {
+  margin-bottom :0;
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 1em;
+}
+
+.formiga-reactstrap.inline .formiga-reactstrap-buttons {
+  margin-top: 0;
+}
+
+/**
+ * fix for checkbox
+ **/
+.formiga-reactstrap-form-group .form-check-input,
+.formiga-reactstrap-form-group .custom-switch {
+  position: relative;
+  left: 1em;
+}
+
+.formiga-reactstrap-form-group .custom-switch input,
+.formiga-reactstrap-form-group .custom-switch label {
+  cursor: pointer;
+}

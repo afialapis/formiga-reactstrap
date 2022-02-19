@@ -1,0 +1,35 @@
+// Forms
+$gray-100: #f0f3f5;
+$gray-200: #c2cfd6;
+$gray-300: #a4b7c1;
+$gray-700: #495057 !default;
+$red:     #dc3545 !default;
+
+$form-group-margin-bottom:        1rem !default;
+
+$input-group-addon-bg:            $gray-100;
+$input-border-color:              $gray-200;
+$input-group-addon-border-color:  $gray-200;
+
+
+$list-group-color:                  null !default;
+$list-group-hover-bg:               $gray-200 !default;
+$list-group-action-color:           $gray-700 !default;
+$list-group-action-hover-color:     $list-group-action-color !default;
+
+$input-btn-padding-x:         .75rem !default;
+$input-btn-padding-y:         .375rem !default;
+
+$input-padding-x:             $input-btn-padding-x !default;
+$input-padding-y:             $input-btn-padding-y !default;
+
+$border-width:                1px !default;
+$input-btn-border-width:      $border-width !default;
+$input-border-width:          $input-btn-border-width !default;
+
+$formiga-label-border: 0.25rem;  /* 4px - $input-border-width*4;*/
+/* 0.75rem from svg icon, 0.25 from previous border */
+$formiga-label-padding: $input-padding-x*2 + 0.75rem + 0.25rem;
+
+
+$btn-secondary-border:            $gray-300;

@@ -1,0 +1,18 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '../../src/assets/style.scss';
+
+h1 {
+  text-align: center;
+}
+
+
+.formiga-reactstrap-buttons {
+  margin-top: 1em;
+  text-align: center;
+}
+
+
+.custom-switch input,
+.custom-switch label {
+  cursor: pointer;
+}

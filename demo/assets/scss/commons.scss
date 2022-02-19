@@ -1,0 +1,163 @@
+body {
+	font-family: $font-primary;
+	font-weight: 400;
+	font-size: $font-size;
+	//line-height: 1.7;
+	//color: darken($brand-white,80%);
+	//background: #fff;
+	background-color: #f2f2f2;
+
+	padding: 1em; 
+}
+
+a {
+	color: $brand-primary;
+	@include transition(.5s);
+	&:hover, &:active, &:focus {
+		color: $brand-primary;
+		outline: none;
+		text-decoration: none;
+	}
+}
+p {
+	margin-bottom: 30px;
+}
+
+h1, h2, h3, h4, h5, h6, figure {
+	color: $brand-black;
+	font-family: $font-primary;
+	font-weight: 400;
+}
+
+h1 {
+	font-size: $font-size + 6pt;
+	margin-bottom: 1em;
+}
+h2 {
+	font-size: $font-size + 4pt;
+	margin-bottom: 0.5em;
+}
+h3 {
+	font-size: $font-size + 2pt;
+	margin-bottom: 0.25em;
+}
+
+
+::-webkit-selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+
+::-moz-selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+::selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+
+.uppercase {
+	font-size: 14px;
+	color: $brand-black;
+	margin-bottom: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+
+// Buttons
+
+.afi-btn {
+  text-decoration: none !important;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	@include border-radius(30px);
+	@include transition(.5s);
+	padding: 8px 20px;
+	&.afi-btn-md {
+		padding: 8px 20px!important;
+	}
+	&.afi-btn-lg {
+		padding: 18px 36px!important;
+	}
+	&:hover, &:active, &:focus {
+		box-shadow: none!important;
+		outline: none!important;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+}
+.afi-btn-primary {
+	background: $brand-primary;
+	color: $brand-white;
+	border: 2px solid $brand-primary;
+	&:hover, &:focus, &:active {
+		background: lighten($brand-primary, 5%)!important;
+		border-color: lighten($brand-primary, 5%)!important;
+		color: $brand-white;
+	}
+	&.afi-btn-outline {
+		background: transparent;
+		color: $brand-primary;
+		border: 2px solid $brand-primary;
+		&:hover, &:focus, &:active {
+			background: $brand-primary;
+			color: $brand-white;
+		}
+	}
+}
+.afi-btn-secondary {
+	background: $brand-secondary;
+	color: $brand-white;
+	border: 2px solid $brand-secondary;
+	&:hover, &:focus, &:active {
+		background: darken($brand-secondary, 5%)!important;
+		border-color: darken($brand-secondary, 5%)!important;
+		color: $brand-white;
+	}
+	&.afi-btn-outline {
+		background: transparent;
+		color: $brand-secondary;
+		border: 2px solid $brand-secondary;
+		&:hover, &:focus, &:active {
+			background: $brand-secondary;
+			color: $brand-white;
+		}
+	}
+}
+
+
+.afi-btn-outline {
+	background: none;
+	border: 2px solid lighten($brand-black, 50%);
+	//font-size: 16px;
+	@include transition(.3s);
+	&:hover, &:focus, &:active {
+		box-shadow: none;
+	}
+}
+
+.afi-btn.with-arrow {
+	position: relative;
+	@include transition(.3s);
+	i {
+		visibility: hidden;
+		opacity: 0;
+		position: absolute;
+		right: 0px;
+		top: 50%;
+		margin-top: -8px;
+		@include transition(.2s);
+	}
+	&:hover {
+		padding-right: 50px;
+		i {
+			color: $brand-white;
+			right: 18px;
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
