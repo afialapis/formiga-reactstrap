@@ -1,4 +1,12 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
+/*
+  '~bootstrap/dist/css/bootstrap.min.css' causes this error:
+  Error: property "url" must be followed by a ':'
+  [xeira][bundle] Error when bundling ./demo/dist/bundle.js
+*/
+//@import '~bootstrap/dist/css/bootstrap.css';
+@import '~bootstrap/scss/bootstrap.scss';
+
+
 @import '../../src/assets/style.scss';
 
 h1 {

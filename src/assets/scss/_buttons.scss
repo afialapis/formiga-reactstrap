@@ -31,10 +31,10 @@
 } 
 */
 
-.formiga-reactstrap .formiga-reactstrap-buttons button:not(:first-child) {
+.formiga-reactstrap-form .formiga-reactstrap-buttons button:not(:first-child) {
   margin-left: $input-btn-padding-x;
 }
 
-.formiga-reactstrap .formiga-reactstrap-buttons button svg {
+.formiga-reactstrap-form .formiga-reactstrap-buttons button svg {
   margin-right: $input-btn-padding-x;
 }
