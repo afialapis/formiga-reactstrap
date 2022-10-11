@@ -201,6 +201,7 @@ const _VInputFile = (props) => {
                 middleElement  = {status!=undefined
                                   ? <ProgressBar progress={progress}/>
                                   : null}
+                bsSize         = {bsSize}
                 >
       {/* Hidden file input*/}
       <input  style       = {{zIndex: "0", display: "inline", opacity: "0", visibility: "hidden"}}

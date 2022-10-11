@@ -128,7 +128,8 @@ const VInputNumber = (props) => {
                   keepHeight     = {keepHeight}
                   formGroupStyle = {formGroupStyle}
                   inputGroupStyle= {inputGroupStyle}
-                  middleElement  = {middleElement}>    
+                  middleElement  = {middleElement}
+                  bsSize         = {bsSize}>    
 
 
 

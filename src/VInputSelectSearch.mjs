@@ -198,7 +198,8 @@ const VInputSelectSearch = (props) => {
                       keepHeight  = {isOpen ? false : keepHeight}
                       showValidity= {showValidity}                       
                   formGroupStyle  = {formGroupStyle}
-                  inputGroupStyle = {inputGroupStyle}>
+                  inputGroupStyle = {inputGroupStyle}
+                      bsSize      = {bsSize}>
             <Input    id          = {id}
                       name        = {name}
                       className   = "formiga-reactstrap-select-search-hidden"

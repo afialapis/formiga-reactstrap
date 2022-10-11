@@ -3,9 +3,10 @@ const expect= global.expect
 const mount= global.mount
 
 describe('Forms', function () {
-  this.timeout(1000)
+  //this.timeout(15000)
 
   it("should render an empty Form", () => {   
+    this.timeout(15000)
     const {VForm} = global.formigaRPkg
 
     const fid= 'formiga_reactstrap_empty_form'

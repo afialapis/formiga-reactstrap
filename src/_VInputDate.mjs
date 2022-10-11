@@ -67,6 +67,7 @@ const _VInputDate = (props) => {
                  keepHeight     = {keepHeight}
                  inputGroupStyle= {nInputGroupStyle}
                  formGroupStyle = {formGroupStyle}
+                 bsSize         = {bsSize}
                  >
 
       <DatePicker 

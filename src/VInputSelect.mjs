@@ -71,6 +71,7 @@ const VInputSelect = (props) => {
                  keepHeight     = {keepHeight}
                  inputGroupStyle= {inputGroupStyle}
                  formGroupStyle = {formGroupStyle}
+                 bsSize         = {bsSize}
                  >
       <Input    
                 id          = {id || makeId(options)}

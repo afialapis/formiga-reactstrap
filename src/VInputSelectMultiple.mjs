@@ -68,6 +68,7 @@ const VInputSelectMultiple = (props) => {
                  keepHeight     = {keepHeight}
                  inputGroupStyle= {inputGroupStyle}
                  formGroupStyle = {formGroupStyle}
+                 bsSize         = {bsSize}
                  >
 
       <Input    id          = {id}

@@ -24,7 +24,7 @@ const VInputFeedback = ({isValid, feedback, keepHeight}) => {
 
 const VInputAddon = (props) => {
   const {name, value, label, description, feedback, icon, isValid, children, inline, formClassName, 
-    showValidity, keepHeight, formGroupStyle, inputGroupStyle, middleElement}= props
+    showValidity, keepHeight, formGroupStyle, inputGroupStyle, middleElement, bsSize}= props
 
   const originalValue = useRef(value)
   
@@ -56,16 +56,18 @@ const VInputAddon = (props) => {
            : null}
         </div>
       : null}
-      <InputGroup style={inputGroupStyle}>
+      <InputGroup style={inputGroupStyle} size={bsSize} className={bsSize ? `input-group-${bsSize}` : ''}>
         {icon===false
           ? null
           : 
-            <InputGroupText className="input-group-addon">
-              {icon==undefined
-               ? ''
-               : <VIcon icon={icon}/>
-              }
-            </InputGroupText>
+            <span className="input-group-prepend">
+              <InputGroupText className="input-group-addon">
+                {icon==undefined
+                ? ''
+                : <VIcon icon={icon}/>
+                }
+              </InputGroupText>
+            </span>
         }
         {children}
       </InputGroup>

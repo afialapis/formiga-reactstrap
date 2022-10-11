@@ -58,7 +58,7 @@ const DemoInputNumber = (options) => {
       <VInputFloatSum
               name        = {'km'}
               value       = {km}
-              onChange    = {(v, c) => {console.log(v, sumArray(v), c); setKm(v)}}
+              onChange    = {(v, c) => {console.log(`changing km to ${v}, totaling ${sumArray(v)} - ${c}`); setKm(v)}}
               label       = {"You are not a sporty guy, right? How far did your last walks took?"}
               description = {"Some float (max 4 decimals, step = 0.01)."}
               step        = {0.01}

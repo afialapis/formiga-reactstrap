@@ -1,6 +1,6 @@
 import React from 'react'
 import {VInputCheckbox2, VInputSelect} from '../../../src'
-
+import {VForm} from '../../../src'
 
 const BaseSidebar = ({options, resume, onChangeOption}) => {
 
@@ -9,7 +9,11 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
 
       <h2>Options</h2>
       <div className="mgbottom">
-        <form>
+        <VForm  onSave     = {() => {}} 
+                onCancel   = {undefined}
+                autoDisable= {false}
+                renderButtons={() => null}
+                >
 
           <div>
               <VInputCheckbox2
@@ -17,12 +21,16 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
                             value        = {options.keepHeight}
                             onChange     = {(v) => onChangeOption('keepHeight', v)}
                             checkboxLabel= {'Keep Height'}
+                            bsSize       = "sm"
+                            showValidity = {0}
                             />
               <VInputCheckbox2
                             name         = {'icon'}
                             value        = {options.icon}
                             onChange     = {(v) => onChangeOption('icon', v)}
                             checkboxLabel= {'Show Icon'}
+                            bsSize       = "sm"
+                            showValidity = {0}
                             />
               <VInputSelect
                             name         = {'showValidity'}
@@ -35,6 +43,8 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
                               [2, 'Only feedback when invalid'],
                               [4, 'Feedback and input colors']
                             ]}
+                            bsSize       = "sm"
+                            showValidity = {0}
                             />    
               <VInputSelect
                             name         = {'bsSize'}
@@ -46,9 +56,11 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
                               [''  , 'Normal'],
                               ['sm', 'Small']
                             ]}
+                            bsSize       = "sm"
+                            showValidity = {0}
                             />                                                                                           
           </div>
-        </form>
+        </VForm>
       </div>
 
       {resume.length>0
