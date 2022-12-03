@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {VInputSelectSearch} from '../../../src'
+import {FInputSelectSearch} from '../../../src'
 
 const LIST_OPTIONS= [
   [1, "Fascination"],
@@ -23,7 +23,7 @@ const DemoInputSelectSearch = (options) => {
 
 
   return (
-    <VInputSelectSearch
+    <FInputSelectSearch
             name            = {'aword'}
             options         = {optionList}
             value           = {aword}

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {VInputFile} from '../../../src'
+import {FInputFile} from '../../../src'
 
 const DemoInputFile = (options) => {
   const [file, setFile]= useState({
@@ -9,12 +9,12 @@ const DemoInputFile = (options) => {
     buffer: undefined
   })
   return (
-      <VInputFile
+      <FInputFile
              name        = {'id_card'}
              required    = {true}
              label       = {"Upload a copy of your ID Card, authorities must know you"}
              description = "We'll keep it safe"
-             onDownload  = {(v) => console.log(v)}
+             onDownload  = {(v) => console.log(`Downloading... ${JSON.stringify(v)}`)}
              onChange    = {(f) => setFile(f)}
              value       = {file}
              {...options}/>   

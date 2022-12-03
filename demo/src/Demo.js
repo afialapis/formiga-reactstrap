@@ -3,6 +3,7 @@ import {DemoInputText} from './inputs/DemoInputText'
 import {DemoInputTextArea} from './inputs/DemoInputTextArea'
 import {DemoInputNumber} from './inputs/DemoInputNumber'
 import {DemoInputDate} from './inputs/DemoInputDate'
+import {DemoInputTime} from './inputs/DemoInputTime'
 import {DemoInputCheckbox} from './inputs/DemoInputCheckbox'
 import {DemoInputSelect} from './inputs/DemoInputSelect'
 import {DemoInputSelectMultiple} from './inputs/DemoInputSelectMultiple'
@@ -10,7 +11,7 @@ import {DemoInputSelectSearch} from './inputs/DemoInputSelectSearch'
 import {DemoInputColor} from './inputs/DemoInputColor'
 import {DemoInputFile} from "./inputs/DemoInputFile";
 import {Base} from './base/Base'
-import {VForm} from '../../src'
+import {FForm} from '../../src'
 
 import './demo.scss'
 
@@ -20,6 +21,7 @@ const INPUT_TYPES= [
   {type: 'textarea', comp: DemoInputTextArea},
   {type: 'number', comp: DemoInputNumber},
   {type: 'date', comp: DemoInputDate},
+  {type: 'time', comp: DemoInputTime},
   {type: 'checkbox', comp: DemoInputCheckbox},
   {type: 'select', comp: DemoInputSelect},
   {type: 'select-multiple', comp: DemoInputSelectMultiple},
@@ -40,17 +42,14 @@ const Demo = () => {
   const [resume, setResume]= useState([{msg: "Save form to see a resume here!"}])
 
 
-  const handleSubmit = (valid, felements) => {
+  const handleSubmit = (valid, elements) => {
     const nResume= []
-    const elements= felements()
-    Object.keys(elements)
-      .map((name) => {
-        const el= elements[name]
-        nResume.push({msg: name, style:  {marginTop: '1em', fontWeight: 'bold'}})
-        nResume.push({msg: el.value, style: {fontStyle: 'italic'}})
-        nResume.push({msg: `is ${el.valid ? 'valid!' : `invalid (${el.message})`}`, 
-                   style: {color: el.valid ? 'green' : 'red'}})
-      })
+    elements.map((el) => {
+      nResume.push({msg: el.name, style:  {marginTop: '1em', fontWeight: 'bold'}})
+      nResume.push({msg: el.value, style: {fontStyle: 'italic'}})
+      nResume.push({msg: `is ${el.valid ? 'valid!' : `invalid (${el.feedback})`}`, 
+                  style: {color: el.valid ? 'green' : 'red'}})
+    })
 
     setResume(nResume)
   }
@@ -82,13 +81,13 @@ const Demo = () => {
             }}
             resume  = {resume}>
 
-        <VForm  onSave     = {handleSubmit} 
+        <FForm  onSave     = {handleSubmit} 
                 onCancel   = {undefined}
                 autoDisable= {false}
-                renderButtons={(valid, readElements) =>
+                renderButtons={(valid, elements) =>
                     <div className="centered">
                       <a className="afi-btn afi-btn-primary"
-                        onClick={(ev) => handleSubmit(valid, readElements, ev)}>
+                        onClick={(ev) => handleSubmit(valid, elements, ev)}>
                         {valid ? 'Submit' : 'Invalid yet'}
                       </a>
                     </div>
@@ -111,7 +110,7 @@ const Demo = () => {
 
           
 
-        </VForm>
+        </FForm>
       </Base>
 
   )

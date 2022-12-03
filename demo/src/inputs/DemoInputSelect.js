@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {VInputSelect} from '../../../src'
+import {FInputSelect} from '../../../src'
 
 const LIST_OPTIONS= [
   //['' , '---'],
@@ -13,14 +13,14 @@ const DemoInputSelect = (options) => {
   const [experience, setExperience]= useState(2 /*'1'*/)
 
   return (
-    <VInputSelect
+    <FInputSelect
             name            = {'experience'}
             options         = {LIST_OPTIONS}
             value           = {experience}
             onChange        = {(v) => setExperience(v)}
             required        = {true}
             disallowedValues= {[3, 4]}
-            allowedValues   = {['', 2]}
+            allowedValues   = {['', 1, 2]}
             label           = {"What do you think about Formiga?"}
             description     = ""
             clearable       = {true}

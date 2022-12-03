@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import {VInputTextArea} from '../../../src'
+import {FInputTextArea} from '../../../src'
 
 const DemoInputTextArea = (options) => {
   const [story, setStory]= useState('It started a warm Friday\'s night. I was bored...')
 
   return (
-    <VInputTextArea 
+    <FInputTextArea 
           name        = {'story'}
           value       = {story}
           minLength   = {50}

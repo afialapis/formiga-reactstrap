@@ -1,6 +1,6 @@
 import React from 'react'
-import {VInputCheckbox2, VInputSelect} from '../../../src'
-import {VForm} from '../../../src'
+import {FInputCheckbox2, FInputSelect} from '../../../src'
+import {FForm} from '../../../src'
 
 const BaseSidebar = ({options, resume, onChangeOption}) => {
 
@@ -9,14 +9,14 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
 
       <h2>Options</h2>
       <div className="mgbottom">
-        <VForm  onSave     = {() => {}} 
+        <FForm  onSave     = {() => {}} 
                 onCancel   = {undefined}
                 autoDisable= {false}
                 renderButtons={() => null}
                 >
 
           <div>
-              <VInputCheckbox2
+              <FInputCheckbox2
                             name         = {'keepHeight'}
                             value        = {options.keepHeight}
                             onChange     = {(v) => onChangeOption('keepHeight', v)}
@@ -24,7 +24,7 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
                             bsSize       = "sm"
                             showValidity = {0}
                             />
-              <VInputCheckbox2
+              <FInputCheckbox2
                             name         = {'icon'}
                             value        = {options.icon}
                             onChange     = {(v) => onChangeOption('icon', v)}
@@ -32,7 +32,7 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
                             bsSize       = "sm"
                             showValidity = {0}
                             />
-              <VInputSelect
+              <FInputSelect
                             name         = {'showValidity'}
                             value        = {options.showValidity}
                             onChange     = {(v) => onChangeOption('showValidity', v)}
@@ -46,7 +46,7 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
                             bsSize       = "sm"
                             showValidity = {0}
                             />    
-              <VInputSelect
+              <FInputSelect
                             name         = {'bsSize'}
                             value        = {options.bsSize}
                             onChange     = {(v) => onChangeOption('bsSize', v)}
@@ -60,7 +60,7 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
                             showValidity = {0}
                             />                                                                                           
           </div>
-        </VForm>
+        </FForm>
       </div>
 
       {resume.length>0

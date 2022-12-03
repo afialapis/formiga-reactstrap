@@ -1,20 +1,36 @@
 import React, {useState} from 'react'
-import {VInputCheckbox2} from '../../../src'
+import {FInputCheckbox, FInputCheckbox2} from '../../../src'
 
 const DemoInputCheckbox = (options) => {
   const [effects, setEffects]= useState(true)
+  const [reco, setReco]= useState(true)
 
   return (
-      <VInputCheckbox2
+    <>
+      <FInputCheckbox
              name             = {'effects'}
              value            = {effects}
              onChange         = {(v) => setEffects(v)}
              disallowedValues = {[true]}
+             feedback         = {"You are probably confusing it with some drug effects"}
              label            = {""}
              checkboxLabel    = "Did you notice side effects?"
              description      = ""
              {...options}
              />
+
+      <FInputCheckbox2
+             name             = {'reco'}
+             value            = {reco}
+             onChange         = {(v) => setReco(v)}
+             disallowedValues = {[false]}
+             feedback         = {"Please rethink it"}
+             label            = {""}
+             checkboxLabel    = "Would you recommend us to some friend?"
+             description      = ""
+             {...options}
+             />        
+    </>     
   )
 }
 

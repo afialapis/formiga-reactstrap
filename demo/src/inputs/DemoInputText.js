@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {VInputText} from '../../../src'
+import {FInputText} from '../../../src'
 
 const DemoInputText = (options) => {
   const [name, setName]= useState('John Not Doe')
@@ -8,7 +8,7 @@ const DemoInputText = (options) => {
 
   return (
     <>
-      <VInputText
+      <FInputText
               name                = 'name'
               value               = {name}
               onChange            = {(v) => setName(v)}
@@ -20,7 +20,7 @@ const DemoInputText = (options) => {
               {...options}                
       />
 
-      <VInputText
+      <FInputText
               name        = 'age'
               defaultValue= {age}
               required    = {true}
@@ -31,7 +31,7 @@ const DemoInputText = (options) => {
               {...options}                 
       />
 
-      <VInputText
+      <FInputText
               name         = 'words'
               value        = {words}
               onChange     = {(v) => setWords(v)}

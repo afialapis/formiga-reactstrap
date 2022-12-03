@@ -7,13 +7,13 @@ describe('Forms', function () {
 
   it("should render an empty Form", () => {   
     this.timeout(15000)
-    const {VForm} = global.formigaRPkg
+    const {FForm} = global.formigaRPkg
 
     const fid= 'formiga_reactstrap_empty_form'
     const App = () => {
       return (
         <div>
-          <VForm id={fid}/>
+          <FForm id={fid}/>
         </div>
       )
     }

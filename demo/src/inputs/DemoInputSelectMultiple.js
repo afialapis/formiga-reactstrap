@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {VInputSelectMultiple} from '../../../src'
+import {FInputSelectMultiple} from '../../../src'
 
 const LISTM_OPTIONS= [
   [1, "08:00"],
@@ -16,14 +16,15 @@ const DemoInputSelectMultiple = (options) => {
   const [times, setTimes]= useState(['3', '5', '7'])
 
   return (
-    <VInputSelectMultiple
+    <FInputSelectMultiple
             name            = {'times'}
             options         = {LISTM_OPTIONS}
             value           = {times}
             onChange        = {(v) => setTimes(v)}
-            disallowedValues= {[[1, 3, 5, 7]]}
+            disallowedValues= {[[1], [3], [5], [7], [1, 3, 5, 7]]}
+            size            = {5}
             label           = {"What times you prefer to take a Formiga?"}
-            description     = "All even hours required"
+            description     = "Some even hours not allowed"
             {...options}
             />      
   )

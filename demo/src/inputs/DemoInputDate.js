@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {VInputDateIso, VInputDate, VInputEpoch} from '../../../src'
+import {FInputDateIso, FInputDate, FInputEpoch} from '../../../src'
 
 const _getTodayDate = (add= 0) => {
   const n= new Date()
@@ -38,7 +38,8 @@ const DemoInputDate = (options) => {
 
   return (
     <>
-      <VInputDateIso
+
+      <FInputDateIso
              name             = {'when'}
              value            = {when}
              onChange         = {(v) => setWhen(v)}
@@ -48,7 +49,7 @@ const DemoInputDate = (options) => {
              required         = {true}
              {...options}
              />
-      <VInputDate
+      <FInputDate
              name             = {'whin'}
              value            = {whin}
              onChange         = {(v) => setWhin(v)}
@@ -58,7 +59,8 @@ const DemoInputDate = (options) => {
              required         = {true}
              {...options}
              />             
-      <VInputEpoch
+
+      <FInputEpoch
              name             = {'whon'}
              value            = {whon}
              onChange         = {(v) => setWhon(v)}
