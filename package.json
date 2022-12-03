@@ -1,6 +1,6 @@
 {
   "name": "formiga-reactstrap",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "A Formiga implementation for Reactstrap",
   "author": "Donato Lorenzo <donato@afialapis.com>",
   "contributors": [
@@ -20,7 +20,7 @@
     "lib",
     "dist"
   ],
-  "main": "./dist/formiga-reactstrap.umd.main.js",
+  "XXX_main": "./dist/formiga-reactstrap.umd.js",
   "cjs": "dist/formiga-reactstrap.cjs.js",
   "browser": "./dist/formiga-reactstrap.umd.js",
   "module": "./dist/formiga-reactstrap.mjs",
