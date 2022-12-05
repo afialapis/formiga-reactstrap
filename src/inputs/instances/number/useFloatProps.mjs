@@ -13,7 +13,7 @@ const _checkFloat = (s) => {
 const useFloatProps = (decimalSign) => {
   const toFloat = (s) => {
     if (! _checkFloat(s)) {
-      console.log(`toFloat ${typeof s} ${s} => 0.0 (not float)`)
+      //console.log(`toFloat ${typeof s} ${s} => 0.0 (not float)`)
 
       return 0.0
     }
@@ -22,7 +22,7 @@ const useFloatProps = (decimalSign) => {
 
   const fromFloat = (f) => {
     if (isNotNumber(f)) {
-      console.log(`fromFloat ${typeof f} ${f} => "" (not number)`)
+      //console.log(`fromFloat ${typeof f} ${f} => "" (not number)`)
       return ''
     } 
 

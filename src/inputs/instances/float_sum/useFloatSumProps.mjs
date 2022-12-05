@@ -27,7 +27,7 @@ const _checkFloatList = (l) => {
 
 const _toFloat = (s) => {
   if (! _checkFloat(s)) {
-    console.log(`toFloat ${typeof s} ${s} => 0.0 (not float)`)
+    //console.log(`toFloat ${typeof s} ${s} => 0.0 (not float)`)
 
     return 0.0
   }
@@ -36,7 +36,7 @@ const _toFloat = (s) => {
 
 const _fromFloat = (f, decimalSign) => {
   if (isNotNumber(f)) {
-    console.log(`fromFloat ${typeof f} ${f} => "" (not number)`)
+    //console.log(`fromFloat ${typeof f} ${f} => "" (not number)`)
     return ''
   } 
 
