@@ -21,7 +21,7 @@ const _FInputSelectSearch = (props) => {
   const {options, feedback,
          allowedValues, disallowedValues, keepHeight, 
          creatable, onCreate, 
-         setValue
+         value, setValue
          } = props
   
   const wrapperRef    = useRef(undefined)
@@ -58,6 +58,12 @@ const _FInputSelectSearch = (props) => {
       document.removeEventListener('mousedown', onClickOutside)
     }
   })
+
+  useEffect(() => {
+    const nShownText= getOptionsLabel(enabledOptions, value)
+    setShownText(nShownText)
+    
+  }, [enabledOptions, value])
   
   useEffect(() => {
     const sfilter= shownText ? shownText.toLowerCase() : ''

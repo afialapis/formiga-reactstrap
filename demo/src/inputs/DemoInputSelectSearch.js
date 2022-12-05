@@ -11,7 +11,7 @@ const LIST_OPTIONS= [
 ]
 
 const DemoInputSelectSearch = (options) => {
-  const [aword, setAWord]= useState(undefined /*1*/)
+  const [aword, setAWord]= useState(6)
   const [optionList, setOptionList]= useState(LIST_OPTIONS)
 
   const handleAddOption = (t) => {
