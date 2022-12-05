@@ -1,6 +1,6 @@
 {
   "name": "formiga-reactstrap",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "A Formiga implementation for Reactstrap",
   "author": "Donato Lorenzo <donato@afialapis.com>",
   "contributors": [
@@ -20,10 +20,15 @@
     "lib",
     "dist"
   ],
-  "XXX_main": "./dist/formiga-reactstrap.umd.js",
-  "cjs": "dist/formiga-reactstrap.cjs.js",
+  "main": "./lib/index.js",
+  "cjs": "./dist/formiga-reactstrap.cjs",
   "browser": "./dist/formiga-reactstrap.umd.js",
   "module": "./dist/formiga-reactstrap.mjs",
+  "exports": {
+    "import": "./dist/formiga-reactstrap.mjs",
+    "default": "./lib/index.js",
+    "require": "./dist/formiga-reactstrap.cjs"
+  },
   "scripts": {
     "clean-demo": "rm -rf demo/dist",
     "clean-lib": "rm -rf lib && mkdir lib",
@@ -61,10 +66,6 @@
     "react": ">=16.13.1",
     "reactstrap": ">=8.5.1",
     "reactstrap-date-picker": ">=1.0.4"
-  },
-  "exports": {
-    "import": "./dist/formiga-reactstrap.mjs",
-    "default": "./dist/formiga-reactstrap.umd.js"
   },
   "eslintConfig": {
     "extends": [
