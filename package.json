@@ -20,13 +20,13 @@
     "lib",
     "dist"
   ],
-  "main": "./lib/index.js",
+  "main": "./lib/index.cjs",
   "cjs": "./dist/formiga-reactstrap.cjs",
   "browser": "./dist/formiga-reactstrap.umd.js",
   "module": "./dist/formiga-reactstrap.mjs",
   "exports": {
     "import": "./dist/formiga-reactstrap.mjs",
-    "default": "./lib/index.js",
+    "default": "./lib/index.cjs",
     "require": "./dist/formiga-reactstrap.cjs"
   },
   "scripts": {
@@ -51,7 +51,7 @@
     "bootstrap": "^4.5.2",
     "react-dom": "^16.13.1",
     "sass": "^1.56.1",
-    "xeira": "^0.0.23"
+    "xeira": "^0.0.26"
   },
   "dependencies": {
     "formiga": "^0.0.14",

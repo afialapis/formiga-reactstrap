@@ -6,7 +6,7 @@
   "monorepo": false,
   "linter": "eslint",
   "transpile_folder": "./lib",
-  "transpiler": 0,
+  "transpiler": "babel",
   "minifier": "uglify",
   "bundle_folder": "./dist",
   "bundler": "rollup",
