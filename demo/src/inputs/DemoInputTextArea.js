@@ -10,7 +10,7 @@ const DemoInputTextArea = (options) => {
           value       = {story}
           minLength   = {50}
           label       = {"Tell us more about your love story with Formiga"}
-          description = {`Not required. Min length 50 (currently ${story.length}).`}
+          description = {`Not required. Min length 50 (currently ${story?.length || 0}).`}
           onChange    = {(v) => setStory(v)}
           {...options} />
   )

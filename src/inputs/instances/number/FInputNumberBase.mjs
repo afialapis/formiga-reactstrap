@@ -118,8 +118,7 @@ const _FInputNumber = (props) => {
               max          = {max}
               min          = {min}
               step         = {stepOrDecimals}
-              value        = {value}
-              onChange     = {() => {}}/>
+              defaultValue = {value}/>
 
       <Input  
               type         = {"text"}

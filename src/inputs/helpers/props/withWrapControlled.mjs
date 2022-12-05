@@ -1,32 +1,44 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react'
 import isControlled from './isControlled.mjs'
 
-const withWrapControlled = (BaseComponent) => {
+
+const withWrapControlled = (BaseComponent, defGetter= undefined) => {
   
+  const _parseDef = (v) => {
+    if (defGetter==undefined) {
+      return v
+    }
+    if (v!=undefined) {
+      return v
+    }
+
+    return defGetter(v)
+  }
+
   const _withWrapControlled = (props) => {
-    const controlled= isControlled(props)
+    
     const {value, defaultValue, onChange}= props
+
+    const controlledRef= useRef(isControlled(props))
+    const controlled = controlledRef.current===true
 
     const initialValue = useRef(controlled ? value : defaultValue)
     
-    const [innerValue, setInnerValue]= useState(controlled ? value : defaultValue)
+    const [innerValue, setInnerValue]= useState(_parseDef(controlled ? value : defaultValue))
   
     useEffect(() => {
       const nInnerValue= controlled ? value : defaultValue
-      setInnerValue(nInnerValue)
+      setInnerValue(_parseDef(nInnerValue))
     }, [value, defaultValue, controlled])
     
     const setValue = useCallback((newValue, confirmed, event) => {
       //console.log('withWrapControlled.setValue ' + newValue)
-      setInnerValue(newValue)
+      setInnerValue(_parseDef(newValue))
   
       if (onChange!=undefined) {
         onChange(newValue, confirmed, event)
       }      
     }, [setInnerValue, onChange])
-    
-
-    //console.log(`withWrapControlled value ${value} defValue ${defaultValue} innerValue ${innerValue}`)
     
     return (
       <BaseComponent 

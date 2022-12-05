@@ -58,7 +58,7 @@ const _FInputText = (props) => {
    )
 }
 
-const FInputText = withWrapControlled(_FInputText)
+const FInputText = withWrapControlled(_FInputText, (v) => v || '')
 
 FInputText.propTypes = {
   ...inputPropTypes,
