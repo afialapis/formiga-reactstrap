@@ -8,6 +8,28 @@ import {inputPropTypes}  from '../../props/inputPropTypes.mjs'
 import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import isControlled from '../../helpers/props/isControlled.mjs'
 
+
+
+const _formatInnerValue = (isoString, separator= '/', dateFormat= "DD/MM/YYYY") => {
+  const date= isoString ? new Date(isoString) : null
+  if (! date) {
+    return ''
+  }
+
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  if (dateFormat.match(/MM.DD.YYYY/)) {
+    return (month > 9 ? month : `0${month}`) + separator + (day > 9 ? day : `0${day}`) + separator + date.getFullYear()
+  }
+  else if (dateFormat.match(/DD.MM.YYYY/)) {
+    return (day > 9 ? day : `0${day}`) + separator + (month > 9 ? month : `0${month}`) + separator + date.getFullYear()
+  }
+  else {
+    return date.getFullYear() + separator + (month > 9 ? month : `0${month}`) + separator + (day > 9 ? day : `0${day}`)
+  }
+}
+  
 const FInputDateBase = (props) => {
   const {id, name, placeholder, readOnly, autocomplete, 
          inputGroupStyle, 
@@ -31,7 +53,7 @@ const FInputDateBase = (props) => {
     //if (innerValue != nInnerValue) {
       setInnerValue(nInnerValue)
     //}
-    input.setValue(nInnerValue || '')
+    input.setValue(_formatInnerValue(nInnerValue))
     input.validate()
 
   }, [/*innerValue,*/ value, defaultValue, controlled, transform, input])
