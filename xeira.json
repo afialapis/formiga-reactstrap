@@ -7,7 +7,7 @@
   "linter": "eslint",
   "transpile_folder": "./lib",
   "transpiler": "babel",
-  "minifier": "uglify",
+  "minifier": "none",
   "bundle_folder": "./dist",
   "bundler": "rollup",
   "test_folder": "./test",
