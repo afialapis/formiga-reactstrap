@@ -31,7 +31,7 @@ const FInputDateBase = (props) => {
     //if (innerValue != nInnerValue) {
       setInnerValue(nInnerValue)
     //}
-    input.setVlue(nInnerValue)
+    input.setValue(nInnerValue)
     input.validate()
 
   }, [/*innerValue,*/ value, defaultValue, controlled, transform, input])
@@ -39,7 +39,7 @@ const FInputDateBase = (props) => {
   
   const handleChange = (value, _formattedValue) => {
     setInnerValue(value)
-    input.setVlue(value)
+    input.setValue(value)
     input.validate()
     if (onChange!=undefined) {
       // TODO Ask RDP to expose event as a onChange() parameter,
