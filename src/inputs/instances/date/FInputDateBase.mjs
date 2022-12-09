@@ -54,6 +54,11 @@ const FInputDateBase = (props) => {
   //   return null
   // }
 
+
+  const showValidProps = (showValidity==1 || showValidity==4)
+  ? {valid: input.valid, invalid: ! input.valid}
+  : {}  
+
   return (
     <FInputAddon {...props}
                  valid   = {input.valid}
@@ -77,6 +82,7 @@ const FInputDateBase = (props) => {
                   onChange    = {(v,f) => handleChange(v || undefined, f)}
                   size        = {bsSize}
                   clearButtonElement={<FIcon icon="cross"/>}
+                  {...showValidProps}
       />
     </FInputAddon>
   )
