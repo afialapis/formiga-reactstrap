@@ -12,7 +12,7 @@ const dateAdjustOffset = (d, f) => {
 
 
 const unixToISO = (value) => {
-  if (isNaN(value))  {
+  if ((!value) || isNaN(value))  {
     return undefined
   }
 
