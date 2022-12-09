@@ -37,9 +37,9 @@ const FInputDateBase = (props) => {
   }, [/*innerValue,*/ value, defaultValue, controlled, transform, input])
        
   
-  const handleChange = (value, _formattedValue) => {
+  const handleChange = (value, formattedValue) => {
     setInnerValue(value)
-    input.setValue(value || '')
+    input.setValue(formattedValue || '')
     input.validate()
     if (onChange!=undefined) {
       // TODO Ask RDP to expose event as a onChange() parameter,
