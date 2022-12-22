@@ -97,7 +97,7 @@ const FInputDateBase = (props) => {
                   name        = {name}
                   weekStartsOn= {1} 
                   placeholder = {placeholder}
-                  inputRef    = {input.ref}
+                  inputRef    = {{current: input.ref}}
                   dateFormat  = {"DD/MM/YYYY"}
                   disabled    = {readOnly}
                   required    = {required}
