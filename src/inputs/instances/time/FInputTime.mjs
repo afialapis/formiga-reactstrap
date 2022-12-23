@@ -40,7 +40,7 @@ const _FInputTime = (props) => {
             
         <Input  id          = {id}
                 name        = {name}
-                innerRef    = {input.ref}
+                innerRef    = {{current: input.ref}}
                 type        = {"time"}
                 placeholder = {placeholder || ""}
                 readOnly    = {readOnly!=undefined ? readOnly  : false}

@@ -10,7 +10,7 @@ const FISSHidden = (props) => {
       name        = {name}
       className   = "formiga-reactstrap-select-search-hidden"
       type        = "hidden"
-      innerRef    = {inputRef}
+      innerRef    = {{current: inputRef}}
       required    = {required}
       defaultValue= {value}
       />

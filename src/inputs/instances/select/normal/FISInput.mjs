@@ -24,7 +24,7 @@ const FISInput = (props) => {
               name        = {name}
               type        = "select"
               className   = {className}
-              innerRef    = {inputRef}
+              innerRef    = {{current: inputRef}}
               placeholder = {placeholder || ""}
               readOnly    = {readOnly!=undefined ? readOnly  : false}
               required    = {required}

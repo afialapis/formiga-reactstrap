@@ -1,31 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import {useForm} from 'formiga'
 import FFormButtons from './FFormButtons'
 
 const FForm = (props) => {
-  const {id, children, className, onSave, onCancel, colors, icons, labels, autoDisable, disabled, renderButtons, inline}= props
-  const form = useForm()
+  const {id, children, className, onSave, onCancel, colors, icons,
+         labels, autoDisable, disabled, renderButtons, inline,
+        getElements, isValid}= props
+  const {ref, valid, elements} = useForm()
+  
+  useEffect(() => {
+    if (getElements) {
+      getElements(elements)
+    }
+    if (isValid) {
+      getElements(valid)
+    }
+  }, [valid, elements, isValid, getElements])
 
   return (
     <form 
-      ref = {form.ref}
+      ref = {ref}
       id = {id}
       className  = {`formiga-reactstrap-form ${className!=undefined ? className : ''} ${inline==true ? 'inline' : ''}`}
       noValidate = {true}>
       <>
         {children}
         {renderButtons==undefined
-         ? <FFormButtons  onSave      = {onSave!=undefined ? (ev) => onSave(form.valid, form.elements, ev) : undefined}
-                          onCancel    = {onCancel!=undefined ? (ev) => onCancel(form.valid, form.elements, ev) : undefined}
+         ? <FFormButtons  onSave      = {onSave!=undefined ? (ev) => onSave(valid, elements, ev) : undefined}
+                          onCancel    = {onCancel!=undefined ? (ev) => onCancel(valid, elements, ev) : undefined}
                           colors      = {colors}
                           icons       = {icons}
                           labels      = {labels}
                           autoDisable = {autoDisable}
                           disabled    = {disabled}
-                          valid       = {form.valid}
-                          elements    = {form.elements}/>
-         : renderButtons(form.valid, form.elements)}
+                          valid       = {valid}
+                          elements    = {elements}/>
+         : renderButtons(valid, elements)}
       </>
     </form>
   )
@@ -42,7 +53,9 @@ FForm.propTypes = {
   autoDisable  : PropTypes.bool,
   disabled     : PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   renderButtons: PropTypes.func,
-  inline       : PropTypes.bool
+  inline       : PropTypes.bool,
+  getElements  : PropTypes.func,
+  isValid      : PropTypes.func
 }
 
 FForm.defaultProps = {

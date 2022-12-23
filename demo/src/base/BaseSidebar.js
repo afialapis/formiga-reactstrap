@@ -3,10 +3,9 @@ import {FInputCheckbox2, FInputSelect} from '../../../src'
 import {FForm} from '../../../src'
 
 const BaseSidebar = ({options, resume, onChangeOption}) => {
-
   return (
     <aside>
-
+      {/*
       <h2>Options</h2>
       <div className="mgbottom">
         <FForm  onSave     = {() => {}} 
@@ -62,6 +61,7 @@ const BaseSidebar = ({options, resume, onChangeOption}) => {
           </div>
         </FForm>
       </div>
+      */}
 
       {resume.length>0
       ?  <>

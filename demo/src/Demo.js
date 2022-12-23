@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {DemoInputText} from './inputs/DemoInputText'
 import {DemoInputTextArea} from './inputs/DemoInputTextArea'
 import {DemoInputNumber} from './inputs/DemoInputNumber'
@@ -30,6 +30,17 @@ const INPUT_TYPES= [
   {type: 'file', comp: DemoInputFile}
 ]
 
+const getResumeFromElements= (elements) => {
+  const nResume= []
+  elements.map((el) => {
+    nResume.push({msg: el.name, style:  {marginTop: '1em', fontWeight: 'bold'}})
+    nResume.push({msg: el.value, style: {fontStyle: 'italic'}})
+    nResume.push({msg: `is ${el.valid ? 'valid!' : `invalid (${el.feedback})`}`, 
+                style: {color: el.valid ? 'green' : 'red'}})
+  })
+  return nResume
+}
+
 
 const Demo = () => {
   const [options, setOptions]= useState({
@@ -39,19 +50,28 @@ const Demo = () => {
     bsSize      : 'sm'
   })
 
-  const [resume, setResume]= useState([{msg: "Save form to see a resume here!"}])
+  //const [resume, setResume]= useState([{msg: "Save form to see a resume here!"}])
+  const [resume, setResume]= useState([])
+  const [elements, setElements]= useState([])
 
+  useEffect(() => {
+    setResume(getResumeFromElements(elements))
+  }, [elements])
+
+//  const handleSubmit = (valid, elements) => {
+//    const nResume= []
+//    elements.map((el) => {
+//      nResume.push({msg: el.name, style:  {marginTop: '1em', fontWeight: 'bold'}})
+//      nResume.push({msg: el.value, style: {fontStyle: 'italic'}})
+//      nResume.push({msg: `is ${el.valid ? 'valid!' : `invalid (${el.feedback})`}`, 
+//                  style: {color: el.valid ? 'green' : 'red'}})
+//    })
+//
+//    setResume(nResume)
+//  }
 
   const handleSubmit = (valid, elements) => {
-    const nResume= []
-    elements.map((el) => {
-      nResume.push({msg: el.name, style:  {marginTop: '1em', fontWeight: 'bold'}})
-      nResume.push({msg: el.value, style: {fontStyle: 'italic'}})
-      nResume.push({msg: `is ${el.valid ? 'valid!' : `invalid (${el.feedback})`}`, 
-                  style: {color: el.valid ? 'green' : 'red'}})
-    })
-
-    setResume(nResume)
+    setResume(getResumeFromElements(elements))
   }
 
   const getMenuItems= () => {
@@ -66,6 +86,7 @@ const Demo = () => {
     })
     return items
   }
+
   
   return (  
 
@@ -84,10 +105,11 @@ const Demo = () => {
         <FForm  onSave     = {handleSubmit} 
                 onCancel   = {undefined}
                 autoDisable= {false}
-                renderButtons={(valid, elements) =>
+                getElements= {(e) => setElements(e)}
+                renderButtons={(valid, felements) => 
                     <div className="centered">
-                      <a className="afi-btn afi-btn-primary"
-                        onClick={(ev) => handleSubmit(valid, elements, ev)}>
+                      <a className={`afi-btn afi-btn-primary ${valid ? '' : 'disabled'}`}
+                        onClick={(ev) => handleSubmit(valid, felements, ev)}>
                         {valid ? 'Submit' : 'Invalid yet'}
                       </a>
                     </div>

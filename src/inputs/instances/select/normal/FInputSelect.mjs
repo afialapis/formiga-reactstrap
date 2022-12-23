@@ -25,10 +25,10 @@ const _FInputSelect = (props) => {
                 : undefined    
   })
 
-  const updValue = useCallback((nValue, event) => {
+  const updValue = useCallback((nValue, confirm, event) => {
     const iValue= parseValueDependOnOptions(nValue, enabledOptions)
    
-    setValue(iValue, true, event)
+    setValue(iValue, confirm, event)
 
     input.setValue(iValue)
     input.validate()
@@ -36,12 +36,12 @@ const _FInputSelect = (props) => {
   }, [input, enabledOptions, setValue])
 
   const handleChange = useCallback((event) => {
-    updValue(event.target.value, event)
+    updValue(event.target.value, true, event)
   }, [updValue])
 
 
   const handleClear = useCallback((event) => {
-    updValue('', event)
+    updValue('', true, event)
 
   }, [updValue])
 

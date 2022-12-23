@@ -32,7 +32,6 @@ const withWrapControlled = (BaseComponent, defGetter= undefined) => {
     }, [value, defaultValue, controlled])
     
     const setValue = useCallback((newValue, confirmed, event) => {
-      //console.log('withWrapControlled.setValue ' + newValue)
       setInnerValue(_parseDef(newValue))
   
       if (onChange!=undefined) {
