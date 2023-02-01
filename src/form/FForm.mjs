@@ -6,17 +6,14 @@ import FFormButtons from './FFormButtons'
 const FForm = (props) => {
   const {id, children, className, onSave, onCancel, colors, icons,
          labels, autoDisable, disabled, renderButtons, inline,
-        getElements, isValid}= props
+        getElements}= props
   const {ref, valid, elements} = useForm()
   
   useEffect(() => {
     if (getElements) {
-      getElements(elements)
+      getElements(valid, elements)
     }
-    if (isValid) {
-      getElements(valid)
-    }
-  }, [valid, elements, isValid, getElements])
+  }, [valid, elements, getElements])
 
   return (
     <form 
@@ -54,8 +51,7 @@ FForm.propTypes = {
   disabled     : PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   renderButtons: PropTypes.func,
   inline       : PropTypes.bool,
-  getElements  : PropTypes.func,
-  isValid      : PropTypes.func
+  getElements  : PropTypes.func
 }
 
 FForm.defaultProps = {

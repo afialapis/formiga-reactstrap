@@ -40,7 +40,7 @@ const _FInputText = (props) => {
 
       <Input  id          = {id}
               name        = {name}
-              innerRef    = {{current: input.ref}}
+              innerRef    = {input.ref}
               type        = {inputType || "text"}
               placeholder = {placeholder || ""}
               readOnly    = {readOnly!=undefined ? readOnly  : false}

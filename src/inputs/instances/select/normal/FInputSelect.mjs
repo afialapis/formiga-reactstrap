@@ -27,9 +27,7 @@ const _FInputSelect = (props) => {
 
   const updValue = useCallback((nValue, confirm, event) => {
     const iValue= parseValueDependOnOptions(nValue, enabledOptions)
-   
     setValue(iValue, confirm, event)
-
     input.setValue(iValue)
     input.validate()
 
@@ -66,7 +64,7 @@ const _FInputSelect = (props) => {
   )
 }
 
-const FInputSelect = withWrapControlled(_FInputSelect)
+const FInputSelect = withWrapControlled(_FInputSelect, (v) => v || '')
 
 FInputSelect.propTypes = {
   ...inputPropTypes,

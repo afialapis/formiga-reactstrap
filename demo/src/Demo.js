@@ -105,7 +105,7 @@ const Demo = () => {
         <FForm  onSave     = {handleSubmit} 
                 onCancel   = {undefined}
                 autoDisable= {false}
-                getElements= {(e) => setElements(e)}
+                getElements= {(_valid, e) => setElements(e)}
                 renderButtons={(valid, felements) => 
                     <div className="centered">
                       <a className={`afi-btn afi-btn-primary ${valid ? '' : 'disabled'}`}

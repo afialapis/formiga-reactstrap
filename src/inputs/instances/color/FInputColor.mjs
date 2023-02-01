@@ -38,7 +38,7 @@ const _FInputColor = (props) => {
 
       <Input  id          = {id}
               name        = {name}
-              innerRef    = {{current: input.ref}}
+              innerRef    = {input.ref}
               type        = {"color"}
               placeholder = {placeholder || ""}
               readOnly    = {readOnly!=undefined ? readOnly  : false}

@@ -40,7 +40,7 @@ const _FInputTime = (props) => {
             
         <Input  id          = {id}
                 name        = {name}
-                innerRef    = {{current: input.ref}}
+                innerRef    = {input.ref}
                 type        = {"time"}
                 placeholder = {placeholder || ""}
                 readOnly    = {readOnly!=undefined ? readOnly  : false}
@@ -62,7 +62,7 @@ const _FInputTime = (props) => {
   )
 }
 
-const FInputTime = withWrapControlled(_FInputTime)
+const FInputTime = withWrapControlled(_FInputTime, (v) => v || '')
 
 FInputTime.propTypes = {
   ...inputPropTypes,

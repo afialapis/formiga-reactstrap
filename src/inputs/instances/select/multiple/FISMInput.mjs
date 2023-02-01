@@ -24,7 +24,7 @@ const FISMInput = (props) => {
               type        = "select"
               className   = {`custom-select ${bsSize!=undefined ? 'custom-select-'+bsSize : ''}`}
               multiple
-              innerRef    = {{current: inputRef}}
+              innerRef    = {inputRef}
               placeholder = {placeholder || ""}
               readOnly    = {readOnly!=undefined ? readOnly  : false}
               required    = {required}

@@ -16,20 +16,18 @@ const withWrapControlled = (BaseComponent, defGetter= undefined) => {
   }
 
   const _withWrapControlled = (props) => {
-    
+
     const {value, defaultValue, onChange}= props
-
-    const controlledRef= useRef(isControlled(props))
-    const controlled = controlledRef.current===true
-
-    const initialValue = useRef(controlled ? value : defaultValue)
+    const controlledRef = useRef(isControlled(props))
+    const initialValueRef = useRef(isControlled(props) ? value : defaultValue)
     
-    const [innerValue, setInnerValue]= useState(_parseDef(controlled ? value : defaultValue))
+    
+    const [innerValue, setInnerValue]= useState(_parseDef(isControlled(props) ? value : defaultValue))
   
     useEffect(() => {
-      const nInnerValue= controlled ? value : defaultValue
+      const nInnerValue= controlledRef.current ? value : defaultValue
       setInnerValue(_parseDef(nInnerValue))
-    }, [value, defaultValue, controlled])
+    }, [value, defaultValue])
     
     const setValue = useCallback((newValue, confirmed, event) => {
       setInnerValue(_parseDef(newValue))
@@ -37,12 +35,12 @@ const withWrapControlled = (BaseComponent, defGetter= undefined) => {
       if (onChange!=undefined) {
         onChange(newValue, confirmed, event)
       }      
-    }, [setInnerValue, onChange])
+    }, [onChange])
     
     return (
       <BaseComponent 
           {...props}
-          initialValue = {initialValue.current}
+          initialValue = {initialValueRef.current}
           value        = {innerValue}
           setValue     = {setValue}
       />

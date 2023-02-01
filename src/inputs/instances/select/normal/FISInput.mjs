@@ -12,19 +12,19 @@ const FISInput = (props) => {
           inputStyle, clearable, showValidity, bsSize,
           value, valid, inputRef, onInputChange, enabledOptions} = props
 
-  const [className]= useValidClassnames(valid, showValidity)
+  const className= `custom-select ${bsSize!=undefined ? 'custom-select-'+bsSize : ''} ${useValidClassnames(valid, showValidity)}`
 
   const showValidProps = (showValidity==1 || showValidity==4)
   ? {valid: valid, invalid: ! valid}
   : {}
-
+  
   return (
     <Input    
               id          = {id || makeId(options)}
               name        = {name}
               type        = "select"
               className   = {className}
-              innerRef    = {{current: inputRef}}
+              innerRef    = {inputRef}
               placeholder = {placeholder || ""}
               readOnly    = {readOnly!=undefined ? readOnly  : false}
               required    = {required}
@@ -36,8 +36,8 @@ const FISInput = (props) => {
               {...showValidProps}
               >
       {clearable && enabledOptions.filter((opt) => opt.value=='').length==0
-        ?  <option key       = {`${name}_option_empty`}
-                  value     = {''}>
+        ?  <option key    = {`${name}_option_empty`}
+                   value  = {''}>
           {''}
         </option>
         : null}
