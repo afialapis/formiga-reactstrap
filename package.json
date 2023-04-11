@@ -1,6 +1,6 @@
 {
   "name": "formiga-reactstrap",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A Formiga implementation for Reactstrap",
   "author": "Donato Lorenzo <donato@afialapis.com>",
   "contributors": [
@@ -53,13 +53,13 @@
     "xeira": "^0.3.3"
   },
   "dependencies": {
-    "formiga": "^0.1.7"
+    "formiga": "^0.1.8"
   },
   "peerDependencies": {
-    "bootstrap": "^4.5.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "reactstrap": "^8.5.1",
+    "bootstrap": ">=4.5.2",
+    "prop-types": ">=15.7.2",
+    "react": ">=16.13.1",
+    "reactstrap": ">=8.5.1",
     "reactstrap-date-picker": "^1.0.8"
   },
   "eslintConfig": {
