@@ -75,16 +75,10 @@ const FInputDateBase = (props) => {
     flexWrap: "unset"
   }
   
-  // TODO PLEASE REMOVE ME
-  // if (inputRef.current == undefined) {
-  //   return null
-  // }
-
-
   const showValidProps = (showValidity==1 || showValidity==4)
   ? {valid: input.valid, invalid: ! input.valid}
   : {}  
-
+  
   return (
     <FInputAddon {...props}
                  valid   = {input.valid}

@@ -17,11 +17,14 @@ const strToISO = (value) => {
     const date= isoToDate(value)
 
     if (date==undefined || date=='') {
+      // console.log('strToISO value='+value+' => no date')
       return ''
     }
+    // console.log('strToISO value='+value+' => '+date.toISOString())
         
     return date.toISOString()
   }
+  // console.log('strToISO value='+value+' => undefined')
   return undefined
 }
 
@@ -31,8 +34,11 @@ const strFromISO = (value) => {
   const date= isoToDate(value)
 
   if (date==undefined || date=='') {
+    // console.log('strFromISO value='+value+' => no date')
     return ''
   }
+  
+  // console.log('strFromISO value='+value+' => '+date.toISOString())
 
   return date.toISOString()
 
