@@ -30,7 +30,6 @@ const getTodayISO = (add= 0) => {
   return n.toISOString()
 }
 
-
 const DemoInputDate = (options) => {
   const [when, setWhen]= useState(getTodayISO(1))
   const [whin, setWhin]= useState(getToday(1))
@@ -68,6 +67,7 @@ const DemoInputDate = (options) => {
              label            = {"When will you take your next Formiga?"}
              description      = "Why would you wait till tomorrow"
              required         = {true}
+             locale           = 'es'
              {...options}
       />
       

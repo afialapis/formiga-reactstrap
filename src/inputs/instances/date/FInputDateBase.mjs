@@ -7,6 +7,7 @@ import {DatePicker} from 'reactstrap-date-picker'
 import {inputPropTypes}  from '../../props/inputPropTypes.mjs'
 import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import isControlled from '../../helpers/props/isControlled.mjs'
+import { getDefaultLocale, DATES_LOCALES } from './locale.mjs'
 
 
 
@@ -34,7 +35,8 @@ const FInputDateBase = (props) => {
   const {id, name, placeholder, readOnly, autocomplete, 
          inputGroupStyle, 
          required, inputStyle, onChange, transform,
-         showValidity, bsSize} = props
+         showValidity, bsSize,
+         locale, rdp} = props
 
   const controlled= isControlled(props)
   const {value, defaultValue}= props
@@ -77,7 +79,12 @@ const FInputDateBase = (props) => {
   
   const showValidProps = (showValidity==1 || showValidity==4)
   ? {valid: input.valid, invalid: ! input.valid}
-  : {}  
+  : {}
+  
+  const rdpProps = {
+    ...DATES_LOCALES[locale] || {},
+    ...rdp
+  }
   
   return (
     <FInputAddon {...props}
@@ -92,7 +99,6 @@ const FInputDateBase = (props) => {
                   weekStartsOn= {1} 
                   placeholder = {placeholder}
                   inputRef    = {input.ref}
-                  dateFormat  = {"DD/MM/YYYY"}
                   disabled    = {readOnly}
                   required    = {required}
                   autocomplete= {autocomplete}
@@ -103,6 +109,7 @@ const FInputDateBase = (props) => {
                   size        = {bsSize}
                   clearButtonElement={<FIcon icon="cross"/>}
                   {...showValidProps}
+                  {...rdpProps}
       />
     </FInputAddon>
   )
@@ -114,13 +121,16 @@ FInputDateBase.propTypes = {
   ...inputPropTypes,
   placeholder         : PropTypes.string,
   autocomplete        : PropTypes.oneOf(["on", "off"]),
-  transform           : PropTypes.object
+  transform           : PropTypes.object,
+  locale              : PropTypes.string,
+  rdp                 : PropTypes.object
 }
 
 FInputDateBase.defaultProps = {
   ...inputDefaultProps,
   icon       : 'calendar',
-  inputStyle : {} // invalidate the r-d-p width default
+  inputStyle : {}, // invalidate the r-d-p width default
+  locale     : getDefaultLocale()
 }
 
 
