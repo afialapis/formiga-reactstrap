@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/afialapis/formiga-reactstrap/issues"
   },
-  "homepage": "https://formiga-reactstrap.afialapis.com/",
+  "homepage": "https://www.afialapis.com/os/formiga-reactstrap",
   "files": [
     "lib",
     "dist"
@@ -50,10 +50,10 @@
   "devDependencies": {
     "react-dom": "^16.13.1",
     "sass": "^1.56.1",
-    "xeira": "^0.3.3"
+    "xeira": "^0.3.26"
   },
   "dependencies": {
-    "formiga": "^0.1.8"
+    "formiga": "^0.1.9"
   },
   "peerDependencies": {
     "bootstrap": ">=4.5.2",
