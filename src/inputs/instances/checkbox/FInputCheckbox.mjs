@@ -1,8 +1,5 @@
 import React, {useState, useEffect, useCallback}     from 'react'
-import PropTypes  from 'prop-types'
 import {useInput} from 'formiga'
-import {inputPropTypes}    from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
 
@@ -16,9 +13,9 @@ const _makeId = (id, name) => {
 
 
 
-const _FInputCheckbox = (props) => {
-  const {value, setValue,
-         inputStyle, bsSize, showValidity, readOnly, required, id, name, checkboxLabel} = props
+const FInputCheckboxBase = (props) => {
+  const {value, setValue, icon= 'checkmark',
+         inputStyle, bsSize, showValidity= 4, readOnly, required, id, name, checkboxLabel} = props
   
   const input = useInput({...props})
   const [inputId, setInputId]= useState(_makeId(id, name))
@@ -37,6 +34,7 @@ const _FInputCheckbox = (props) => {
 
   return (    
     <FInputAddon {...props}
+                 icon    = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {input.feedback}>
@@ -61,16 +59,6 @@ const _FInputCheckbox = (props) => {
   )
 }
 
-const FInputCheckbox = withWrapControlled(_FInputCheckbox)
-
-FInputCheckbox.propTypes = {
-  ...inputPropTypes,
-  checkboxLabel : PropTypes.string,
-}
-
-FInputCheckbox.defaultProps = {
-  ...inputDefaultProps,
-  icon: 'checkmark',
-}
+const FInputCheckbox = withWrapControlled(FInputCheckboxBase)
 
 export default FInputCheckbox

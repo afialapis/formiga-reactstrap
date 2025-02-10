@@ -1,11 +1,11 @@
-@import './scss/vars_override';
-@import './scss/fixes';
-@import './scss/is_unsaved';
-@import './scss/label';
-@import './scss/feedback';
-@import './scss/buttons';
-@import './scss/number_input';
-@import './scss/select_search';
+@use 'scss/vars_override';
+@use 'scss/fixes';
+@use 'scss/is_unsaved';
+@use 'scss/label';
+@use 'scss/feedback';
+@use 'scss/buttons';
+@use 'scss/number_input';
+@use 'scss/select_search';
 
 
 

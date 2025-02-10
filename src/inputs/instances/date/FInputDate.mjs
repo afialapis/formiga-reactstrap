@@ -1,5 +1,4 @@
 import React       from 'react'
-import PropTypes   from 'prop-types'
 import FInputDateBase from './FInputDateBase.mjs'
 import {isoToDate} from './isoToDate.mjs'
 
@@ -51,16 +50,6 @@ const FInputDate = (props) => {
         }
       }/>
   )
-}
-
-FInputDate.propTypes = {
-  ...FInputDateBase.propTypes,
-  value: PropTypes.string
-}
-
-FInputDate.defaultProps = {
-  ...FInputDateBase.defaultProps,
-  
 }
 
 export default FInputDate

@@ -1,17 +1,14 @@
 import React, {useCallback}      from 'react'
-import PropTypes  from 'prop-types'
 import {useInput} from 'formiga'
 import {Input}    from 'reactstrap'
-import {inputPropTypes}    from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
 
 
-const _FInputColor = (props) => {
+const FInputColorBase = (props) => {
   const {id, name, placeholder, 
     readOnly, required,
-    autocomplete, inputStyle, showValidity, bsSize, value, setValue} = props
+    autocomplete, inputStyle, showValidity= 4, bsSize, value, setValue, icon= 'color'} = props
   
   const input = useInput({...props})
   
@@ -32,6 +29,7 @@ const _FInputColor = (props) => {
 
   return (
     <FInputAddon {...props}
+                 icon    = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {input.feedback}>
@@ -55,18 +53,7 @@ const _FInputColor = (props) => {
   )
 }
 
-const FInputColor = withWrapControlled(_FInputColor)
-
-FInputColor.propTypes = {
-  ...inputPropTypes,
-  autocomplete : PropTypes.oneOf(["on", "off"]),
-}
-
-FInputColor.defaultProps = {
-  ...inputDefaultProps,
-  icon: 'color'
-}
-
+const FInputColor = withWrapControlled(FInputColorBase)
 
 
 export default FInputColor

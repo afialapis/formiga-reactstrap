@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import {useForm} from 'formiga'
 import FFormButtons from './FFormButtons'
 
+const _DEFAULT_ICONS = ['ban', 'save']
+
 const FForm = (props) => {
-  const {id, children, className, onSave, onCancel, colors, icons,
-         labels, autoDisable, disabled, renderButtons, inline,
+  const {id, children, className, onSave, onCancel, colors, icons= _DEFAULT_ICONS,
+         labels, autoDisable= true, disabled, renderButtons, inline= false,
         getElements}= props
   const {ref, valid, elements} = useForm()
   
@@ -37,27 +38,6 @@ const FForm = (props) => {
       </>
     </form>
   )
-}
-
-FForm.propTypes = {
-  className    : PropTypes.string,
-  id           : PropTypes.string,
-  colors       : PropTypes.arrayOf(PropTypes.string),
-  icons        : PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.func])),
-  labels       : PropTypes.arrayOf(PropTypes.string),
-  onSave       : PropTypes.func,
-  onCancel     : PropTypes.func,
-  autoDisable  : PropTypes.bool,
-  disabled     : PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  renderButtons: PropTypes.func,
-  inline       : PropTypes.bool,
-  getElements  : PropTypes.func
-}
-
-FForm.defaultProps = {
-  icons      : ['ban', 'save'],
-  autoDisable: true,
-  inline     : false
 }
 
 

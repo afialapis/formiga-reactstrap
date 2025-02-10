@@ -1,9 +1,6 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react'
-import PropTypes from 'prop-types'
 import {useInput} from 'formiga'
 import {FInputAddon} from '../../../addon/FInputAddon.mjs'
-import {inputPropTypes}  from '../../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../../props/inputDefaultProps.mjs'
 import {useEnabledOptions}         from '../useEnabledOptions.mjs'
 import {parseValueDependOnOptions} from '../parseValueDependOnOptions.mjs'
 import FISSHidden from './FISSHidden.mjs'
@@ -17,11 +14,11 @@ const getOptionsLabel = (options, value) => {
   return elOpt?.label || ''
 }
 
-const _FInputSelectSearch = (props) => {
+const FInputSelectSearchBase = (props) => {
   const {options, feedback,
-         allowedValues, disallowedValues, keepHeight, 
+         allowedValues, disallowedValues, keepHeight= false, 
          creatable, onCreate, 
-         value, setValue
+         value, setValue, icon= 'search'
          } = props
   
   const wrapperRef    = useRef(undefined)
@@ -166,6 +163,7 @@ const _FInputSelectSearch = (props) => {
             ref = {wrapperRef}>
         <div>
           <FInputAddon {...props}
+                 icon = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {isOpen ? undefined : feedback || input.feedback}
@@ -204,26 +202,7 @@ const _FInputSelectSearch = (props) => {
   )
 }
 
-const FInputSelectSearch = withWrapControlled(_FInputSelectSearch)
+const FInputSelectSearch = withWrapControlled(FInputSelectSearchBase)
 
-FInputSelectSearch.propTypes = {
-  ...inputPropTypes,
-
-  placeholder  : PropTypes.string,
-  options     : PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.array)]),
-  autocomplete : PropTypes.oneOf(["on", "off"]),
-  clearable    : PropTypes.bool,
-  creatable    : PropTypes.bool,
-  onCreate     : PropTypes.func,
-  maxShownOptions: PropTypes.number
-
-}
-
-
-FInputSelectSearch.defaultProps = {
-  ...inputDefaultProps,
-  icon: 'search',
-  maxShownOptions: 10
-}
 
 export default FInputSelectSearch

@@ -1,11 +1,8 @@
 import React, {useRef, useCallback, useState}  from 'react'
-import PropTypes   from 'prop-types'
 import {useInput} from 'formiga'
 import {Input, InputGroupText}     from 'reactstrap'
 import {FInputAddon}  from '../../addon/FInputAddon.mjs'
 import Icon from '../../../commons/icons/FIcon.mjs'
-import {inputPropTypes}  from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import {useInputFilter} from 'formiga'
 import useStepOrDecimals from '../../helpers/props/useStepOrDecimals.mjs'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
@@ -33,12 +30,12 @@ const wrappedCheckValue = (props, value) => {
 }
 
 
-const _FInputNumber = (props) => {
+const FInputNumberBase = (props) => {
   const {value, setValue,
          id, name, placeholder, 
          readOnly, required, min, max, step, decimals,
          autocomplete, t, inputFilter,
-         inputStyle, showArrows, showValidity, bsSize}= props
+         inputStyle, showArrows= true, showValidity= 4, bsSize}= props
 
   const reprRef = useRef(undefined)
   const [innerRepr, setInnerRepr]= useState(t.from(value))
@@ -151,26 +148,6 @@ const _FInputNumber = (props) => {
   )
 }
 
-const FInputNumber = withWrapControlled(_FInputNumber)
-
-FInputNumber.propTypes = {
-  ...inputPropTypes,
-  defaultValue        : PropTypes.number,  
-  placeholder         : PropTypes.string,
-  max                 : PropTypes.number,
-  min                 : PropTypes.number,
-  step                : PropTypes.number,
-  decimals            : PropTypes.number,
-  gt                  : PropTypes.number,
-  lt                  : PropTypes.number,
-  autocomplete        : PropTypes.oneOf(["on", "off"]),
-  showArrows          : PropTypes.bool,
-}
-
-
-FInputNumber.defaultProps = {
-  ...inputDefaultProps,
-  showArrows: true
-}
+const FInputNumber = withWrapControlled(FInputNumberBase)
 
 export default FInputNumber

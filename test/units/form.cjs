@@ -1,6 +1,6 @@
 const React = require('react')
 const expect= global.expect
-const mount= global.mount
+const render= global.render
 
 describe('Forms', function () {
   //this.timeout(15000)
@@ -18,13 +18,9 @@ describe('Forms', function () {
       )
     }
 
-    const wrapper= mount(<App/>)
-    const theForm= wrapper.find(`form#${fid}`)
-    const theFormNode= theForm.getDOMNode()
+    const {container}= render(<App/>)
+    const theForm= container.querySelector(`#${fid}`)
 
-    expect(theForm.length).to.equal(1)
-    expect(theFormNode.classList.contains('formiga-reactstrap-form')).to.equal(true)
-
-    wrapper.unmount()
+    expect(theForm.classList.contains('formiga-reactstrap-form')).to.equal(true)
   })  
 })

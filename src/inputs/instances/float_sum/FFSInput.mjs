@@ -26,7 +26,7 @@ const _startsWithTrashZero = (s) => {
 
 const FFSInput = (
   { className, placeholder, readOnly, valid, autocomplete, 
-    inputStyle, stepOrDecimals, focusIt, showValidity, bsSize,
+    inputStyle, stepOrDecimals, focusIt, showValidity= 4, bsSize,
     sign, value, onChange, onAddValue, onRemValue, isLastOne, removable, decimalSign}) => {
   
   const reprRef = useRef(undefined)

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const FISSList = (props) => {
-  const {name, maxShownOptions,
+  const {name, maxShownOptions= 10,
          listRef, optionsMap, onSelect, optActive
          } = props
   

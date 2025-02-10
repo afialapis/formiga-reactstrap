@@ -1,7 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import {createRoot} from 'react-dom/client'
 
 import {Demo} from './src/Demo'
 
-
-ReactDOM.render(<Demo/>, document.getElementById('content'));
+const container = document.getElementById('content')
+const root = createRoot(container)
+root.render(<Demo/>)

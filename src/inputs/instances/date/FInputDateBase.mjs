@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import PropTypes   from 'prop-types'
 import {useInput} from 'formiga'
-import FIcon from '../../../commons/icons/FIcon.mjs'
 import {FInputAddon} from '../../addon/FInputAddon.mjs'
 import {DatePicker} from 'reactstrap-date-picker'
-import {inputPropTypes}  from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import isControlled from '../../helpers/props/isControlled.mjs'
 import { getDefaultLocale, DATES_LOCALES } from './locale.mjs'
+import FIcon from '../../../commons/icons/FIcon.mjs'
 
-
+const _DEF_INPUT_STYLE = {}
+const _DEF_LOCALE = getDefaultLocale()
 
 const _formatInnerValue = (isoString, separator= '/', dateFormat= "DD/MM/YYYY") => {
   const date= isoString ? new Date(isoString) : null
@@ -34,9 +32,9 @@ const _formatInnerValue = (isoString, separator= '/', dateFormat= "DD/MM/YYYY") 
 const FInputDateBase = (props) => {
   const {id, name, placeholder, readOnly, autocomplete, 
          inputGroupStyle, 
-         required, inputStyle, onChange, transform,
-         showValidity, bsSize,
-         locale, rdp} = props
+         required, inputStyle= _DEF_INPUT_STYLE, onChange, transform,
+         showValidity= 4, bsSize,
+         locale= _DEF_LOCALE, rdp, icon= 'calendar'} = props
 
   const controlled= isControlled(props)
   const {value, defaultValue}= props
@@ -88,11 +86,12 @@ const FInputDateBase = (props) => {
   
   return (
     <FInputAddon {...props}
+                 icon    = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {input.feedback}
                  inputGroupStyle= {nInputGroupStyle}>
-
+  
       <DatePicker 
                   id          = {id}
                   name        = {name}
@@ -113,24 +112,6 @@ const FInputDateBase = (props) => {
       />
     </FInputAddon>
   )
-}
-
-
-
-FInputDateBase.propTypes = {
-  ...inputPropTypes,
-  placeholder         : PropTypes.string,
-  autocomplete        : PropTypes.oneOf(["on", "off"]),
-  transform           : PropTypes.object,
-  locale              : PropTypes.string,
-  rdp                 : PropTypes.object
-}
-
-FInputDateBase.defaultProps = {
-  ...inputDefaultProps,
-  icon       : 'calendar',
-  inputStyle : {}, // invalidate the r-d-p width default
-  locale     : getDefaultLocale()
 }
 
 

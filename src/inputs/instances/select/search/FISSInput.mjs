@@ -3,7 +3,7 @@ import {Input} from 'reactstrap'
 
 const FISSInput = (props) => {
   const {name, placeholder, readOnly, autocomplete, required,
-         inputStyle, showValidity, bsSize,
+         inputStyle, showValidity= 4, bsSize,
          valid, filterRef, shownText, onSearchStart, onSearchType, onKeyDown
          } = props
   

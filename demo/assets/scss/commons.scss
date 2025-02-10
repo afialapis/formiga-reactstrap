@@ -1,7 +1,11 @@
+@use "sass:color";
+@use "mixins";
+@use "variables";
+
 body {
-	font-family: $font-primary;
+	font-family: variables.$font-primary;
 	font-weight: 400;
-	font-size: $font-size;
+	font-size: variables.$font-size;
 	//line-height: 1.7;
 	//color: darken($brand-white,80%);
 	//background: #fff;
@@ -11,10 +15,10 @@ body {
 }
 
 a {
-	color: $brand-primary;
-	@include transition(.5s);
+	color: variables.$brand-primary;
+	@include mixins.transition(.5s);
 	&:hover, &:active, &:focus {
-		color: $brand-primary;
+		color: variables.$brand-primary;
 		outline: none;
 		text-decoration: none;
 	}
@@ -24,42 +28,42 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6, figure {
-	color: $brand-black;
-	font-family: $font-primary;
+	color: variables.$brand-black;
+	font-family: variables.$font-primary;
 	font-weight: 400;
 }
 
 h1 {
-	font-size: $font-size + 6pt;
+	font-size: variables.$font-size + 6pt;
 	margin-bottom: 1em;
 }
 h2 {
-	font-size: $font-size + 4pt;
+	font-size: variables.$font-size + 4pt;
 	margin-bottom: 0.5em;
 }
 h3 {
-	font-size: $font-size + 2pt;
+	font-size: variables.$font-size + 2pt;
 	margin-bottom: 0.25em;
 }
 
 
 ::-webkit-selection {
-  color: $brand-white;
-  background: $brand-primary;
+  color: variables.$brand-white;
+  background: variables.$brand-primary;
 }
 
 ::-moz-selection {
-  color: $brand-white;
-  background: $brand-primary;
+  color: variables.$brand-white;
+  background: variables.$brand-primary;
 }
 ::selection {
-  color: $brand-white;
-  background: $brand-primary;
+  color: variables.$brand-white;
+  background: variables.$brand-primary;
 }
 
 .uppercase {
 	font-size: 14px;
-	color: $brand-black;
+	color: variables.$brand-black;
 	margin-bottom: 10px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -72,8 +76,8 @@ h3 {
   text-decoration: none !important;
 	margin-right: 4px;
 	margin-bottom: 4px;
-	@include border-radius(30px);
-	@include transition(.5s);
+	@include mixins.border-radius(30px);
+	@include mixins.transition(.5s);
 	padding: 8px 20px;
 	&.afi-btn-md {
 		padding: 8px 20px!important;
@@ -90,40 +94,40 @@ h3 {
 	}
 }
 .afi-btn-primary {
-	background: $brand-primary;
-	color: $brand-white;
-	border: 2px solid $brand-primary;
+	background: variables.$brand-primary;
+	color: variables.$brand-white;
+	border: 2px solid variables.$brand-primary;
 	&:hover, &:focus, &:active {
-		background: lighten($brand-primary, 5%)!important;
-		border-color: lighten($brand-primary, 5%)!important;
-		color: $brand-white;
+		background: color.adjust(variables.$brand-primary, $lightness: 5%)!important;
+		border-color: color.adjust(variables.$brand-primary, $lightness: 5%)!important;
+		color: variables.$brand-white;
 	}
 	&.afi-btn-outline {
 		background: transparent;
-		color: $brand-primary;
-		border: 2px solid $brand-primary;
+		color: variables.$brand-primary;
+		border: 2px solid variables.$brand-primary;
 		&:hover, &:focus, &:active {
-			background: $brand-primary;
-			color: $brand-white;
+			background: variables.$brand-primary;
+			color: variables.$brand-white;
 		}
 	}
 }
 .afi-btn-secondary {
-	background: $brand-secondary;
-	color: $brand-white;
-	border: 2px solid $brand-secondary;
+	background: variables.$brand-secondary;
+	color: variables.$brand-white;
+	border: 2px solid variables.$brand-secondary;
 	&:hover, &:focus, &:active {
-		background: darken($brand-secondary, 5%)!important;
-		border-color: darken($brand-secondary, 5%)!important;
-		color: $brand-white;
+		background: color.adjust(variables.$brand-secondary, $lightness: -5%)!important;
+		border-color: color.adjust(variables.$brand-secondary, $lightness: -5%)!important;
+		color: variables.$brand-white;
 	}
 	&.afi-btn-outline {
 		background: transparent;
-		color: $brand-secondary;
-		border: 2px solid $brand-secondary;
+		color: variables.$brand-secondary;
+		border: 2px solid variables.$brand-secondary;
 		&:hover, &:focus, &:active {
-			background: $brand-secondary;
-			color: $brand-white;
+			background: variables.$brand-secondary;
+			color: variables.$brand-white;
 		}
 	}
 }
@@ -131,9 +135,9 @@ h3 {
 
 .afi-btn-outline {
 	background: none;
-	border: 2px solid lighten($brand-black, 50%);
+	border: 2px solid color.adjust(variables.$brand-black, $lightness: 50%);
 	//font-size: 16px;
-	@include transition(.3s);
+	@include mixins.transition(.3s);
 	&:hover, &:focus, &:active {
 		box-shadow: none;
 	}
@@ -141,7 +145,7 @@ h3 {
 
 .afi-btn.with-arrow {
 	position: relative;
-	@include transition(.3s);
+	@include mixins.transition(.3s);
 	i {
 		visibility: hidden;
 		opacity: 0;
@@ -149,12 +153,12 @@ h3 {
 		right: 0px;
 		top: 50%;
 		margin-top: -8px;
-		@include transition(.2s);
+		@include mixins.transition(.2s);
 	}
 	&:hover {
 		padding-right: 50px;
 		i {
-			color: $brand-white;
+			color: variables.$brand-white;
 			right: 18px;
 			visibility: visible;
 			opacity: 1;

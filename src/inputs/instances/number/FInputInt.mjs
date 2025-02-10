@@ -3,7 +3,7 @@ import useIntProps from './useIntProps.mjs'
 import FInputNumberBase from './FInputNumberBase.mjs'
 
 
-const FInputInt = (props) => {
+const FInputInt = ({icon= 'dice', ...props}) => {
  
   const t= useIntProps(false)
 
@@ -11,18 +11,12 @@ const FInputInt = (props) => {
 
     <FInputNumberBase {...
         {...props,
+          icon,
           inputFilter: 'int',
           t
         }
       }/>
   )
-}
-
-FInputInt.propTypes = FInputNumberBase.propTypes
-
-FInputInt.defaultProps = {
-  ...FInputNumberBase.defaultProps,
-  icon: 'dice'
 }
 
 export default FInputInt

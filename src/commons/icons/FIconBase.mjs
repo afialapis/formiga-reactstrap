@@ -1,26 +1,25 @@
 import React     from 'react'
-import PropTypes from 'prop-types'
 
-const FIconBase = props => {
+const FIconBase = ({icon, size= 16, color}) => {
   const styles = {
     svg: {
       display: 'inline-block',
       verticalAlign: 'middle',
     },
     path: {
-      fill: props.color,
+      fill: color,
     },
   }
 
-  const lpaths = typeof props.icon=="string"
-                 ? [props.icon]
-                 : props.icon
+  const lpaths = typeof icon=="string"
+                 ? [icon]
+                 : icon
 
   return (
     <svg
       style={styles.svg}
-      width={`${props.size}px`}
-      height={`${props.size}px`}
+      width={`${size}px`}
+      height={`${size}px`}
       viewBox="0 0 1024 1024"
     >
       {lpaths.map((p, i) => 
@@ -30,16 +29,6 @@ const FIconBase = props => {
       )}
     </svg>
   )
-}
-
-FIconBase.propTypes = {
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
-  size: PropTypes.number,
-  color: PropTypes.string,
-}
-
-FIconBase.defaultProps = {
-  size: 16,
 }
 
 export default FIconBase

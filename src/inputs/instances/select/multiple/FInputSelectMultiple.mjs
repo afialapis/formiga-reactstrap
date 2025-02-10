@@ -1,8 +1,5 @@
 import React, {useCallback} from 'react'
-import PropTypes  from 'prop-types'
 import {useInput} from 'formiga'
-import {inputPropTypes}    from '../../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../../props/inputDefaultProps.mjs'
 import {FInputAddon}       from '../../../addon/FInputAddon.mjs'
 import {useEnabledOptions}         from '../useEnabledOptions.mjs'
 import {parseValueDependOnOptions} from '../parseValueDependOnOptions.mjs'
@@ -18,10 +15,12 @@ const numOrArrayToString = (v) => {
   return isNaN(v) ? '' : v.toString()
 }
 
+const _def_size = (v, opts) => Array.isArray(opts) ? opts.length : 0
 
-const _FInputSelectMultiple = (props) => {
-  const {allowedValues, disallowedValues, options, size, clearable,
-         value, setValue} = props
+
+const FInputSelectMultipleBase = (props) => {
+  const {allowedValues, disallowedValues, options, size= _def_size, clearable= true,
+         value, setValue, icon= 'list'} = props
 
   const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
 
@@ -57,7 +56,8 @@ const _FInputSelectMultiple = (props) => {
     <FInputAddon {...props}
                  valid   = {input.valid}
                  invalid = {! input.valid}
-                 feedback= {input.feedback}>
+                 feedback= {input.feedback}
+                 icon = {icon}>
       <FISMInput {...props}
                 valid= {input.valid}
                 inputRef= {input.ref}
@@ -73,26 +73,6 @@ const _FInputSelectMultiple = (props) => {
   )
 }
 
-const FInputSelectMultiple = withWrapControlled(_FInputSelectMultiple)
-
-
-FInputSelectMultiple.propTypes = {
-  ...inputPropTypes,
-
-  placeholder : PropTypes.string,
-  options     : PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.array)]),
-  autocomplete: PropTypes.oneOf(["on", "off"]),
-  clearable   : PropTypes.bool,
-
-  size        : PropTypes.oneOfType([PropTypes.func, PropTypes.number])
-}
-
-FInputSelectMultiple.defaultProps = {
-  ...inputDefaultProps,
-  icon: 'list',
-  clearable: true,
-  size: (v, opts) => Array.isArray(opts) ? opts.length : 0
-}
-
+const FInputSelectMultiple = withWrapControlled(FInputSelectMultipleBase)
 
 export default FInputSelectMultiple

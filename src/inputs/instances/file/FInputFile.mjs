@@ -1,9 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react'
-import PropTypes     from 'prop-types'
 import {useInput}    from 'formiga'
 import {FInputAddon}          from '../../addon/FInputAddon.mjs'
-import {inputPropTypes}       from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps}    from '../../props/inputDefaultProps.mjs'
 import ProgressBar from './ProgressBar'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
 import useFileTypeIcon from './useFileTypeIcon.mjs'
@@ -13,8 +10,8 @@ import FFClear from './FFClear.mjs'
 
 
 
-const _FInputFile = (props) => {
-  const {icon, onDownload, iconMap, value, setValue} = props
+const FInputFileBase = (props) => {
+  const {icon= 'file', onDownload, iconMap, value= undefined, setValue} = props
   
   const input = useInput({...props})  
   const [hasValue  , setHasValue ]= useState(value?.buffer || value?.size>0)
@@ -178,19 +175,7 @@ const _FInputFile = (props) => {
 }
 
 
-const FInputFile = withWrapControlled(_FInputFile)
+const FInputFile = withWrapControlled(FInputFileBase)
 
-FInputFile.propTypes = {
-  ...inputPropTypes,
-  onDownload: PropTypes.func,
-  accept: PropTypes.string,
-  iconMap: PropTypes.object
-}
-
-FInputFile.defaultProps = {
-  ...inputDefaultProps,
-  icon : 'file',
-  value: undefined
-}
 
 export default FInputFile

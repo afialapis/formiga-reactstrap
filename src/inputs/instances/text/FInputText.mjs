@@ -1,20 +1,17 @@
 import React, {useCallback}        from 'react'
-import PropTypes    from 'prop-types'
 import {useInput}   from 'formiga'
 import {Input}      from 'reactstrap'
-import {inputPropTypes}    from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
 
 
-const _FInputText = (props) => {
-  const {id, name, inputType,
+const FInputTextBase = (props) => {
+  const {id, name, inputType= 'text',
         maxLength, minLength, 
         placeholder, readOnly, 
         required, 
-        autocomplete, inputStyle, showValidity, bsSize,
-      value, setValue} = props         
+        autocomplete, inputStyle, showValidity= 4, bsSize,
+      value, setValue, icon= 'text'} = props         
   
   const input = useInput({...props})
   
@@ -34,6 +31,7 @@ const _FInputText = (props) => {
 
   return (
     <FInputAddon {...props}
+                  icon = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {input.feedback}>
@@ -58,25 +56,7 @@ const _FInputText = (props) => {
    )
 }
 
-const FInputText = withWrapControlled(_FInputText, (v) => v || '')
-
-FInputText.propTypes = {
-  ...inputPropTypes,
-
-  inputType    : PropTypes.string,
-  placeholder  : PropTypes.string,
-  maxLength    : PropTypes.number,
-  minLength    : PropTypes.number,
-  inputFilter  : PropTypes.oneOfType([PropTypes.func, PropTypes.instanceOf(RegExp), PropTypes.string]),
-  autocomplete : PropTypes.oneOf(["on", "off"]),
-}
-
-FInputText.defaultProps = {
-  ...inputDefaultProps,
-  icon: 'text',
-  inputType: 'text',
-  placeholder: ''
-}
+const FInputText = withWrapControlled(FInputTextBase, (v) => v || '')
 
 
 export default FInputText

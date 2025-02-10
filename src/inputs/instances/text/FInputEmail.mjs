@@ -1,21 +1,11 @@
 import React      from 'react'
 import FInputText from './FInputText.mjs'
 
-const FInputEmail = (props) =>
+const FInputEmail = ({icon= 'email', label= 'E-Mail', ...props}) =>
 
   <FInputText {...props}
-                inputType = {"email"}/>
-
-FInputEmail.propTypes = FInputText.propTypes
-
-delete FInputEmail.propTypes['inputType']
-
-FInputEmail.defaultProps = {
-  ...FInputText.defaultProps,
-  icon: 'email',
-  label: 'E-Mail'
-}
-
-
+              icon = {icon}
+              label= {label}
+              inputType = {"email"}/>
 
 export default FInputEmail

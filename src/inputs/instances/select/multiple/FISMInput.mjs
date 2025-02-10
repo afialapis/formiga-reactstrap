@@ -5,7 +5,7 @@ import {Input}    from 'reactstrap'
 const FISMInput = (props) => {
   const {id, name, 
          placeholder, readOnly, autocomplete, required,
-         inputStyle, bsSize, showValidity,
+         inputStyle, bsSize, showValidity= 4,
          value, valid, inputRef, onInputChange, enabledOptions, theSize} = props
 
   const showValidProps = (showValidity==1 || showValidity==4)

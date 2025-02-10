@@ -1,19 +1,16 @@
 import React, {useCallback}      from 'react'
-import PropTypes  from 'prop-types'
 import {useInput} from 'formiga'
 import {Input}    from 'reactstrap'
-import {inputPropTypes}    from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import FITClear from './FITClear.mjs'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
 
-const _FInputTime = (props) => {
+const FInputTimeBase = (props) => {
   const {id, name, 
     placeholder, readOnly, 
-    required, step, min, max,
-    autocomplete, inputStyle, showValidity, bsSize, 
-    value, setValue} = props      
+    required, step= 60, min, max,
+    autocomplete, inputStyle, showValidity= 4, bsSize, 
+    value, setValue, icon= 'time'} = props      
 
   const input = useInput({...props})
 
@@ -34,6 +31,7 @@ const _FInputTime = (props) => {
 
   return (
     <FInputAddon {...props}
+                  icon = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {input.feedback}>
@@ -62,23 +60,7 @@ const _FInputTime = (props) => {
   )
 }
 
-const FInputTime = withWrapControlled(_FInputTime, (v) => v || '')
-
-FInputTime.propTypes = {
-  ...inputPropTypes,
-  placeholder  : PropTypes.string,
-  autocomplete : PropTypes.oneOf(["on", "off"]),
-  max          : PropTypes.string,
-  min          : PropTypes.string,
-  step         : PropTypes.number,
-  clearable    : PropTypes.bool
-}
-
-FInputTime.defaultProps = {
-  ...inputDefaultProps,
-  icon: 'time',
-  step: 60
-}
+const FInputTime = withWrapControlled(FInputTimeBase, (v) => v || '')
 
 
 export default FInputTime

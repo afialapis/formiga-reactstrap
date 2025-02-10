@@ -1,8 +1,5 @@
 import React, {useCallback} from 'react'
-import PropTypes        from 'prop-types'
 import {useInput}       from 'formiga'
-import {inputPropTypes}  from '../../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../../props/inputDefaultProps.mjs'
 import {FInputAddon} from '../../../addon/FInputAddon.mjs'
 import {useEnabledOptions}         from '../useEnabledOptions.mjs'
 import {parseValueDependOnOptions} from '../parseValueDependOnOptions.mjs'
@@ -10,11 +7,11 @@ import withWrapControlled from '../../../helpers/props/withWrapControlled.mjs'
 import FISClear from './FISClear.mjs'
 import FISInput from './FISInput.mjs'
 
-const _FInputSelect = (props) => {
+const FInputSelectBase = (props) => {
 
   const { setValue,
           allowedValues, disallowedValues, options, 
-          clearable} = props
+          clearable= true, icon= 'list'} = props
 
   const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
 
@@ -47,6 +44,7 @@ const _FInputSelect = (props) => {
 
   return (
     <FInputAddon {...props}
+                 icon = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {input.feedback}>
@@ -64,21 +62,6 @@ const _FInputSelect = (props) => {
   )
 }
 
-const FInputSelect = withWrapControlled(_FInputSelect, (v) => v || '')
-
-FInputSelect.propTypes = {
-  ...inputPropTypes,
-
-  placeholder : PropTypes.string,
-  options     : PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.array)]),
-  autocomplete: PropTypes.oneOf(["on", "off"]),
-  clearable   : PropTypes.bool
-}
-
-FInputSelect.defaultProps = {
-  ...inputDefaultProps,
-  icon: 'list',
-  clearable: true
-}
+const FInputSelect = withWrapControlled(FInputSelectBase, (v) => v || '')
 
 export default FInputSelect

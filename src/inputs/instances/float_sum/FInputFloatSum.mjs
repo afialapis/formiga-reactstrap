@@ -1,8 +1,5 @@
 import React, {useCallback, useEffect, useState}  from 'react'
-import PropTypes  from 'prop-types'
 import {useInput} from 'formiga'
-import {inputPropTypes}    from '../../props/inputPropTypes.mjs'
-import {inputDefaultProps} from '../../props/inputDefaultProps.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import isNotNumber from '../../helpers/float/isNotNumber'
 
@@ -19,11 +16,12 @@ const _getInputSigns = (value) => {
   return value.map(v => isNotNumber(v) ? true : v>=0)
 }
 
-const _FInputFloatSum = (props) => {
+
+const FInputFloatSumBase = (props) => {
   const {id, name, value, setValue,
     placeholder, readOnly, 
-    step, decimals, decimalSign,
-    autocomplete, inputStyle, showValidity, bsSize} = props
+    step, decimals= undefined, decimalSign= '.',
+    autocomplete, inputStyle, showValidity= 4, bsSize, icon= 'sigma'} = props
   
   const stepOrDecimals = useStepOrDecimals(step, decimals)
   const input = useInput({
@@ -99,6 +97,7 @@ const _FInputFloatSum = (props) => {
 
   return (
     <FInputAddon {...props}
+                  icon    = {icon}
                  valid   = {input.valid}
                  invalid = {! input.valid}
                  feedback= {input.feedback}>
@@ -149,33 +148,9 @@ const _FInputFloatSum = (props) => {
   )
 }
 
-const FInputFloatSum = withWrapControlledForArray(_FInputFloatSum)
+const FInputFloatSum = withWrapControlledForArray(FInputFloatSumBase)
 
 
-FInputFloatSum.propTypes = {
-  ...inputPropTypes,
-  value               : function(props, _propName, _componentName) {
-      if (! ('value' in props) && ! ('defaultValue' in props)) {
-          return new Error('Please provide a {value} or a {defaultValue}');
-      }
-  },
-  defaultValue        : PropTypes.arrayOf(PropTypes.number),
-  placeholder         : PropTypes.string,
-  max                 : PropTypes.number,
-  min                 : PropTypes.number,
-  step                : PropTypes.number,
-  decimals            : PropTypes.number,
-  decimalSign         : PropTypes.oneOf([',', '.']),
-  autocomplete        : PropTypes.oneOf(["on", "off"]),
-}
-
-
-FInputFloatSum.defaultProps = {
-  ...inputDefaultProps,
-  icon: "sigma",
-  decimals: undefined,
-  decimalSign: '.'
-}
 
 
 

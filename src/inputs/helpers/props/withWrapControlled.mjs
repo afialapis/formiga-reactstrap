@@ -15,7 +15,7 @@ const withWrapControlled = (BaseComponent, defGetter= undefined) => {
     return defGetter(v)
   }
 
-  const _withWrapControlled = (props) => {
+  const useWrapControlled = (props) => {
 
     const {value, defaultValue, onChange}= props
     const controlledRef = useRef(isControlled(props))
@@ -47,7 +47,7 @@ const withWrapControlled = (BaseComponent, defGetter= undefined) => {
     )
   }
 
-  return _withWrapControlled
+  return useWrapControlled
 }
 
 

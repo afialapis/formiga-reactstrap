@@ -29,10 +29,4 @@ const FInputCheckbox2 = (props) => {
   )
 }
 
-FInputCheckbox2.propTypes = FInputCheckbox.propTypes
-
-FInputCheckbox2.defaultProps = {
-  ...FInputCheckbox.defaultProps
-}
-
 export default FInputCheckbox2

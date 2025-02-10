@@ -1,3 +1,5 @@
+@use "vars_override";
+
 /**
  * buttons
  */
@@ -32,9 +34,9 @@
 */
 
 .formiga-reactstrap-form .formiga-reactstrap-buttons button:not(:first-child) {
-  margin-left: $input-btn-padding-x;
+  margin-left: vars_override.$input-btn-padding-x;
 }
 
 .formiga-reactstrap-form .formiga-reactstrap-buttons button svg {
-  margin-right: $input-btn-padding-x;
+  margin-right: vars_override.$input-btn-padding-x;
 }

@@ -1,3 +1,5 @@
+@use "vars_override";
+
 
 /**
  * label
@@ -21,7 +23,7 @@
     color: #524f4f;
     font-style: italic;
     font-weight: 500;
-    padding-left: $formiga-label-padding;
+    padding-left: vars_override.$formiga-label-padding;
   }
 
   .formiga-reactstrap-description {

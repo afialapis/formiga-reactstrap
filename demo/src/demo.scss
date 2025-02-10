@@ -4,10 +4,10 @@
   [xeira][bundle] Error when bundling ./demo/dist/bundle.js
 */
 //@import '~bootstrap/dist/css/bootstrap.css';
-@import '~bootstrap/scss/bootstrap.scss';
+// @import '~bootstrap/scss/bootstrap.scss';
 
 
-@import '../../src/assets/style.scss';
+@use '../../src/assets/style.scss';
 
 h1 {
   text-align: center;

@@ -13,6 +13,7 @@ import {DemoInputFile} from "./inputs/DemoInputFile";
 import {Base} from './base/Base'
 import {FForm} from '../../src'
 
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './demo.scss'
 
 

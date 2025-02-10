@@ -3,7 +3,7 @@ import isControlled from '../../helpers/props/isControlled.mjs'
 
 const withWrapControlledForArray = (BaseComponent, eventName= 'onBlur') => {
   
-  const _withWrapControlledForArray = (props) => {
+  const useWrapControlledForArray = (props) => {
     const controlled= isControlled(props)
     const {value, defaultValue, onChange}= props
 
@@ -54,7 +54,7 @@ const withWrapControlledForArray = (BaseComponent, eventName= 'onBlur') => {
     )
   }
 
-  return _withWrapControlledForArray
+  return useWrapControlledForArray
 }
 
 

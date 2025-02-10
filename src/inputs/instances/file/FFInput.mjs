@@ -5,7 +5,7 @@ import formatBytes from './formatBytes'
 const FFInput = (props) => {
   const {
     required, inputStyle, 
-    showValidity, bsSize,
+    showValidity= 4, bsSize,
     statusMsg, hasValue, value, valid, ftypeIcon,
     onDownload, onBrowse} = props
 

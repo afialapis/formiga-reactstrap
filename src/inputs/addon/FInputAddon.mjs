@@ -9,8 +9,8 @@ import FInputFeedback from './FInputFeedback'
 import FIcon from '../../commons/icons/FIcon.mjs'
 
 const FInputAddon = (props) => {
-  const {name, value, label, description, feedback, icon, valid, children, inline, formClassName, 
-    showValidity, keepHeight, formGroupStyle, inputGroupStyle, middleElement, bsSize}= props
+  const {name, value, label, description, feedback, icon, valid, children, inline= false, formClassName, 
+    showValidity= 4, keepHeight= false, formGroupStyle, inputGroupStyle, middleElement, bsSize}= props
 
   const originalValue = useRef(value)
   

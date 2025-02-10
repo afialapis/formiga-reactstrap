@@ -1,20 +1,11 @@
 import React      from 'react'
 import FInputText from './FInputText.mjs'
 
-const FInputPassword = (props) =>
+const FInputPassword = ({icon= 'password', label= 'Password', ...props}) =>
 
   <FInputText {...props}
-                inputType = {"password"}/>
-
-FInputPassword.propTypes = FInputText.propTypes
-
-delete FInputPassword.propTypes['inputType']
-
-
-FInputPassword.defaultProps = {
-  ...FInputText.defaultProps,
-  icon: 'password',
-  label: 'Password'
-}
+    icon = {icon}
+    label= {label}
+    inputType = {"password"}/>
 
 export default FInputPassword

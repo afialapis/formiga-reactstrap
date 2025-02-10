@@ -9,7 +9,7 @@ const FISInput = (props) => {
   const { id, name, 
           placeholder, readOnly, autocomplete, required, 
           options, 
-          inputStyle, clearable, showValidity, bsSize,
+          inputStyle, clearable, showValidity= 4, bsSize,
           value, valid, inputRef, onInputChange, enabledOptions} = props
 
   const className= `custom-select ${bsSize!=undefined ? 'custom-select-'+bsSize : ''} ${useValidClassnames(valid, showValidity)}`

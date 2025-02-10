@@ -1,6 +1,6 @@
 {
   "name": "formiga-reactstrap",
-  "version": "0.1.9",
+  "version": "1.0.0-beta.1",
   "description": "A Formiga implementation for Reactstrap",
   "author": "Donato Lorenzo <donato@afialapis.com>",
   "contributors": [
@@ -30,9 +30,11 @@
     "require": "./dist/formiga-reactstrap.cjs"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "clean-demo": "rm -rf demo/dist",
     "clean-lib": "rm -rf lib && mkdir lib",
     "clean-dist": "rm -rf dist && mkdir dist",
+    "clean-site": "rm -rf arredemo",
     "lint": "npx xeira lint --folder=./src",
     "test": "npx xeira test --files=./test/before.mjs,./test/units/form.cjs --t=5000",
     "lib": "npm run clean-lib && npx xeira transpile --source_folder=./src --transpile_folder=./lib",
@@ -40,7 +42,8 @@
     "dist": "npm run clean-dist && npx xeira bundle && npm run dist-css",
     "prepare": "npm run clean-demo && npm run lint && npm run test && npm run lib && npm run dist",
     "demo": "npm run clean-demo && npx xeira demo --port=8002",
-    "reset": "npm run clean-demo && npm run clean-lib && npm run clean-dist && rm -fr node_modules package-lock.json && npm i"
+    "site": "npm run --silent clean-site && npx xeira site",
+    "reset": "npm run clean-demo && npm run clean-lib && npm run clean-dist && npm run clean-site && rm -fr node_modules package-lock.json && npm i"
   },
   "keywords": [
     "js",
@@ -48,19 +51,18 @@
     "form"
   ],
   "devDependencies": {
-    "react-dom": "^16.13.1",
-    "sass": "^1.56.1",
-    "xeira": "^0.3.26"
+    "react-dom": "^18.3.1",
+    "sass": "^1.84.0",
+    "xeira": "^1.0.0-beta.2"
   },
   "dependencies": {
-    "formiga": "^0.1.9"
+    "formiga": "^1.0.0-beta.1"
   },
   "peerDependencies": {
-    "bootstrap": ">=4.5.2",
-    "prop-types": ">=15.7.2",
-    "react": ">=16.13.1",
-    "reactstrap": ">=8.5.1",
-    "reactstrap-date-picker": "^1.0.9"
+    "bootstrap": "^5.3.3",
+    "react": "^18.3.1",
+    "reactstrap": "^9.2.3",
+    "reactstrap-date-picker": "^2.0.0-beta.1"
   },
   "eslintConfig": {
     "extends": [
