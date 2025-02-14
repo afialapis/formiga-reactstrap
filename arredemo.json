@@ -1,12 +1,9 @@
 {
   "theme": "default",
-  "favicon": "",
-  "logo": "",
+  "favicon": "logo/favicon/formiga-reactstrap.ico",
+  "logo": "logo/formiga-reactstrap_sm.png",
   "url": "https://www.afialapis.com/os/formiga-reactstrap",
   "company": "Afialapis",
   "company_url": "https://www.afialapis.com",
-  "doc_versions": [
-    ""
-  ],
-  "demo_entry": ""
+  "demo_entry": "./demo/src/Demo.js"
 }
