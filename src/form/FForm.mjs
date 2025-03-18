@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {useForm} from 'formiga'
 import FFormButtons from './FFormButtons'
 
@@ -8,13 +8,19 @@ const FForm = (props) => {
   const {id, children, className, onSave, onCancel, colors, icons= _DEFAULT_ICONS,
          labels, autoDisable= true, disabled, renderButtons, inline= false,
         getElements}= props
-  const {ref, valid, elements} = useForm()
+  const [ied, setIed] = useState(false)
+  const {node, ref, valid, elements} = useForm()
   
   useEffect(() => {
-    if (getElements) {
-      getElements(valid, elements)
+    if (getElements && (!ied)) {
+      console.log(`[FForm] calling getElements with ${elements.length} elems , node is ${node}`)
+      if (node) {
+        setIed(true)
+        getElements(valid, elements)
+      }
+      
     }
-  }, [valid, elements, getElements])
+  }, [valid, elements, getElements, node, ied])
 
   return (
     <form 

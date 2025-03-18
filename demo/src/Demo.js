@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react'
 import {DemoInputText} from './inputs/DemoInputText'
 import {DemoInputTextArea} from './inputs/DemoInputTextArea'
 import {DemoInputNumber} from './inputs/DemoInputNumber'
@@ -9,12 +9,11 @@ import {DemoInputSelect} from './inputs/DemoInputSelect'
 import {DemoInputSelectMultiple} from './inputs/DemoInputSelectMultiple'
 import {DemoInputSelectSearch} from './inputs/DemoInputSelectSearch'
 import {DemoInputColor} from './inputs/DemoInputColor'
-import {DemoInputFile} from "./inputs/DemoInputFile";
+import {DemoInputFile} from "./inputs/DemoInputFile"
 import {Base} from './base/Base'
-import {FForm} from '../../src'
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import './demo.scss'
+import { DemoSummary } from './DemoSummary'
+import {DemoForm} from './DemoForm'
 
 
 const INPUT_TYPES= [
@@ -53,11 +52,11 @@ const Demo = () => {
 
   //const [resume, setResume]= useState([{msg: "Save form to see a resume here!"}])
   const [resume, setResume]= useState([])
-  const [elements, setElements]= useState([])
+  /*const [elements, setElements]= useState([])
 
   useEffect(() => {
     setResume(getResumeFromElements(elements))
-  }, [elements])
+  }, [elements])*/
 
 //  const handleSubmit = (valid, elements) => {
 //    const nResume= []
@@ -70,10 +69,10 @@ const Demo = () => {
 //
 //    setResume(nResume)
 //  }
-
+  /*
   const handleSubmit = (valid, elements) => {
     setResume(getResumeFromElements(elements))
-  }
+  }*/
 
   const getMenuItems= () => {
     let items= []
@@ -88,20 +87,30 @@ const Demo = () => {
     return items
   }
 
-  
+  console.log(`[demo] Render`)  
   return (  
 
       <Base logoSrc = "assets/img/formiga-reactstrap.png"
             menuTitle   = "Input Types"
-            menuItems   = {getMenuItems()}
-            options     = {options}
-            onChangeOption = {(name, value) => {
-              setOptions({
-                ...options,
-                [name]: value
-              })
-            }}
-            resume  = {resume}>
+            menuItems   = {getMenuItems()}>
+        
+        <DemoForm
+          options={options}
+          onChangeElements={(els) => setResume(getResumeFromElements(els))} 
+          INPUT_TYPES={INPUT_TYPES}/>
+
+        <DemoSummary resume={resume}/>
+
+      </Base>
+
+  )
+}
+
+export default Demo
+
+
+/*
+
 
         <FForm  onSave     = {handleSubmit} 
                 onCancel   = {undefined}
@@ -116,7 +125,7 @@ const Demo = () => {
                     </div>
                 }
                 >
-             
+            
             {INPUT_TYPES.map((inputType) => 
                 <section key={`section_${inputType.type}`}
                       id={inputType.type}>
@@ -134,9 +143,5 @@ const Demo = () => {
           
 
         </FForm>
-      </Base>
 
-  )
-}
-
-export default Demo
+        */

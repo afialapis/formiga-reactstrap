@@ -21,3 +21,98 @@
 
 [`formiga-reactstrap`](https://www.afialapis.com/os/formiga-reactstrap/) is a [`reactstrap`](https://reactstrap.github.io) implementation of [`formiga `](https://www.afialapis.com/os/formiga/).
 
+# Components
+
+## `FForm`
+
+Wraps your `<form>` elements and helps rendering the common buttons.
+
+* `children`
+* `id`
+* `className`
+* `inline= false`
+* `getElements`
+* `renderButtons`
+* `onSave`
+* `onCancel`
+* `colors`
+* `icons= ['ban', 'save']`
+* `labels`
+* `autoDisable= true`
+* `disabled`
+
+
+## Inputs
+
+### The Input Group
+
+ * `label`
+ * `description`
+ * `icon`
+ * `inline= false`
+ * `formClassName`
+ * `keepHeight= false`
+ * `formGroupStyle`
+ * `inputGroupStyle`
+ * `middleElement`
+ * `bsSize`
+
+### `FInputText`
+
+* `id`
+* `name`
+* `inputType= 'text'`
+* `maxLength`
+* `minLength`
+* `placeholder`
+* `readOnly`
+* `required`
+* `autocomplete`
+* `inputStyle`
+* `showValidity= 4`
+* `value`
+* `setValue`
+* `icon= 'text'`
+
+
+
+
+### `FInputEmail`
+
+* `id`
+* `name`
+* `maxLength`
+* `minLength`
+* `placeholder`
+* `readOnly`
+* `required`
+* `autocomplete`
+* `inputStyle`
+* `showValidity= 4`
+* `value`
+* `setValue`
+* `icon= 'email'`
+
+### `FInputUrl`
+### `FInputPassword`
+### `FInputTextArea`
+### `FInputFloat`
+### `FInputInt`
+### `FInputUInt`
+### `FInputFloatSum`
+### `FInputDate`
+### `FInputTime`
+### `FInputEpoch`
+### `FInputDateIso`
+### `FInputColor`
+### `FInputCheckbox`
+### `FInputCheckbox2`
+### `FInputSelect`
+### `FInputSelectMultiple`
+### `FInputSelectSearch`
+### `FInputFile`
+
+
+
+
+

@@ -7,7 +7,7 @@
   grid-template-columns: 1fr 5fr 1fr;
   grid-template-areas: 
     "header header header"
-    "nav content sidebar"
+    "nav content content"
     "footer  footer  footer";
 }
 
@@ -19,12 +19,33 @@ nav {
   grid-area: nav;
 }
 
-aside {
-  grid-area: sidebar;
-}
-
 main {
   grid-area: content;
+
+
+  .formiga-content {
+    /*
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+      "form aside";  
+      */
+    display: flex;
+    justify-content: center;
+   flex-wrap: wrap;
+
+    form {
+      //grid-area: form;
+      flex: 1;
+    }
+    aside {
+      //grid-area: sidebar;
+      width: 250px;
+      margin-left: auto;
+    
+    }  
+  }  
 }
 
 footer {
@@ -80,20 +101,25 @@ body {
     }  
   }
 
-  aside {
-    .log {
-      color: gray;
-      font-size: 9pt;
-    }
-  }
-
   main {
-    .formiga-example {
+    .formiga-content {
       border-radius: 5px;
       padding: 1em;
 
       section {
         margin-top: 2em;
+      }
+
+      form {
+        padding: 1em;
+      }
+
+      aside {
+        padding: 1em;
+        .log {
+          color: gray;
+          font-size: 9pt;
+        }
       }
     }
   }

@@ -1,4 +1,3 @@
-
 import FForm                from './form/FForm.mjs'
 
 import FInputCheckbox       from './inputs/instances/checkbox/FInputCheckbox.mjs'
@@ -30,27 +29,27 @@ import FInputUrl            from './inputs/instances/text/FInputUrl.mjs'
 import FInputPassword       from './inputs/instances/text/FInputPassword.mjs'
 import FInputTextArea       from './inputs/instances/text/FInputTextArea.mjs'
 
-export {FForm,
-        FInputText,
-        FInputFloat,
-        FInputInt,
-        FInputUInt,
-        FInputFloatSum,
-        FInputDate,
-        FInputTime,
-        FInputColor,
-        FInputCheckbox,
-        FInputCheckbox2,
-        FInputSelect,
-        FInputSelectMultiple,
-        FInputSelectSearch,
-        FInputFile,
-        FInputEmail,
-        FInputUrl,
-        FInputPassword,
-        FInputTextArea,
-        FInputEpoch,
-        FInputDateIso
-       }
 
-       
+export {
+  FForm,
+  FInputText,
+  FInputFloat,
+  FInputInt,
+  FInputUInt,
+  FInputFloatSum,
+  FInputDate,
+  FInputTime,
+  FInputColor,
+  FInputCheckbox,
+  FInputCheckbox2,
+  FInputSelect,
+  FInputSelectMultiple,
+  FInputSelectSearch,
+  FInputFile,
+  FInputEmail,
+  FInputUrl,
+  FInputPassword,
+  FInputTextArea,
+  FInputEpoch,
+  FInputDateIso
+}
