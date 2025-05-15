@@ -1,4 +1,4 @@
-import React, {useRef, useCallback, useState}  from 'react'
+import React, {useRef, useCallback, useState, useEffect}  from 'react'
 import {useInput} from 'formiga'
 import {Input, InputGroupText}     from 'reactstrap'
 import {FInputAddon}  from '../../addon/FInputAddon.mjs'
@@ -94,11 +94,18 @@ const FInputNumberBase = (props) => {
     setValue(nValue, true, event)
   }, [setValue, t]) 
 
+  useEffect(() => {
+    // console.log(`FInputNumber => useEffect value ${value} repr ${t.from(value)}`)
+    input.setValue(value)
+    input.validate()
+    setInnerRepr(t.from(value))    
+  }, [value, t, input])
+
   const showValidProps = (showValidity==1 || showValidity==4)
   ? {valid: input.valid, invalid: ! input.valid}
   : {}
 
-  //console.log(`FInputNumber => value ${value} repr ${innerRepr}`)
+  // console.log(`FInputNumber => value ${value} repr ${innerRepr}`)
 
   return (
     <FInputAddon {...props}

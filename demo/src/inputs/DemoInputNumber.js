@@ -11,10 +11,11 @@ function sumArray(a) {
 
 const DemoInputNumber = (options) => {
 
-  const [pills, setPills]= useState(undefined) // 2.5)
+  const [pills, setPills]= useState(123) // 2.5)
   const [weight, setWeight]= useState(105)
   const [size, setSize]= useState(6 /*1.44*/)
   const [km, setKm]=  useState([0.1000, 1.453]) // useState(undefined) // useState([0.1000, 1.453]) // [0.1000, 1.453])
+
 
   return (
     <>

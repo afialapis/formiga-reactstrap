@@ -21,7 +21,6 @@ const withWrapControlled = (BaseComponent, defGetter= undefined) => {
     const controlledRef = useRef(isControlled(props))
     const initialValueRef = useRef(isControlled(props) ? value : defaultValue)
     
-    
     const [innerValue, setInnerValue]= useState(_parseDef(isControlled(props) ? value : defaultValue))
   
     useEffect(() => {

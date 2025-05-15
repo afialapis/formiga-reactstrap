@@ -6,6 +6,12 @@ const DemoInputText = (options) => {
   const [age, _setAge]= useState('33') 
   const [words, setWords]= useState('another dimension man!')
 
+  // setTimeout(() => {
+  //   console.log('updating name')
+  //   setName('Joder Macho')
+  // }, 10000)
+
+
   return (
     <>
       <FInputText
