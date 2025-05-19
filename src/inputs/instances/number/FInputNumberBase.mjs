@@ -70,7 +70,7 @@ const FInputNumberBase = (props) => {
     const nRepr = event.target.value
     const nValue = t.to(nRepr)
 
-    //console.log(`handleChange() => ${typeof nValue} ${nValue} (repr: ${typeof nRepr} ${nRepr})`)
+    // console.log(`handleChange() => ${typeof nValue} ${nValue} (repr: ${typeof nRepr} ${nRepr})`)
 
     setValue(nValue, false, event)
     input.setValue(nValue)
@@ -95,11 +95,15 @@ const FInputNumberBase = (props) => {
   }, [setValue, t]) 
 
   useEffect(() => {
-    // console.log(`FInputNumber => useEffect value ${value} repr ${t.from(value)}`)
-    input.setValue(value)
-    input.validate()
-    setInnerRepr(t.from(value))    
-  }, [value, t, input])
+    const lastChar = innerRepr.slice(-1)
+    if (! (lastChar==',' || lastChar=='.')) {
+      const nRepr = t.from(value)
+      // console.log(`FInputNumber => useEffect value ${value} repr ${nRepr}`)
+      setInnerRepr(nRepr)
+      input.setValue(value)
+      input.validate()
+    }
+  }, [value, t, input, innerRepr])
 
   const showValidProps = (showValidity==1 || showValidity==4)
   ? {valid: input.valid, invalid: ! input.valid}

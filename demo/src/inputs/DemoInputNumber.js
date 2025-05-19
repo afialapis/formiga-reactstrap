@@ -16,6 +16,11 @@ const DemoInputNumber = (options) => {
   const [size, setSize]= useState(6 /*1.44*/)
   const [km, setKm]=  useState([0.1000, 1.453]) // useState(undefined) // useState([0.1000, 1.453]) // [0.1000, 1.453])
 
+  // setTimeout(() => {
+  //   console.log('updating size')
+  //   setSize(1.44)
+  // }, 5000)
+
 
   return (
     <>
