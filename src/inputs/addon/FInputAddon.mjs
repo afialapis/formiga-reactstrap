@@ -23,7 +23,7 @@ const FInputAddon = (props) => {
   const hasChanged= loaded && (value != originalValue.current)
 
   return (
-    <FormGroup className={`formiga-reactstrap-form-group ${hasChanged ? 'is-unsaved' : ''} ${inline===true ? 'inline' : ''} ${formClassName || ''}`}
+    <FormGroup className={`formiga-reactstrap-form-group ${hasChanged ? 'is-unsaved' : ''} ${inline===true ? 'inline' : ''} ${formClassName || ''} ${label!==undefined ? 'with-label' : ''} ${description!==undefined ? 'with-description' : ''} ${icon!==false ? 'with-icon' : ''}`}
                style={formGroupStyle}>
       {label!=undefined || description!=undefined
        ? <div className="formiga-reactstrap-label-container">

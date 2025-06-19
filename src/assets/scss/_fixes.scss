@@ -36,3 +36,26 @@
 .formiga-reactstrap-form-group .custom-switch label {
   cursor: pointer;
 }
+
+.formiga-reactstrap-form-group {
+  .input-group-prepend {
+    .input-group-addon.input-group-text {
+      height: 100%;
+    }
+  }
+}
+
+.formiga-reactstrap-form-group.with-icon {
+  .input-group-prepend {
+    .input-group-addon {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  .input-group {
+    .form-control {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
