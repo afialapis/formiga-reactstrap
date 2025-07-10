@@ -27,7 +27,7 @@ const _startsWithTrashZero = (s) => {
 const FFSInput = (
   { className, placeholder, readOnly, valid, autocomplete, 
     inputStyle, stepOrDecimals, focusIt, showValidity= 4, bsSize,
-    sign, value, onChange, onAddValue, onRemValue, isLastOne, removable, decimalSign}) => {
+    sign, value, onChange, onAddValue, onRemValue, onGoNext, isLastOne, removable, decimalSign}) => {
   
   const reprRef = useRef(undefined)
   useInputFilter(reprRef?.current, FLT_FLOAT_BOTH)
@@ -126,7 +126,12 @@ const FFSInput = (
       onRemValue()
     }
 
-  }, [innerRepr, incrValue, isLastOne, onAddValue, onRemValue, removable])
+    if (event.key=='Enter') {
+      event.preventDefault()
+      onGoNext()
+    }    
+
+  }, [innerRepr, incrValue, isLastOne, onAddValue, onRemValue, removable, onGoNext])
 
    const handleBlur = useCallback((event) => {
     

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {FInputFloat, FInputInt, FInputUInt, FInputFloatSum} from '../../../src'
+import {FInputFloat, FInputInt, FInputUInt, FInputFloatSum, FInputFloatSumModal} from '../../../src'
 
 function sumArray(a) {
   try {
@@ -15,6 +15,7 @@ const DemoInputNumber = (options) => {
   const [weight, setWeight]= useState(105)
   const [size, setSize]= useState(6 /*1.44*/)
   const [km, setKm]=  useState([0.1000, 1.453]) // useState(undefined) // useState([0.1000, 1.453]) // [0.1000, 1.453])
+  const [kc, setKc] = useState([1234.56, 9876.456])
 
   // setTimeout(() => {
   //   console.log('updating size')
@@ -73,7 +74,7 @@ const DemoInputNumber = (options) => {
               name        = {'km'}
               value       = {km}
               onChange    = {(v, c) => { /*console.log(`changing km to ${typeof v} ${v}, totaling ${sumArray(v)} - ${c}`);*/ setKm(v)}}
-              label       = {"You are not a sporty guy, right? How far did your last walks took?"}
+              label       = {"You are not a sporty guy, right? How far kilemeters did your last walks took?"}
               description = {"Some float (max 4 decimals, step = 0.01)."}
               step        = {0.01}
               decimals    = {4}
@@ -82,6 +83,20 @@ const DemoInputNumber = (options) => {
               {...options}
               >
       </FInputFloatSum>    
+
+      <FInputFloatSumModal
+              name        = {'kc'}
+              value       = {kc}
+              onChange    = {(v, c) => { /*console.log(`changing km to ${typeof v} ${v}, totaling ${sumArray(v)} - ${c}`);*/ setKc(v)}}
+              label       = {"Don't lie: how much kilocalories did you eat in the last week?"}
+              description = {"Some float (max 4 decimals, step = 0.01)."}
+              step        = {0.01}
+              decimals    = {4}
+              decimalSign = {','}
+              required    = {true}
+              {...options}
+              >
+      </FInputFloatSumModal>    
      
     </>
   )

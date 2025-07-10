@@ -14,6 +14,7 @@ import FInputTime           from './inputs/instances/time/FInputTime.mjs'
 import FInputFile           from './inputs/instances/file/FInputFile.mjs'
 
 import FInputFloatSum       from './inputs/instances/float_sum/FInputFloatSum.mjs'
+import FInputFloatSumModal  from './inputs/instances/float_sum/FInputFloatSumModal.mjs'
 
 import FInputFloat          from './inputs/instances/number/FInputFloat.mjs'
 import FInputInt            from './inputs/instances/number/FInputInt.mjs'
@@ -37,6 +38,7 @@ export {
   FInputInt,
   FInputUInt,
   FInputFloatSum,
+  FInputFloatSumModal,
   FInputDate,
   FInputTime,
   FInputColor,

@@ -100,6 +100,7 @@ Wraps your `<form>` elements and helps rendering the common buttons.
 ### `FInputInt`
 ### `FInputUInt`
 ### `FInputFloatSum`
+### `FInputFloatSumModal`
 ### `FInputDate`
 ### `FInputTime`
 ### `FInputEpoch`

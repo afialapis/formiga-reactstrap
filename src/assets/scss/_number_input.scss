@@ -78,11 +78,23 @@
     color: #a4a4a4;
     vertical-align: middle;
     //padding-left: 0.75em;
+  }  
+}
+.formiga-reactstrap-float-sum:not(.formiga-reactstrap-float-sum-modal) {
+  .formiga-reactstrap-float-sum-total {
 
     &::before {
       content: " = ";
     }    
-  }  
+  }
+}
+.formiga-reactstrap-float-sum.formiga-reactstrap-float-sum-modal {
+  .formiga-reactstrap-float-sum-total {
+
+    padding-left: 0.75em;
+    color: #011157;
+    text-decoration: underline;
+  }
 }
 
 

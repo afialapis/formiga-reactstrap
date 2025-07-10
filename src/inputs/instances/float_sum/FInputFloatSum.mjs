@@ -21,7 +21,7 @@ const FInputFloatSumBase = (props) => {
   const {id, name, value, setValue,
     placeholder, readOnly, 
     step, decimals= undefined, decimalSign= '.',
-    autocomplete, inputStyle, showValidity= 4, bsSize, icon= 'sigma'} = props
+    autocomplete, inputStyle, showValidity= 4, bsSize, icon= 'sigma', totalStyle} = props
   
   const stepOrDecimals = useStepOrDecimals(step, decimals)
   const input = useInput({
@@ -109,6 +109,7 @@ const FInputFloatSumBase = (props) => {
         
         {value.map((iValue, iIndex) => {
           const sign= inputSigns[iIndex]
+          const isLastOne = iIndex == (value.length-1)
 
           return (
             <div className={`formiga-reactstrap-float-sum-box ${ sign ? 'positive' : 'negative'}`}
@@ -134,7 +135,11 @@ const FInputFloatSumBase = (props) => {
                       onChange      = {(v,c) => handleChange(v, c, iIndex)}
                       onAddValue    = {(pos) => handleAddValue(pos)}
                       onRemValue    = {( ) => handleRemValue(iIndex)}
-                      isLastOne     = {iIndex == (value.length-1)}
+                      onGoNext      = {() => {
+                        if (!isLastOne) {
+                          setInputWithFocus(iIndex+1)
+                        }}}
+                      isLastOne     = {isLastOne}
                       removable     = {value.length>1}
                       />
             </div>
@@ -142,7 +147,8 @@ const FInputFloatSumBase = (props) => {
         }
         )}
         <FFSTotal value = {value}
-                  decimalSign={decimalSign}/>  
+                  decimalSign={decimalSign}
+                  style={totalStyle}/>  
       </div>
     </FInputAddon>
   )
