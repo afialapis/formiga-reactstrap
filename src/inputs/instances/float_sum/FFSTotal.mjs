@@ -18,7 +18,7 @@ const getInnerSumRepr = (innerSum, decimalSign) => {
  }
 
 
-const FFSTotal = ({value, decimalSign, style}) => {
+const FFSTotal = ({value, decimalSign, style, onClick}) => {
   const [innerSum, setInnerSum]    = useState(getInnerSum(sumFloatList(value), value)) 
   const [innerSumRepr, setInnerSumRepr]= useState(getInnerSumRepr(innerSum, decimalSign))
 
@@ -31,7 +31,8 @@ const FFSTotal = ({value, decimalSign, style}) => {
    
   return (
     <div className="formiga-reactstrap-float-sum-total"
-          style={style}>
+          style={style}
+          onClick={onClick}>
       {isNaN(innerSum) ? '' : innerSumRepr}
     </div>      
   )

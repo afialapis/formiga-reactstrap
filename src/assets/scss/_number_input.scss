@@ -27,10 +27,6 @@
 
 
 .formiga-reactstrap-float-sum {
-  display: flex;
-  overflow: hidden;
-  white-space: nowrap;  
-
   .formiga-reactstrap-float-sum-box {
     align-self: center;  
     flex: 0 1  auto;
@@ -81,6 +77,10 @@
   }  
 }
 .formiga-reactstrap-float-sum:not(.formiga-reactstrap-float-sum-modal) {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;  
+
   .formiga-reactstrap-float-sum-total {
 
     &::before {
@@ -90,8 +90,9 @@
 }
 .formiga-reactstrap-float-sum.formiga-reactstrap-float-sum-modal {
   .formiga-reactstrap-float-sum-total {
-
+    cursor: pointer;
     padding-left: 0.75em;
+    padding-top: 0.2em;
     color: #011157;
     text-decoration: underline;
   }
