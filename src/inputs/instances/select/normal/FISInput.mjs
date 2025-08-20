@@ -7,7 +7,7 @@ import { makeId } from '../../../helpers/props/makeId.mjs'
 const FISInput = (props) => {
 
   const { id, name, 
-          placeholder, readOnly, autocomplete, required, 
+          placeholder, readOnly, autocomplete = 'off', required, 
           options, 
           inputStyle, clearable, showValidity= 4, bsSize,
           value, valid, inputRef, onInputChange, enabledOptions} = props
