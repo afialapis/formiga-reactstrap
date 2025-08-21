@@ -68,7 +68,12 @@ Wraps your `<form>` elements and helps rendering the common buttons.
 * `required`
 * `autocomplete`
 * `inputStyle`
-* `showValidity= 4`
+* `showValidity`
+- `false` | `'never'` : never
+- `true`  | `'default'` | `'changes+invalid'`: after changes + only invalid
+- `'changes'` : after changes
+- `'always'` : on render
+- `'invalid'` : on render + only invalid
 * `value`
 * `setValue`
 * `icon= 'text'`
@@ -87,7 +92,12 @@ Wraps your `<form>` elements and helps rendering the common buttons.
 * `required`
 * `autocomplete`
 * `inputStyle`
-* `showValidity= 4`
+* `showValidity`
+- `false` | `'never'` : never
+- `true`  | `'default'` | `'changes+invalid'`: after changes + only invalid
+- `'changes'` : after changes
+- `'always'` : on render
+- `'invalid'` : on render + only invalid
 * `value`
 * `setValue`
 * `icon= 'email'`

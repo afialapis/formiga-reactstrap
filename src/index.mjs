@@ -1,7 +1,6 @@
 import FForm                from './form/FForm.mjs'
 
 import FInputCheckbox       from './inputs/instances/checkbox/FInputCheckbox.mjs'
-import FInputCheckbox2      from './inputs/instances/checkbox/FInputCheckbox2.mjs'
 
 import FInputColor          from './inputs/instances/color/FInputColor.mjs'
 
@@ -43,7 +42,6 @@ export {
   FInputTime,
   FInputColor,
   FInputCheckbox,
-  FInputCheckbox2,
   FInputSelect,
   FInputSelectMultiple,
   FInputSelectSearch,

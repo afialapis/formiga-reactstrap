@@ -59,3 +59,28 @@
     }
   }
 }
+
+/**
+ fix for switches
+ */
+.formiga-reactstrap-form-group.form-check,
+.formiga-reactstrap-form-group.form-switch {
+  padding-left: unset !important;
+  .custom-switch.custom-control  {
+    display: flex;
+    align-items: center;
+
+    position: unset !important;
+    left: unset !important;
+
+    .form-check-input {
+      float: unset !important;
+      margin-left: unset !important;
+      margin-top: -0.1em;
+    }
+    .custom-control-label {
+      margin-left: 1.5em;
+    }
+
+  }
+}

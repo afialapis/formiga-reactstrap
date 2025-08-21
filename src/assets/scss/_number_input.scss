@@ -9,6 +9,13 @@
     &:hover {
       opacity: 0.75;
     }
+    &:first-child {
+      border-radius: 0;
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
   &.read-only {
@@ -57,13 +64,13 @@
       color: #e77777;
     }
 
-
     input.formiga-reactstrap-float-sum-input {
       text-align: right;
       //width: auto;
       width: 100%;
       display: inline-block; 
-      padding-left: 1.5em;  
+      padding-left: 1.5em;
+
     }
 
   }
@@ -76,6 +83,22 @@
     //padding-left: 0.75em;
   }  
 }
+
+.formiga-reactstrap-float-sum {
+  .formiga-reactstrap-float-sum-box:not(:last-child) input.formiga-reactstrap-float-sum-input {
+    border-radius: 0;
+  }  
+
+  /* TODO For some reason last-child does not work here */
+  .formiga-reactstrap-float-sum-box:last-child  input.formiga-reactstrap-float-sum-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+}
+
+
+
 .formiga-reactstrap-float-sum:not(.formiga-reactstrap-float-sum-modal) {
   display: flex;
   overflow: hidden;
@@ -89,6 +112,8 @@
   }
 }
 .formiga-reactstrap-float-sum.formiga-reactstrap-float-sum-modal {
+  display: flex;
+  align-items: center;
   .formiga-reactstrap-float-sum-total {
     cursor: pointer;
     padding-left: 0.75em;

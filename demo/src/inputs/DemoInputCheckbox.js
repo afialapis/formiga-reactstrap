@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import {FInputCheckbox, FInputCheckbox2} from '../../../src'
+import {FInputCheckbox /*, FInputCheckbox2*/} from '../../../src'
 
 const DemoInputCheckbox = (options) => {
   const [effects, setEffects]= useState(true)
-  const [reco, setReco]= useState(true)
+  //const [reco, setReco]= useState(true)
 
   return (
     <>
@@ -18,7 +18,7 @@ const DemoInputCheckbox = (options) => {
              description      = ""
              {...options}
              />
-
+      {/*
       <FInputCheckbox2
              name             = {'reco'}
              value            = {reco}
@@ -29,7 +29,8 @@ const DemoInputCheckbox = (options) => {
              checkboxLabel    = "Would you recommend us to some friend?"
              description      = ""
              {...options}
-             />        
+             />
+      */}     
     </>     
   )
 }

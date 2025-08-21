@@ -124,7 +124,8 @@ const FInputFloatSumModalBase = (props) => {
   return (
     <FInputAddon {...props}
                   icon    = {icon}
-                  input   = {input}>
+                  input   = {input}
+                  inputGroupStyle={{height: bsSize=='lg' ? '48px' : bsSize=='sm' ? '31px' : '38px'}}>
 
       <div className  = "formiga-reactstrap-float-sum formiga-reactstrap-float-sum-modal">
         <FFSHidden {...props}

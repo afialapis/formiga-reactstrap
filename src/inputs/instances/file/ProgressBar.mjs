@@ -16,9 +16,9 @@ const ProgressBar = ({progress, ftypeIcon, bsSize}) => {
                                 : "calc(100% - 83px)", 
                   left      : ftypeIcon!=undefined 
                               ? bsSize == 'sm'
-                                ? "35px"
+                                ? "42px"
                                 : bsSize == 'lg'
-                                ? "51px"
+                                ? "42px"
                                 : "42px"
                               : "",
                  top: "-3px",
