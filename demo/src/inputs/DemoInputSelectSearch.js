@@ -29,13 +29,15 @@ const DemoInputSelectSearch = (options) => {
             value           = {aword}
             onChange        = {(v) => setAWord(v)}
             required        = {true}
-            disallowedValues= {[2, 6]}
+            //disallowedValues= {[2, 6]}
             label           = {"A word that comes to your mind"}
+            validationMessage = {'You are probably confused'}
             description     = ""
             clearable       = {true}
             creatable       = {true}
             onCreate        = {(text, ev) => {handleAddOption(text); setAWord(10)}}
             {...options} 
+            showValidity    = {'changes+invalid'}
             />
 
   )

@@ -15,7 +15,7 @@ const getOptionsLabel = (options, value) => {
 }
 
 const FInputSelectSearchBase = (props) => {
-  const {options, validationMessage,
+  const {options, 
          allowedValues, disallowedValues, keepHeight= false, 
          creatable, onCreate, 
          value, setValue, icon= 'search'
@@ -164,8 +164,6 @@ const FInputSelectSearchBase = (props) => {
           <FInputAddon {...props}
                  icon = {icon}
                  input   = {input}
-                 //validationMessage= {isOpen ? undefined : validationMessage || input.validationMessage}
-                 keepHeight  = {isOpen ? false : keepHeight}
                  >
             {/* Hidden input */}
             <FISSHidden {...props}
