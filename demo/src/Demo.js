@@ -31,7 +31,7 @@ const Demo = () => {
       input: 'changes+invalid',
       message: 'changes+invalid'
     },
-    bsSize      : 'md'
+    bsSize      : 'lg'
   })
 
   console.log(`[demo] Render`)  

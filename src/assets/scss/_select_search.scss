@@ -25,8 +25,10 @@
     background-color: white;
     list-style: none;
     position: absolute;
-    left: calc(2.4rem);
-    width: calc(100% - (2rem + 2.4rem));
+    //left: calc(2.4rem);
+    top: vars_override.$formiga-label-padding;
+    left: vars_override.$formiga-label-padding;
+    width: calc(100% - (vars_override.$formiga-label-padding*2));
     margin-bottom:1.5rem;
     z-index: 6; /* FInputFile uses 0,3,5. This must be greater */
   }

@@ -56,22 +56,19 @@ const FInputAddon = (props) => {
        ? middleElement
        : null
       }
-      {description!=undefined
+      { ((description!=undefined) && (description.length>0))
        ? <FormText
             className="formiga-reactstrap-description">
           {description}
         </FormText>
        : null
       }
-      {showMessage
+      { (showMessage && (input.validationMessage!=undefined) && (input.validationMessage!=""))
         ? 
           <FormFeedback
             className={`formiga-reactstrap-validation-message`}
             valid={input.valid}>
-          { (input.validationMessage!=undefined && input.validationMessage!="")
-           ? input.validationMessage
-           : <>&nbsp;</>
-          }
+            {input.validationMessage}
         </FormFeedback>          
 
         : (keepHeight===true) 

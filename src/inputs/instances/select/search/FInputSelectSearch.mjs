@@ -160,7 +160,7 @@ const FInputSelectSearchBase = (props) => {
 
       <div className="formiga-reactstrap-select-search"
             ref = {wrapperRef}>
-        <div>
+        
           <FInputAddon {...props}
                  icon = {icon}
                  input   = {input}
@@ -183,18 +183,21 @@ const FInputSelectSearchBase = (props) => {
             <FISSAction {...props}
                         creating= {creating}
                         onCreate= {handleCreate}
-                        onClear = {handleClear}/>               
+                        onClear = {handleClear}/>    
+
+
+            {isOpen
+            ? <FISSList {...props}
+                        listRef = {listRef}
+                        optionsMap = {optionsMap}
+                        onSelect = {handleSelect}
+                        optActive = {optActive}/>
+            : null
+            }
+
           </FInputAddon>
-        </div>
         
-          {isOpen
-          ? <FISSList {...props}
-                      listRef = {listRef}
-                      optionsMap = {optionsMap}
-                      onSelect = {handleSelect}
-                      optActive = {optActive}/>
-          : null
-          }
+        
       
       </div>
   )
