@@ -4,30 +4,16 @@
 /**
  * label
  **/
-/*
- .formiga-reactstrap-form-group label.formiga-reactstrap-label {
+
+ label.formiga-reactstrap-label {
   color: #524f4f;
   font-style: italic;
-  font-weight: bold;
-  padding-left: $formiga-label-padding;
+  font-weight: 500;
+  padding-left: vars_override.$formiga-label-padding;
 }
-*/
 
-.formiga-reactstrap-form-group .formiga-reactstrap-label-container {
-
-  display: flex;  
-  
-  label.formiga-reactstrap-label {
-    display: block;
-    flex: 1 0 auto;
-    color: #524f4f;
-    font-style: italic;
-    font-weight: 500;
-    padding-left: vars_override.$formiga-label-padding;
-  }
-
-  .formiga-reactstrap-description {
-    color: #473939;
-    font-size: 12px;
-  }  
-}
+.formiga-reactstrap-description {
+  color: #473939;
+  font-size: 12px;
+  padding-left: vars_override.$formiga-label-padding;
+} 

@@ -12,7 +12,7 @@ const DemoInputCheckbox = (options) => {
              value            = {effects}
              onChange         = {(v) => setEffects(v)}
              disallowedValues = {[true]}
-             feedback         = {"You are probably confusing it with some drug effects"}
+             validationMessage= {"You are probably confusing it with some drug effects"}
              label            = {""}
              checkboxLabel    = "Did you notice side effects?"
              description      = ""
@@ -24,7 +24,7 @@ const DemoInputCheckbox = (options) => {
              value            = {reco}
              onChange         = {(v) => setReco(v)}
              disallowedValues = {[false]}
-             feedback         = {"Please rethink it"}
+             validationMessage= {"Please rethink it"}
              label            = {""}
              checkboxLabel    = "Would you recommend us to some friend?"
              description      = ""

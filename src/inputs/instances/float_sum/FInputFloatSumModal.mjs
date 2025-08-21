@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState}  from 'react'
 import {Modal} from 'reactstrap'
-import {useInput} from 'formiga'
+import useInputWrap from '../../helpers/useInputWrap.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import isNotNumber from '../../helpers/float/isNotNumber'
 
@@ -22,14 +22,13 @@ const FInputFloatSumModalBase = (props) => {
   const {id, name, value, setValue,
     placeholder, readOnly, 
     step, decimals= undefined, decimalSign= '.',
-    autocomplete, inputStyle, showValidity= 4, bsSize, icon= 'sigma', totalStyle, closePosition= true} = props
+    autocomplete, inputStyle, showValidity, bsSize, icon= 'sigma', totalStyle, closePosition= true} = props
 
   const totalRef= useRef(null)
   const [coords, setCoords] = useState(undefined);
   
   const stepOrDecimals = useStepOrDecimals(step, decimals)
-  const input = useInput({
-    ...props,
+  const input = useInputWrap(props, {
     // TODO
     // wrap this checks (as we save array in the hidden input):
     //      min, max, stepOrDecimals,
@@ -40,7 +39,7 @@ const FInputFloatSumModalBase = (props) => {
     // disallowedValues, 
     // doRepeat, 
     // doNotRepeat, 
-    // feedback
+    // validationMessage
     decimals: undefined, 
     inputFilter: undefined
   })
@@ -125,9 +124,7 @@ const FInputFloatSumModalBase = (props) => {
   return (
     <FInputAddon {...props}
                   icon    = {icon}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}>
+                  input   = {input}>
 
       <div className  = "formiga-reactstrap-float-sum formiga-reactstrap-float-sum-modal">
         <FFSHidden {...props}
@@ -155,7 +152,7 @@ const FInputFloatSumModalBase = (props) => {
                         className     = "formiga-reactstrap-float-sum-input"
                         placeholder   = {placeholder || ""}
                         readOnly      = {readOnly!=undefined ? readOnly  : false}
-                        valid         = {input.valid}
+                        input         = {input}
                         showValidity  = {showValidity}
                         autocomplete  = {autocomplete}
                         inputStyle    = {inputStyle} 

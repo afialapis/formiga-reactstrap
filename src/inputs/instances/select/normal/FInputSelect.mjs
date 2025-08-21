@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import {useInput}       from 'formiga'
+import useInputWrap from '../../../helpers/useInputWrap.mjs'
 import {FInputAddon} from '../../../addon/FInputAddon.mjs'
 import {useEnabledOptions}         from '../useEnabledOptions.mjs'
 import {parseValueDependOnOptions} from '../parseValueDependOnOptions.mjs'
@@ -15,8 +15,7 @@ const FInputSelectBase = (props) => {
 
   const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
 
-  const input= useInput({
-    ...props,
+  const input= useInputWrap(props, {
     checkValue: props.checkValue!=undefined 
                 ? (v) => props.checkValue(parseValueDependOnOptions(v, enabledOptions))
                 : undefined    
@@ -45,11 +44,9 @@ const FInputSelectBase = (props) => {
   return (
     <FInputAddon {...props}
                  icon = {icon}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}>
+                 input   = {input}>
       <FISInput {...props}
-                valid= {input.valid}
+                input= {input}
                 inputRef= {input.ref}
                 onInputChange= {handleChange}
                 enabledOptions= {enabledOptions}/>

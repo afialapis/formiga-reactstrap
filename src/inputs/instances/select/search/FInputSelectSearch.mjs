@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react'
-import {useInput} from 'formiga'
+import useInputWrap from '../../../helpers/useInputWrap.mjs'
 import {FInputAddon} from '../../../addon/FInputAddon.mjs'
 import {useEnabledOptions}         from '../useEnabledOptions.mjs'
 import {parseValueDependOnOptions} from '../parseValueDependOnOptions.mjs'
@@ -15,7 +15,7 @@ const getOptionsLabel = (options, value) => {
 }
 
 const FInputSelectSearchBase = (props) => {
-  const {options, feedback,
+  const {options, validationMessage,
          allowedValues, disallowedValues, keepHeight= false, 
          creatable, onCreate, 
          value, setValue, icon= 'search'
@@ -33,8 +33,7 @@ const FInputSelectSearchBase = (props) => {
 
   const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
 
-  const input = useInput({
-    ...props,
+  const input = useInputWrap(props, {
     checkValue: props.checkValue!=undefined 
                 ? (v) => props.checkValue(parseValueDependOnOptions(v, enabledOptions))
                 : undefined    
@@ -164,9 +163,8 @@ const FInputSelectSearchBase = (props) => {
         <div>
           <FInputAddon {...props}
                  icon = {icon}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {isOpen ? undefined : feedback || input.feedback}
+                 input   = {input}
+                 //validationMessage= {isOpen ? undefined : validationMessage || input.validationMessage}
                  keepHeight  = {isOpen ? false : keepHeight}
                  >
             {/* Hidden input */}
@@ -174,7 +172,7 @@ const FInputSelectSearchBase = (props) => {
                         inputRef = {input.ref}/>
             {/* filter input */}
             <FISSInput {...props}
-                      valid = {input.valid}
+                      input = {input}
                       filterRef = {filterRef}
                       shownText = {shownText}
                       onSearchStart = {handleSearchStart}

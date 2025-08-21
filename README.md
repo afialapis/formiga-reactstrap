@@ -27,12 +27,11 @@
 
 Wraps your `<form>` elements and helps rendering the common buttons.
 
-* `children`
+* `children` or `renderChildren({node, ref, valid, elements, hasChanged})`
 * `id`
 * `className`
 * `inline= false`
-* `getElements`
-* `renderButtons`
+* `renderButtons({node, ref, valid, elements, hasChanged})`
 * `onSave`
 * `onCancel`
 * `colors`

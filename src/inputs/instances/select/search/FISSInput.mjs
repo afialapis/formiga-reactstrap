@@ -1,11 +1,14 @@
 import React from 'react'
 import {Input} from 'reactstrap'
+import useValidProps from '../../../helpers/valid/useValidProps.mjs'
 
 const FISSInput = (props) => {
   const {name, placeholder, readOnly, autocomplete = 'off', required,
-         inputStyle, showValidity= 4, bsSize,
-         valid, filterRef, shownText, onSearchStart, onSearchType, onKeyDown
+         inputStyle, showValidity, bsSize,
+         input, filterRef, shownText, onSearchStart, onSearchType, onKeyDown
          } = props
+  
+  const showValidProps = useValidProps(input, showValidity)
   
   return (                    
     <Input    name        = {`input_select_search_${name}_text`}
@@ -22,9 +25,7 @@ const FISSInput = (props) => {
               autoComplete= {autocomplete}
               style       = {inputStyle} 
               bsSize      = {bsSize}
-              {... (showValidity==1 || showValidity==4)
-                ? {valid: valid, invalid: ! valid}
-                : {}}
+              {... showValidProps}
               />
   )
 }

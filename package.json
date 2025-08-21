@@ -40,7 +40,7 @@
     "lib": "npm run clean-lib && npx xeira transpile --source_folder=./src --transpile_folder=./lib",
     "dist-css": "npx sass src/assets/style.scss ./dist/styles.css",
     "dist": "npm run clean-dist && npx xeira bundle && npm run dist-css",
-    "prepare": "npm run clean-demo && npm run lint && npm run test && npm run lib && npm run dist && npm run test",
+    "pre-publish": "npm run clean-demo && npm run lint && npm run test && npm run lib && npm run dist",
     "demo": "npm run clean-demo && npx xeira demo --port=8002",
     "site": "npm run --silent clean-site && npx xeira site",
     "reset": "npm run clean-demo && npm run clean-lib && npm run clean-dist && npm run clean-site && rm -fr node_modules package-lock.json && npm i"
@@ -52,11 +52,11 @@
   ],
   "devDependencies": {
     "react-dom": "^18.3.1",
-    "sass": "^1.89.2",
-    "xeira": "^1.2.0"
+    "sass": "^1.90.0",
+    "xeira": "^1.2.3"
   },
   "dependencies": {
-    "formiga": "^1.1.1"
+    "formiga": "^1.7.0"
   },
   "peerDependencies": {
     "bootstrap": "^5.1.0",

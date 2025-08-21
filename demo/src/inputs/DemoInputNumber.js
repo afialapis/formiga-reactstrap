@@ -34,7 +34,7 @@ const DemoInputNumber = (options) => {
               checkValue  = {(v) => v>=6}
               label       = {"How many pills per dose would you like?"}
               description = {"Some >=6 unsigned integer (step = 2)."}
-              feedback    = {'Hey folk, give yourself a bit of fun!'}
+              validationMessage    = {'Hey folk, give yourself a bit of fun!'}
               {...options}
               >
       </FInputUInt>        

@@ -1,16 +1,16 @@
 import React from 'react'
-import { useValidClassnames } from '../../helpers/useValidClassnames.mjs'
+import getValidClassnames from '../../helpers/valid/getValidClassnames.mjs'
 import formatBytes from './formatBytes'
 
 const FFInput = (props) => {
   const {
     required, inputStyle, 
-    showValidity= 4, bsSize,
-    statusMsg, hasValue, value, valid, ftypeIcon,
+    showValidity, bsSize,
+    statusMsg, hasValue, value, input, ftypeIcon,
     onDownload, onBrowse} = props
 
-  const [className]= useValidClassnames(valid, showValidity, () => hasValue || !required)
-
+  const className= getValidClassnames(input, showValidity, () => hasValue || !required)
+  
   return (
 
     <div  style       = {{opacity   : "1", 
@@ -25,9 +25,9 @@ const FFInput = (props) => {
                                         : "calc(100% - 82px)", 
                           left      : ftypeIcon!=undefined 
                                       ? bsSize == 'sm'
-                                        ? "35px"
+                                        ? "42px"
                                         : bsSize == 'lg'
-                                        ? "51px"
+                                        ? "42px"
                                         : "42px"
                                       : "", 
                           display   : "flex",

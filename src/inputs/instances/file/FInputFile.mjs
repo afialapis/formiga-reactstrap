@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react'
-import {useInput}    from 'formiga'
+import useInputWrap from '../../helpers/useInputWrap.mjs'
 import {FInputAddon}          from '../../addon/FInputAddon.mjs'
 import ProgressBar from './ProgressBar'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
@@ -13,7 +13,11 @@ import FFClear from './FFClear.mjs'
 const FInputFileBase = (props) => {
   const {icon= 'file', onDownload, iconMap, value= undefined, setValue} = props
   
-  const input = useInput({...props})  
+  const input = useInputWrap(props, {
+    // <file> cannot be mounted with an assigned value, so
+    //   original value will always be empty
+    originalValue: undefined // props?.value?.name != undefined ? props?.value?.name : undefined
+  })  
   const [hasValue  , setHasValue ]= useState(value?.buffer || value?.size>0)
   const [progress  , setProgress ]= useState(undefined)
   const [status    , setStatus   ]= useState(undefined)
@@ -25,7 +29,7 @@ const FInputFileBase = (props) => {
     if (value) {
       if (value.buffer==undefined || value.buffer.length==0) {
         if (value.size>0) {
-          input.setValidity('')
+          input.setValidationMessage('')
         }
       }
     }
@@ -138,9 +142,7 @@ const FInputFileBase = (props) => {
 
   return (
     <FInputAddon {...props}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}
+    input   = {input}
                  icon    = {ftypeIcon}
                  middleElement  = {status!=undefined
                                    ? <ProgressBar progress={progress}
@@ -153,14 +155,14 @@ const FInputFileBase = (props) => {
       <FFHidden {...props}
                onChange    = {handleChange}
                hasValue = {hasValue}
-               inputRef = {input.ref}/>
+               input = {input}/>
       
       {/* The real Input */}
       <FFInput {...props}
                statusMsg = {statusMsg}
                hasValue = {hasValue}
                value = {value}
-               valid = {input.valid}
+               input = {input}
                onDownload = {handleDownload}
                onBrowse = {handleBrowse}
                ftypeIcon = {ftypeIcon}

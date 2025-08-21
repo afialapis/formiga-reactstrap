@@ -1,16 +1,19 @@
 import React, {useRef, useState, useEffect} from 'react'
 import {
   FormGroup,
+  FormText,
+  FormFeedback,
   InputGroup,
   InputGroupText,
   Label
 } from 'reactstrap'
-import FInputFeedback from './FInputFeedback'
 import FIcon from '../../commons/icons/FIcon.mjs'
+import shouldShowValidity from '../helpers/valid/shouldShowValidity.mjs'
+import getValidClassnames from '../helpers/valid/getValidClassnames.mjs'
 
 const FInputAddon = (props) => {
-  const {name, value, label, description, feedback, icon, valid, children, inline= false, formClassName, 
-    showValidity= 4, keepHeight= false, formGroupStyle, inputGroupStyle, middleElement, bsSize}= props
+  const {input, name, value, label, description, icon, children, inline= false, formClassName, 
+    showValidity, keepHeight= false, formGroupStyle, inputGroupStyle, middleElement, bsSize}= props
 
   const originalValue = useRef(value)
   
@@ -22,27 +25,19 @@ const FInputAddon = (props) => {
 
   const hasChanged= loaded && (value != originalValue.current)
 
+  const {message: showMessage}= shouldShowValidity(input, showValidity)
+  const validClass= getValidClassnames(input, showValidity, true)
+
   return (
     <FormGroup className={`formiga-reactstrap-form-group ${hasChanged ? 'is-unsaved' : ''} ${inline===true ? 'inline' : ''} ${formClassName || ''} ${label!==undefined ? 'with-label' : ''} ${description!==undefined ? 'with-description' : ''} ${icon!==false ? 'with-icon' : ''}`}
                style={formGroupStyle}>
-      {label!=undefined || description!=undefined
-       ? <div className="formiga-reactstrap-label-container">
-          {label!=undefined
-          ? <Label for={name}
-                    className="formiga-reactstrap-label">
-              {label}
-            </Label>
-          : null
-          }
-          {description!=undefined
-           ? 
-            <div className="formiga-reactstrap-description">
-              {description}
-            </div>
-           : null}
-        </div>
-      : null}
-      <InputGroup style={inputGroupStyle} size={bsSize} className={bsSize ? `input-group-${bsSize}` : ''}>
+      {label!=undefined
+       ? <Label for={name}
+                className="formiga-reactstrap-label">
+          {label}
+        </Label>
+       : null}
+      <InputGroup style={inputGroupStyle} size={bsSize} className={`${bsSize ? `input-group-${bsSize}` : ''} ${validClass}`}>
         {icon===false
           ? null
           : 
@@ -61,11 +56,30 @@ const FInputAddon = (props) => {
        ? middleElement
        : null
       }
-      {((keepHeight===true || feedback!=undefined) && showValidity>=2)
-        ? <FInputFeedback valid     = {valid}
-                          feedback  = {feedback}
-                          keepHeight= {keepHeight}
-                          />
+      {description!=undefined
+       ? <FormText
+            className="formiga-reactstrap-description">
+          {description}
+        </FormText>
+       : null
+      }
+      {showMessage
+        ? 
+          <FormFeedback
+            className={`formiga-reactstrap-validation-message`}
+            valid={input.valid}>
+          { (input.validationMessage!=undefined && input.validationMessage!="")
+           ? input.validationMessage
+           : <>&nbsp;</>
+          }
+        </FormFeedback>          
+
+        : (keepHeight===true) 
+        ? <FormFeedback
+            className={`formiga-reactstrap-validation-message formiga-reactstrap-validation-message-keep-height`}
+            valid={true}>
+          <>&nbsp;</>
+        </FormFeedback>   
         : null
       }
     </FormGroup>

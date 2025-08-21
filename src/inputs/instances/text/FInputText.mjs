@@ -1,8 +1,9 @@
 import React, {useCallback}        from 'react'
-import {useInput}   from 'formiga'
 import {Input}      from 'reactstrap'
+import useInputWrap from '../../helpers/useInputWrap.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
+import useValidProps from '../../helpers/valid/useValidProps.mjs'
 
 
 const FInputTextBase = (props) => {
@@ -10,10 +11,10 @@ const FInputTextBase = (props) => {
         maxLength, minLength, 
         placeholder, readOnly, 
         required, 
-        autocomplete, inputStyle, showValidity= 4, bsSize,
+        autocomplete, inputStyle, showValidity, bsSize,
       value, setValue, icon= 'text'} = props         
   
-  const input = useInput({...props})
+  const input = useInputWrap(props)
   
   const handleChange = useCallback((event) => {
     const newValue= event.target.value
@@ -25,16 +26,12 @@ const FInputTextBase = (props) => {
     setValue(newValue, true, event)
   }, [setValue])
 
-  const showValidProps = (showValidity==1 || showValidity==4)
-    ? {valid: input.valid, invalid: ! input.valid}
-    : {}
+  const showValidProps = useValidProps(input, showValidity)
 
   return (
     <FInputAddon {...props}
                   icon = {icon}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}>
+                  input   = {input}>
 
       <Input  id          = {id}
               name        = {name}

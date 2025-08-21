@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import {useInput} from 'formiga'
+import useInputWrap from '../../../helpers/useInputWrap.mjs'
 import {FInputAddon}       from '../../../addon/FInputAddon.mjs'
 import {useEnabledOptions}         from '../useEnabledOptions.mjs'
 import {parseValueDependOnOptions} from '../parseValueDependOnOptions.mjs'
@@ -17,15 +17,13 @@ const numOrArrayToString = (v) => {
 
 const _def_size = (v, opts) => Array.isArray(opts) ? opts.length : 0
 
-
 const FInputSelectMultipleBase = (props) => {
   const {allowedValues, disallowedValues, options, size= _def_size, clearable= true,
          value, setValue, icon= 'list'} = props
 
   const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
 
-  const input= useInput({
-    ...props,
+  const input= useInputWrap(props, {
    checkValue: props.checkValue!=undefined 
    ? (value) => props.checkValue(
                 value.map((v) => parseValueDependOnOptions(v, enabledOptions))
@@ -54,12 +52,10 @@ const FInputSelectMultipleBase = (props) => {
 
   return (
     <FInputAddon {...props}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}
+                 input   = {input}
                  icon = {icon}>
       <FISMInput {...props}
-                valid= {input.valid}
+                input= {input}
                 inputRef= {input.ref}
                 onInputChange= {handleChange}
                 enabledOptions= {enabledOptions}

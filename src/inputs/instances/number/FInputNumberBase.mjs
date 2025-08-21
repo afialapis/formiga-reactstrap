@@ -1,5 +1,5 @@
 import React, {useRef, useCallback, useState, useEffect}  from 'react'
-import {useInput} from 'formiga'
+import useInputWrap from '../../helpers/useInputWrap.mjs'
 import {Input, InputGroupText}     from 'reactstrap'
 import {FInputAddon}  from '../../addon/FInputAddon.mjs'
 import Icon from '../../../commons/icons/FIcon.mjs'
@@ -9,6 +9,7 @@ import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
 import roundFloat from '../../helpers/float/roundFloat.mjs'
 import countDecimals from '../../helpers/float/countDecimals.mjs'
 import isNotNumber from '../../helpers/float/isNotNumber'
+import useValidProps from '../../helpers/valid/useValidProps.mjs'
 
 const wrappedCheckValue = (props, value) => {
   if (props.checkValue!=undefined) {
@@ -35,14 +36,13 @@ const FInputNumberBase = (props) => {
          id, name, placeholder, 
          readOnly, required, min, max, step, decimals,
          autocomplete, t, inputFilter,
-         inputStyle, showArrows= true, showValidity= 4, bsSize}= props
+         inputStyle, showArrows= true, showValidity, bsSize}= props
 
   const reprRef = useRef(undefined)
   const [innerRepr, setInnerRepr]= useState(t.from(value))
   const stepOrDecimals = useStepOrDecimals(step, decimals)
 
-  const input= useInput({
-    ...props,
+  const input= useInputWrap(props, {
     checkValue: (v) => wrappedCheckValue(props, t.to(v))
   })
 
@@ -105,17 +105,13 @@ const FInputNumberBase = (props) => {
     }
   }, [value, t, input, innerRepr])
 
-  const showValidProps = (showValidity==1 || showValidity==4)
-  ? {valid: input.valid, invalid: ! input.valid}
-  : {}
+  const showValidProps = useValidProps(input, showValidity)
 
   // console.log(`FInputNumber => value ${value} repr ${innerRepr}`)
 
   return (
     <FInputAddon {...props}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}>
+                 input   = {input}>
 
       <input  type         = "number"
               id           = {id}

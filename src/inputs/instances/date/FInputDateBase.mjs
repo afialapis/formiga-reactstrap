@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {useInput} from 'formiga'
+import useInputWrap from '../../helpers/useInputWrap.mjs'
 import {FInputAddon} from '../../addon/FInputAddon.mjs'
 import {DatePicker} from 'reactstrap-date-picker'
 import isControlled from '../../helpers/props/isControlled.mjs'
 import { getDefaultLocale, DATES_LOCALES } from './locale.mjs'
 import FIcon from '../../../commons/icons/FIcon.mjs'
+import getValidClassnames from '../../helpers/valid/getValidClassnames.mjs'
+import useValidProps from '../../helpers/valid/useValidProps.mjs'
 
 const _DEF_INPUT_STYLE = {}
 const _DEF_LOCALE = getDefaultLocale()
@@ -33,15 +35,14 @@ const FInputDateBase = (props) => {
   const {id, name, placeholder, readOnly, autocomplete, 
          inputGroupStyle, 
          required, inputStyle= _DEF_INPUT_STYLE, onChange, transform,
-         showValidity= 4, bsSize,
+         showValidity, bsSize,
          locale= _DEF_LOCALE, rdp, icon= 'calendar'} = props
 
   const controlled= isControlled(props)
   const {value, defaultValue}= props
   const [innerValue, setInnerValue]= useState(controlled ? transform.toISO(value) : transform.toISO(defaultValue))
 
-  const input= useInput({
-    ...props,
+  const input= useInputWrap(props, {
     transformValue: transform.fromISO,
     checkValue: props.checkValue!=undefined 
                 ? (v) => props.checkValue(transform.fromISO(v))
@@ -75,10 +76,10 @@ const FInputDateBase = (props) => {
     flexWrap: "unset"
   }
   
-  const showValidProps = (showValidity==1 || showValidity==4)
-  ? {valid: input.valid, invalid: ! input.valid}
-  : {}
-  
+  const validClassName = getValidClassnames(input, showValidity)
+  const showValidProps = useValidProps(input, showValidity)
+
+
   const rdpProps = {
     ...DATES_LOCALES[locale] || {},
     ...rdp
@@ -87,9 +88,7 @@ const FInputDateBase = (props) => {
   return (
     <FInputAddon {...props}
                  icon    = {icon}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}
+                 input   = {input}
                  inputGroupStyle= {nInputGroupStyle}>
   
       <DatePicker 
@@ -101,7 +100,7 @@ const FInputDateBase = (props) => {
                   disabled    = {readOnly}
                   required    = {required}
                   autocomplete= {autocomplete}
-                  className   = {(showValidity==1 || showValidity==4) ? input.valid ? 'is-valid' : 'is-invalid' : ''}
+                  className   = {validClassName}
                   style       = {inputStyle} 
                   value       = {innerValue}
                   onChange    = {(v,f) => handleChange(v || undefined, f)}

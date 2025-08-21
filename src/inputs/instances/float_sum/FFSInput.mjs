@@ -5,6 +5,7 @@ import {FLT_FLOAT_BOTH} from '../../helpers/float/floatFilters.mjs'
 import {fromFloat, toFloat} from './floatConv.mjs'
 import roundFloat from '../../helpers/float/roundFloat.mjs'
 import countDecimals from '../../helpers/float/countDecimals.mjs'
+import useValidProps from '../../helpers/valid/useValidProps.mjs'
 
 const _startsWithTrashZero = (s) => {
   if (! s) {
@@ -25,8 +26,8 @@ const _startsWithTrashZero = (s) => {
 }
 
 const FFSInput = (
-  { className, placeholder, readOnly, valid, autocomplete, 
-    inputStyle, stepOrDecimals, focusIt, showValidity= 4, bsSize,
+  { className, placeholder, readOnly, input, autocomplete, 
+    inputStyle, stepOrDecimals, focusIt, showValidity, bsSize,
     sign, value, onChange, onAddValue, onRemValue, onGoNext, isLastOne, removable, decimalSign}) => {
   
   const reprRef = useRef(undefined)
@@ -41,9 +42,7 @@ const FFSInput = (
     }
   }, [focusIt])
 
-  const showValidProps = (showValidity==1 || showValidity==4)
-  ? {valid: valid, invalid: ! valid}
-  : {}
+  const showValidProps = useValidProps(input, showValidity)
 
 
   const incrValue = useCallback((factor, confirmed) => {

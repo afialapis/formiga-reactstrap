@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState}  from 'react'
-import {useInput} from 'formiga'
+import useInputWrap from '../../helpers/useInputWrap.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import isNotNumber from '../../helpers/float/isNotNumber'
 
@@ -21,11 +21,10 @@ const FInputFloatSumBase = (props) => {
   const {id, name, value, setValue,
     placeholder, readOnly, 
     step, decimals= undefined, decimalSign= '.',
-    autocomplete, inputStyle, showValidity= 4, bsSize, icon= 'sigma', totalStyle} = props
+    autocomplete, inputStyle, showValidity, bsSize, icon= 'sigma', totalStyle} = props
   
   const stepOrDecimals = useStepOrDecimals(step, decimals)
-  const input = useInput({
-    ...props,
+  const input = useInputWrap(props, {
     // TODO
     // wrap this checks (as we save array in the hidden input):
     //      min, max, stepOrDecimals,
@@ -36,7 +35,7 @@ const FInputFloatSumBase = (props) => {
     // disallowedValues, 
     // doRepeat, 
     // doNotRepeat, 
-    // feedback
+    // validationMessage
     decimals: undefined, 
     inputFilter: undefined
   })
@@ -98,9 +97,7 @@ const FInputFloatSumBase = (props) => {
   return (
     <FInputAddon {...props}
                   icon    = {icon}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}>
+                  input   = {input}>
 
       <div className  = "formiga-reactstrap-float-sum">
         <FFSHidden {...props}
@@ -119,7 +116,7 @@ const FInputFloatSumBase = (props) => {
                       className     = "formiga-reactstrap-float-sum-input"
                       placeholder   = {placeholder || ""}
                       readOnly      = {readOnly!=undefined ? readOnly  : false}
-                      valid         = {input.valid}
+                      input         = {input}
                       showValidity  = {showValidity}
                       autocomplete  = {autocomplete}
                       inputStyle    = {inputStyle} 

@@ -3,7 +3,7 @@ import React from 'react'
 const FFHidden = (props) => {
   const {id, name, readOnly, 
          required, accept, bsSize,
-         onChange, hasValue, inputRef} = props
+         onChange, hasValue, input, value} = props
   
   return (
     <input  style       = {{zIndex: "0", display: "inline", opacity: "0", visibility: "hidden"}}
@@ -12,9 +12,9 @@ const FFHidden = (props) => {
             // Do not lose the form-control class
             // TODO maybe open PR on reactstrap?
             className   = {`form-control ${bsSize!=undefined ? 'form-control-'+bsSize : ''}`}
-            ref         = {inputRef}
+            ref         = {input.ref}
             type        = {"file"}
-            //value       = {undefined}
+            //value       = {value}
             onChange    = {onChange}
             readOnly    = {readOnly!=undefined ? readOnly  : false}
             // If we receive some value on initing,

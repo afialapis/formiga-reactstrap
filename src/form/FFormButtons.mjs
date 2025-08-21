@@ -3,7 +3,7 @@ import FIcon       from '../commons/icons/FIcon.mjs'
 import { Button }  from 'reactstrap'
 
 
-const FFormButtons = ({onSave, onCancel, colors, icons, labels, autoDisable, disabled, valid, elements}) => {
+const FFormButtons = ({onSave, onCancel, colors, icons, labels, autoDisable, disabled, form}) => {
   const [isSaving, setIsSaving]= useState(false)
   const isMounted= useRef(undefined)
   
@@ -16,10 +16,10 @@ const FFormButtons = ({onSave, onCancel, colors, icons, labels, autoDisable, dis
   }, [])
 
   const isDisabled= autoDisable
-    ? !valid
+    ? !form.valid
     : (
       typeof disabled=="function"
-        ? disabled(valid, elements)
+        ? disabled(form.valid, form.elements)
         : disabled
     )  
 

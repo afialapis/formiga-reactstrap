@@ -3,14 +3,11 @@
 /**
  * feedback
  **/
-.formiga-reactstrap-form-group .formiga-reactstrap-feedback {
-  padding-top: vars_override.$input-padding-y;
-  color: vars_override.$red;
-  font-style: italic;
-  padding-left: vars_override.$formiga-label-padding;
-  text-align: left;
-}
 
-.formiga-reactstrap-form-group .formiga-reactstrap-feedback.hidden {
-  visibility: hidden;
+ .formiga-reactstrap-form-group .formiga-reactstrap-validation-message {
+  padding-left: vars_override.$formiga-label-padding;
+
+  &.formiga-reactstrap-validation-message-keep-height {
+    display: block !important;
+  }
 }

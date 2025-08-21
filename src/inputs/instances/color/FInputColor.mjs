@@ -1,20 +1,18 @@
 import React, {useCallback}      from 'react'
-import {useInput} from 'formiga'
 import {Input}    from 'reactstrap'
+import useInputWrap from '../../helpers/useInputWrap.mjs'
 import {FInputAddon}       from '../../addon/FInputAddon.mjs'
 import withWrapControlled from '../../helpers/props/withWrapControlled.mjs'
-
+import useValidProps from '../../helpers/valid/useValidProps.mjs'
 
 const FInputColorBase = (props) => {
   const {id, name, placeholder, 
     readOnly, required,
-    autocomplete, inputStyle, showValidity= 4, bsSize, value, setValue, icon= 'color'} = props
+    autocomplete, inputStyle, showValidity, bsSize, value, setValue, icon= 'color'} = props
   
-  const input = useInput({...props})
+  const input = useInputWrap(props)
   
-  const showValidProps = (showValidity==1 || showValidity==4)
-    ? {valid: input.valid, invalid: ! input.valid}
-    : {}
+  const showValidProps = useValidProps(input, showValidity)
 
   const handleChange = useCallback((event) => {
     const newValue= event.target.value
@@ -30,9 +28,7 @@ const FInputColorBase = (props) => {
   return (
     <FInputAddon {...props}
                  icon    = {icon}
-                 valid   = {input.valid}
-                 invalid = {! input.valid}
-                 feedback= {input.feedback}>
+                 input   = {input}>
 
       <Input  id          = {id}
               name        = {name}
@@ -42,7 +38,15 @@ const FInputColorBase = (props) => {
               readOnly    = {readOnly!=undefined ? readOnly  : false}
               required    = {required}
               autoComplete= {autocomplete}
-              style       = {inputStyle} 
+              style       = {{
+                ...inputStyle||{},
+                ...(bsSize==undefined 
+                   ? {} 
+                   : {height: bsSize=='sm'
+                              ? '31px' : 
+                              bsSize=='lg'
+                              ? '48px' : '38px'})
+              }} 
               bsSize      = {bsSize}
               value       = {value}
               onChange    = {handleChange}
