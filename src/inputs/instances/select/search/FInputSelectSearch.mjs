@@ -81,6 +81,10 @@ const FInputSelectSearchBase = (props) => {
     
     const nShownText= getOptionsLabel(enabledOptions, tValue)
     setShownText(nShownText)
+
+    if (nShownText.length==0) {
+      setCreating(false)
+    }
     
     input.validate()
   }, [readOnly, input, setValue, enabledOptions])
@@ -97,6 +101,10 @@ const FInputSelectSearchBase = (props) => {
     if (readOnly) return
     setShownText(event.target.value)
     handleSearchStart(event)
+    if (event.target.value.length==0) {
+      setCreating(false)
+    }
+        
   }, [readOnly, handleSearchStart])
 
   const handleSearchAbort = useCallback((event) => {
@@ -119,6 +127,7 @@ const FInputSelectSearchBase = (props) => {
     if (readOnly) return
     setIsOpen(true)
     setOptActive(undefined)
+    setCreating(false)
     handleChange('', event)
   }, [readOnly, handleChange])
 
@@ -188,6 +197,7 @@ const FInputSelectSearchBase = (props) => {
                       />
             {/* Add or clear icon */}
             <FISSAction {...props}
+                        shownText = {shownText}
                         creating= {creating}
                         onCreate= {handleCreate}
                         onClear = {handleClear}/>    
