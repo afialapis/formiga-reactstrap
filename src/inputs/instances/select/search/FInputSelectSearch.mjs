@@ -16,9 +16,9 @@ const getOptionsLabel = (options, value) => {
 
 const FInputSelectSearchBase = (props) => {
   const {options, 
-         allowedValues, disallowedValues, keepHeight= false, 
+         allowedValues, disallowedValues,
          creatable, onCreate, 
-         value, setValue, icon= 'search'
+         value, setValue, icon= 'search', readOnly
          } = props
   
   const wrapperRef    = useRef(undefined)
@@ -74,6 +74,7 @@ const FInputSelectSearchBase = (props) => {
   }, [shownText, enabledOptions, creatable])
 
   const handleChange = useCallback((tValue, event) => {
+    if (readOnly) return
     const nValue= parseValueDependOnOptions(tValue, enabledOptions)
     setValue(nValue, true, event)
     input.setValue(nValue)
@@ -82,41 +83,47 @@ const FInputSelectSearchBase = (props) => {
     setShownText(nShownText)
     
     input.validate()
-  }, [input, setValue, enabledOptions])
+  }, [readOnly, input, setValue, enabledOptions])
 
   const handleSearchStart = useCallback((_event) => {
+    if (readOnly) return
     if (! isOpen) {
       setIsOpen(true)
     }
     setOptActive(undefined)
-  }, [isOpen])
+  }, [readOnly, isOpen])
 
   const handleSearchType = useCallback((event) => {
+    if (readOnly) return
     setShownText(event.target.value)
     handleSearchStart(event)
-  }, [handleSearchStart])
+  }, [readOnly, handleSearchStart])
 
   const handleSearchAbort = useCallback((event) => {
+    if (readOnly) return
     setIsOpen(false)
     setOptActive(undefined)
     if (shownText=='') {
       handleChange('', event)
     }
-  }, [shownText, handleChange])
+  }, [readOnly, shownText, handleChange])
 
   const handleSelect = useCallback((newValue, event) => {
+    if (readOnly) return
     setIsOpen(false)
     setOptActive(undefined)
     handleChange(newValue, event)
-  }, [handleChange])
+  }, [readOnly, handleChange])
 
   const handleClear = useCallback((event) => {
+    if (readOnly) return
     setIsOpen(true)
     setOptActive(undefined)
     handleChange('', event)
-  }, [handleChange])
+  }, [readOnly, handleChange])
 
   const handleKeyDown = useCallback((event) => {
+    if (readOnly) return
     if (event.key=='ArrowUp' || event.key=='ArrowDown') {
       event.preventDefault()
       
@@ -146,14 +153,16 @@ const FInputSelectSearchBase = (props) => {
       }
     }
     return true
-  }, [isOpen, optActive, optionsMap, handleSelect])
+  }, [readOnly, isOpen, optActive, optionsMap, handleSelect])
 
   const handleCreate = useCallback((event) => {
+    if (readOnly) return
+
     if (onCreate!=undefined) {
       onCreate(shownText, event)
     }
     setCreating(false)
-  }, [shownText, onCreate])  
+  }, [readOnly, shownText, onCreate])  
 
 
   return (

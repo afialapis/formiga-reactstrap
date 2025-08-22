@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React /*, {useRef, useState, useEffect}*/ from 'react'
 import {
   FormGroup,
   FormText,
@@ -8,29 +8,31 @@ import {
   Label
 } from 'reactstrap'
 import FIcon from '../../commons/icons/FIcon.mjs'
-import shouldShowValidity from '../helpers/valid/shouldShowValidity.mjs'
+import shouldShowValidity /*, {showValidityMerge}*/ from '../helpers/valid/shouldShowValidity.mjs'
 import getValidClassnames from '../helpers/valid/getValidClassnames.mjs'
 
 const FInputAddon = (props) => {
-  const {input, name, value, label, description, icon, children, inline= false, formClassName, 
+  const {input, name, label, description, icon, children, inline= false, formClassName, 
     showValidity, keepHeight= false, formGroupStyle, inputGroupStyle, middleElement, bsSize,
     formGroupProps}= props
 
-  const originalValue = useRef(value)
+  //const originalValue = useRef(value)
   
-  const [loaded, setLoaded]= useState(false)
+  //const [loaded, setLoaded]= useState(false)
 
-  useEffect(() => {
-    setLoaded(true)
-  }, [])
+  // useEffect(() => {
+  //   setLoaded(true)
+  // }, [])
 
-  const hasChanged= loaded && (value != originalValue.current)
+  //const hasChanged= loaded && (value != originalValue.current)
 
   const {message: showMessage}= shouldShowValidity(input, showValidity)
   const validClass= getValidClassnames(input, showValidity, true)
 
+  //console.log(`Addon ${name} ready ${input?.node !== undefined} value ${input?.node?.value} hasChanged ${input?.hasChanged} valid: ${input.valid} showMessage: ${showMessage} vMsg: ${input.validationMessage}`)
+
   return (
-    <FormGroup className={`formiga-reactstrap-form-group ${hasChanged ? 'is-unsaved' : ''} ${inline===true ? 'inline' : ''} ${formClassName || ''} ${label!==undefined ? 'with-label' : ''} ${description!==undefined ? 'with-description' : ''} ${icon!==false ? 'with-icon' : ''}`}
+    <FormGroup className={`formiga-reactstrap-form-group ${input?.hasChanged ? 'is-unsaved' : ''} ${inline===true ? 'inline' : ''} ${formClassName || ''} ${label!==undefined ? 'with-label' : ''} ${description!==undefined ? 'with-description' : ''} ${icon!==false ? 'with-icon' : ''}`}
                style={formGroupStyle}
                {...formGroupProps || {}}>
       {label!=undefined

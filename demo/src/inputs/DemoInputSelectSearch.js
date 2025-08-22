@@ -10,14 +10,25 @@ const LIST_OPTIONS= [
   [6, "Nightmare"],
 ]
 
+const LIST_OPTIONS_MAP= [
+  {value: 1, label: "Fascination"},
+  {value: 2, label: "Slowliness"},
+  {value: 3, label: "Happyness"},
+  {value: 4, label: "Life"},
+  {value: 5, label: "Dream"},
+  {value: 6, label: "Nightmare"},
+]
+
+
 const DemoInputSelectSearch = (options) => {
   const [aword, setAWord]= useState(6)
-  const [optionList, setOptionList]= useState(LIST_OPTIONS)
+  const [optionList, setOptionList]= useState(LIST_OPTIONS_MAP)
 
   const handleAddOption = (t) => {
     setOptionList([
       ...optionList,
-      [10, t]
+      //[10, t]
+      {value: 10, label: t}
     ])
   }
 
@@ -37,7 +48,6 @@ const DemoInputSelectSearch = (options) => {
             creatable       = {true}
             onCreate        = {(text, ev) => {handleAddOption(text); setAWord(10)}}
             {...options} 
-            showValidity    = {'changes+invalid'}
             />
 
   )

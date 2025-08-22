@@ -33,7 +33,7 @@ const FISInput = (props) => {
               className   = {className}
               innerRef    = {inputRef}
               placeholder = {placeholder || ""}
-              readOnly    = {readOnly!=undefined ? readOnly  : false}
+              readOnly    = {readOnly}
               required    = {required}
               autoComplete= {autocomplete}
               style       = {inputStyle} 
