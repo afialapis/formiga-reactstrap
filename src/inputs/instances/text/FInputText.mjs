@@ -9,7 +9,7 @@ import useValidProps from '../../helpers/valid/useValidProps.mjs'
 const FInputTextBase = (props) => {
   const {id, name, inputType= 'text',
         maxLength, minLength, 
-        placeholder, readOnly, 
+        placeholder, readOnly, disabled,
         required, 
         autocomplete, inputStyle, showValidity, bsSize,
       value, setValue, icon= 'text'} = props         
@@ -38,7 +38,8 @@ const FInputTextBase = (props) => {
               innerRef    = {input.ref}
               type        = {inputType || "text"}
               placeholder = {placeholder || ""}
-              readOnly    = {readOnly!=undefined ? readOnly  : false}
+              readOnly    = {readOnly}
+              disabled    = {disabled}
               required    = {required}
               maxLength   = {maxLength}
               minLength   = {minLength}

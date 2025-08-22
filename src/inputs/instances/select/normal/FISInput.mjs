@@ -8,7 +8,7 @@ const FISInput = (props) => {
 
   const { id, name, 
           placeholder, readOnly, autocomplete = 'off', required, 
-          options, 
+          options, disabled,
           inputStyle, clearable, showValidity, bsSize,
           value, input, inputRef, onInputChange, enabledOptions} = props
 
@@ -34,6 +34,7 @@ const FISInput = (props) => {
               innerRef    = {inputRef}
               placeholder = {placeholder || ""}
               readOnly    = {readOnly}
+              disabled    = {disabled}
               required    = {required}
               autoComplete= {autocomplete}
               style       = {inputStyle} 

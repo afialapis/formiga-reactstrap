@@ -6,7 +6,7 @@ import shouldShowValidity from '../../../helpers/valid/shouldShowValidity.mjs'
 const FISMInput = (props) => {
   const {id, name, 
          placeholder, readOnly, autocomplete = 'off', required,
-         inputStyle, bsSize, showValidity,
+         inputStyle, bsSize, showValidity, disabled,
          value, input, inputRef, onInputChange, enabledOptions, theSize} = props
 
   const showValidProps = useValidProps(input, showValidity)
@@ -28,7 +28,8 @@ const FISMInput = (props) => {
               multiple
               innerRef    = {inputRef}
               placeholder = {placeholder || ""}
-              readOnly    = {readOnly!=undefined ? readOnly  : false}
+              readOnly    = {readOnly}
+              disabled    = {disabled}
               required    = {required}
               autoComplete= {autocomplete}
               style       = {{...inputStyle, ...forceStyle}}

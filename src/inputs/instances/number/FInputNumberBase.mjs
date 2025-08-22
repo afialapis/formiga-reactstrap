@@ -34,7 +34,7 @@ const wrappedCheckValue = (props, value) => {
 const FInputNumberBase = (props) => {
   const {value, setValue,
          id, name, placeholder, 
-         readOnly, required, min, max, step, decimals,
+         readOnly, disabled, required, min, max, step, decimals,
          autocomplete, t, inputFilter,
          inputStyle, showArrows= true, showValidity, bsSize}= props
 
@@ -128,7 +128,8 @@ const FInputNumberBase = (props) => {
               type         = {"text"}
               innerRef     = {reprRef}
               placeholder  = {placeholder || ""}
-              readOnly     = {readOnly!=undefined ? readOnly  : false}
+              readOnly     = {readOnly}
+              disabled     = {disabled}
               autoComplete = {autocomplete}
               style        = {inputStyle} 
               onKeyDown    = {(ev) => handleKeyDown(ev)}

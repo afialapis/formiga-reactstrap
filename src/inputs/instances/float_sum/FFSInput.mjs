@@ -26,7 +26,7 @@ const _startsWithTrashZero = (s) => {
 }
 
 const FFSInput = (
-  { className, placeholder, readOnly, input, autocomplete, 
+  { className, placeholder, readOnly, disabled, input, autocomplete, 
     inputStyle, stepOrDecimals, focusIt, showValidity, bsSize,
     sign, value, onChange, onAddValue, onRemValue, onGoNext, isLastOne, removable, decimalSign}) => {
   
@@ -148,7 +148,8 @@ const FFSInput = (
         type         = {"text"}
         innerRef     = {reprRef}
         placeholder  = {placeholder || ""}
-        readOnly     = {readOnly!=undefined ? readOnly  : false}
+        readOnly    = {readOnly}
+        disabled    = {disabled}
         autoComplete = {autocomplete}
         style        = {inputStyle} 
         size         = {Math.max(innerRepr.length || 0, 2)}

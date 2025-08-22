@@ -7,7 +7,7 @@ import useValidProps from '../../helpers/valid/useValidProps.mjs'
 
 const FInputColorBase = (props) => {
   const {id, name, placeholder, 
-    readOnly, required,
+    readOnly, disabled, required,
     autocomplete, inputStyle, showValidity, bsSize, value, setValue, icon= 'color'} = props
   
   const input = useInputWrap(props)
@@ -35,7 +35,8 @@ const FInputColorBase = (props) => {
               innerRef    = {input.ref}
               type        = {"color"}
               placeholder = {placeholder || ""}
-              readOnly    = {readOnly!=undefined ? readOnly  : false}
+              readOnly    = {readOnly}
+              disabled    = {disabled}
               required    = {required}
               autoComplete= {autocomplete}
               style       = {{

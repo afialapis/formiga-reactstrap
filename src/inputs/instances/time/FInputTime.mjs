@@ -8,7 +8,7 @@ import useValidProps from '../../helpers/valid/useValidProps.mjs'
 
 const FInputTimeBase = (props) => {
   const {id, name, 
-    placeholder, readOnly, 
+    placeholder, readOnly, disabled,
     required, step= 60, min, max,
     autocomplete, inputStyle, showValidity, bsSize, 
     value, setValue, icon= 'time'} = props      
@@ -38,7 +38,8 @@ const FInputTimeBase = (props) => {
                 innerRef    = {input.ref}
                 type        = {"time"}
                 placeholder = {placeholder || ""}
-                readOnly    = {readOnly!=undefined ? readOnly  : false}
+                readOnly    = {readOnly}
+                disabled    = {disabled}
                 required    = {required}
                 autoComplete= {autocomplete}
                 style       = {inputStyle} 

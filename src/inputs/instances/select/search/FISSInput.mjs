@@ -4,7 +4,7 @@ import useValidProps from '../../../helpers/valid/useValidProps.mjs'
 
 const FISSInput = (props) => {
   const {name, placeholder, readOnly, autocomplete = 'off', required,
-         inputStyle, showValidity, bsSize,
+         inputStyle, showValidity, bsSize, disabled,
          input, filterRef, shownText, onSearchStart, onSearchType, onKeyDown
          } = props
   
@@ -18,6 +18,7 @@ const FISSInput = (props) => {
               value       = {shownText}
               placeholder = {placeholder}
               readOnly    = {readOnly}
+              disabled    = {disabled}
               required    = {required}
               onClick     = {onSearchStart}
               onChange    = {onSearchType}

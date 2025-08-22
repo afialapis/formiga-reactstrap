@@ -18,7 +18,7 @@ const _makeId = (id, name) => {
 const FInputCheckboxBase = (props) => {
 
   const {value, setValue, icon= 'checkmark',
-         inputStyle, bsSize, showValidity, readOnly, required, id, name, checkboxLabel} = props
+         inputStyle, bsSize, showValidity, readOnly, disabled, required, id, name, checkboxLabel} = props
   
   const input = useInputWrap(props)
   const [inputId, setInputId]= useState(_makeId(id, name))
@@ -51,7 +51,8 @@ const FInputCheckboxBase = (props) => {
                  name     = {name} 
                  className= {`custom-control ${bsSize!=undefined ? 'custom-control-'+bsSize : ''} custom-control-input ${validClassName}`}
                  innerRef = {input.ref}
-                 disabled = {readOnly!=undefined ? readOnly  : false}
+                 readOnly = {readOnly}
+                 disabled = {disabled}
                  required = {required}
                  checked  = {value}
                  onChange  = {handleChange}

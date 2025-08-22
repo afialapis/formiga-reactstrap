@@ -3,7 +3,7 @@ import {InputGroupText} from 'reactstrap'
 import FIcon from '../../../../commons/icons/FIcon.mjs'
 
 const FISSAction = (props) => {
-  const {readOnly, clearable, value,
+  const {readOnly, clearable, /*value,*/
          creating, onCreate, onClear, shownText
          } = props
   
