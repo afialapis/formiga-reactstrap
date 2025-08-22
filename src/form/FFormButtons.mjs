@@ -3,7 +3,7 @@ import FIcon       from '../commons/icons/FIcon.mjs'
 import { Button }  from 'reactstrap'
 
 
-const FFormButtons = ({onSave, onCancel, colors, icons, labels, autoDisable, disabled, form}) => {
+const FFormButtons = ({onSave, onCancel, colors, icons, labels, autoDisable, disabled, form, buttonsStyle}) => {
   const [isSaving, setIsSaving]= useState(false)
   const isMounted= useRef(undefined)
   
@@ -40,7 +40,8 @@ const FFormButtons = ({onSave, onCancel, colors, icons, labels, autoDisable, dis
   }
 
   return (
-    <div className="formiga-reactstrap-buttons">
+    <div className="formiga-reactstrap-buttons"
+         style={{...buttonsStyle || {}}}>
       {onCancel!=undefined
         ? <Button color   = {colors ? colors[0] : 'secondary'}
                   onClick = {(ev) => onCancel(ev)}>

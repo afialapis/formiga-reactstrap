@@ -6,7 +6,7 @@ const _DEFAULT_ICONS = ['ban', 'save']
 
 const FForm = (props) => {
   const {id, children, className, onSave, onCancel, colors, icons= _DEFAULT_ICONS,
-         labels, autoDisable= true, disabled, renderButtons, inline= false,
+         labels, autoDisable= true, disabled, renderButtons, buttonsStyle, inline= false,
          renderChildren}= props
   
   const f_form = useForm()
@@ -30,7 +30,8 @@ const FForm = (props) => {
                           labels      = {labels}
                           autoDisable = {autoDisable}
                           disabled    = {disabled}
-                          form        = {f_form}/>
+                          form        = {f_form}
+                          buttonsStyle= {buttonsStyle}/>
          : renderButtons(f_form)}
       </>
     </form>
