@@ -21,7 +21,7 @@ const LIST_OPTIONS_MAP= [
 
 
 const DemoInputSelectSearch = (options) => {
-  const [aword, setAWord]= useState(6)
+  const [aword, setAWord]= useState('')
   const [optionList, setOptionList]= useState(LIST_OPTIONS_MAP)
 
   const handleAddOption = (t) => {

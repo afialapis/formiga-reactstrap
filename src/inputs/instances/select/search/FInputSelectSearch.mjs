@@ -8,10 +8,26 @@ import FISSInput from './FISSInput.mjs'
 import FISSAction from './FISSAction.mjs'
 import FISSList from './FISSList.mjs'
 import withWrapControlled from '../../../helpers/props/withWrapControlled.mjs'
+import {useInput} from 'formiga'
 
 const getOptionsLabel = (options, value) => {
   const elOpt= options.find((opt) => opt.value==value)
   return elOpt?.label || ''
+}
+
+const trimFormigaProps = (props) => {
+  return {
+    originalValue: props?.defaultValue || props?.value,
+    transformValue: props?.transformValue,
+    checkValue: props?.checkValue,
+    allowedValues: props?.allowedValues,
+    disallowedValues: props?.disallowedValues,
+    doRepeat: props?.doRepeat,
+    doNotRepeat: props?.doNotRepeat,
+    decimals: props?.decimals,
+    validationMessage: props?.validationMessage,
+    inputFilter: props?.inputFilter,  
+  }
 }
 
 const FInputSelectSearchBase = (props) => {
@@ -33,7 +49,13 @@ const FInputSelectSearchBase = (props) => {
 
   const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
 
-  const input = useInputWrap(props, {
+  /*const input = useInputWrap(props, {
+    checkValue: props.checkValue!=undefined 
+                ? (v) => props.checkValue(parseValueDependOnOptions(v, enabledOptions))
+                : undefined    
+  })*/
+
+  const input = useInput(trimFormigaProps(props), {
     checkValue: props.checkValue!=undefined 
                 ? (v) => props.checkValue(parseValueDependOnOptions(v, enabledOptions))
                 : undefined    
@@ -74,6 +96,7 @@ const FInputSelectSearchBase = (props) => {
   }, [shownText, enabledOptions, creatable])
 
   const handleChange = useCallback((tValue, event) => {
+    console.log(`FISearch handleChange ${tValue}`)
     if (readOnly) return
     const nValue= parseValueDependOnOptions(tValue, enabledOptions)
     setValue(nValue, true, event)

@@ -14,6 +14,7 @@ import {DemoInputFile} from "./inputs/DemoInputFile"
 const DemoInputs = ({options}) => {
   return ( 
     <>
+    {/*
       <section
         id={`text`}>
         <h2>text</h2>
@@ -53,12 +54,14 @@ const DemoInputs = ({options}) => {
         id={`select-multiple`}>
         <h2>select multiple</h2>
         <DemoInputSelectMultiple {...options}/>
-      </section>   
+      </section>  
+      */} 
       <section
         id={`search`}>
         <h2>search</h2>
         <DemoInputSelectSearch {...options}/>
-      </section>   
+      </section>  
+      {/* 
       <section
         id={`color`}>
         <h2>color</h2>
@@ -69,6 +72,7 @@ const DemoInputs = ({options}) => {
         <h2>file</h2>
         <DemoInputFile {...options}/>
       </section>
+      */}
     </>
   )
 }

@@ -28,13 +28,14 @@ const Demo = () => {
     keepHeight  : false,
     icon        : undefined,
     showValidity: {
-      input: 'changes+invalid',
-      message: 'changes+invalid'
+      input: 'always', // 'changes+invalid',
+      message: 'always' // 'changes+invalid'
     },
     bsSize      : 'lg'
   })
 
-  console.log(`[demo] Render`)  
+  // console.log(`[demo] Render`)  
+
   return (  
 
       <Base logoSrc = "assets/img/formiga-reactstrap.png"
@@ -47,15 +48,15 @@ const Demo = () => {
           onCancel   = {undefined}
           autoDisable= {false}
           renderButtons={(form) => {
-                return (
-                  <div className="centered">
-                    <a className={`afi-btn afi-btn-primary ${form.valid ? '' : 'disabled'}`}
-                      onClick={(ev) => {}}>
-                      {form.valid ? 'Submit' : 'Invalid yet'}
-                    </a>
-                  </div>
-                )
-              }}
+              return (
+                <div className="centered">
+                  <a className={`afi-btn afi-btn-primary ${form.valid ? '' : 'disabled'}`}
+                    onClick={(ev) => {}}>
+                    {form.valid ? 'Submit' : 'Invalid yet'}
+                  </a>
+                </div>
+              )
+            }}
             renderChildren={(form) => {
               return (
                 <div className="formiga-form-inner">
