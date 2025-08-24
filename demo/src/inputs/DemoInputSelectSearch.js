@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {FInputSelectSearch} from '../../../src'
 
+/*
 const LIST_OPTIONS= [
   [1, "Fascination"],
   [2, "Slowliness"],
@@ -9,6 +10,7 @@ const LIST_OPTIONS= [
   [5, "Dream"],
   [6, "Nightmare"],
 ]
+*/
 
 const LIST_OPTIONS_MAP= [
   {value: 1, label: "Fascination"},
@@ -46,7 +48,7 @@ const DemoInputSelectSearch = (options) => {
             description     = ""
             clearable       = {true}
             creatable       = {true}
-            onCreate        = {(text, ev) => {handleAddOption(text); setAWord(10)}}
+            onCreate        = {(text) => {return 123 /*handleAddOption(text); setAWord(10)*/ }}
             {...options} 
             />
 

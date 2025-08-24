@@ -1,8 +1,6 @@
 # formiga-reactstrap
 [![NPM Version](https://badge.fury.io/js/formiga-reactstrap.svg)](https://www.npmjs.com/package/formiga-reactstrap)
 [![NPM Downloads](https://img.shields.io/npm/dm/formiga-reactstrap.svg?style=flat)](https://www.npmjs.com/package/formiga-reactstrap)
-
-
 ![formiga-reactstrap logo](https://www.afialapihttps://www.afialapis.com/os/formiga-reactstrap/logo.png)
 
 
@@ -25,20 +23,49 @@
 
 ## `FForm`
 
-Wraps your `<form>` elements and helps rendering the common buttons.
+A flexible form component that integrates with form validation and provides built-in form buttons.
 
-* `children` or `renderChildren({node, ref, valid, elements, hasChanged})`
-* `id`
-* `className`
-* `inline= false`
-* `renderButtons({node, ref, valid, elements, hasChanged})`
-* `onSave`
-* `onCancel`
-* `colors`
-* `icons= ['ban', 'save']`
-* `labels`
-* `autoDisable= true`
-* `disabled`
+### Props
+
+#### Basic
+
+- `id` (string): Form element ID
+- `className` (string): Additional CSS classes
+- `inline` (boolean): Display form controls inline (default: `false`)
+
+#### Children
+
+You may render `children` inputs as normal children componentes, or do it using `renderChildren` function.
+
+This function receives an instance with the `form` attributes:
+
+`renderChildren({node, ref, valid, elements, hasChanged})`
+
+#### Buttons
+
+Every `form` will likely need some button. With _formiga_reactstrap_ you may do it in two ways:
+
+##### Using `onSave` and `onCancel` events
+
+If you pass an `onSave` event prop, an primary-style button will be rendered.
+If you pass an `onCancel` event prop, an secondary-style button will be rendered.
+
+You can style the buttons using these properties:
+· `colors`: By default `["primary", "secondary"]`
+· `icons`: By default `["ban", "save"]`
+· `labels`: By default `["Cancelar", "Guardar"]`
+· `autoDisable`: By default `true`. If enabled, _formiga-reactstrap_ will use internali `form`'s `validity` state to disable (or not) the buttons.
+· `disabled`: By default `false`. Use it to customize when to disable the buttons (`autoDisable`must be `false`).
+· `buttonsStyle` (object): Inline styles for buttons container
+
+##### Using `renderButtons` function
+
+You can render your won buttons using `renderButtons` function.
+
+This function receives an instance with the `form` attributes:
+
+`renderButtons({node, ref, valid, elements, hasChanged})`
+
 
 
 ## Inputs

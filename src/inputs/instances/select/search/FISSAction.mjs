@@ -4,7 +4,7 @@ import FIcon from '../../../../commons/icons/FIcon.mjs'
 
 const FISSAction = (props) => {
   const {readOnly, clearable, /*value,*/
-         creating, onCreate, onClear, shownText
+    creatable, creating, onCreate, onClear, shownText
          } = props
   
   //const enabled= (value!='' && value!=undefined && !readOnly) 
@@ -12,9 +12,10 @@ const FISSAction = (props) => {
 
   return (
     <>
-      { creating && 
-        <InputGroupText onClick  = {(ev) => onCreate(ev)}
-                        style    = {{cursor: 'pointer'}}>
+      { creatable && 
+        <InputGroupText onClick  = {creating ? (ev) => onCreate(ev) : null}
+                        style    = {{cursor: creating ? 'pointer' : 'not-allowed',
+                                    opacity: creating ? 1 : 0.5}}>
           <FIcon icon="plus"
                   color="#28a745"/>
         </InputGroupText>

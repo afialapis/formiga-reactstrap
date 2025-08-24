@@ -13,7 +13,7 @@ const FInputSelectBase = (props) => {
           allowedValues, disallowedValues, options, 
           clearable= true, icon= 'list'} = props
 
-  const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
+  const [enabledOptions, _setEnabledOptions]= useEnabledOptions(options, allowedValues, disallowedValues)
 
   const input= useInputWrap(props, {
     checkValue: props.checkValue!=undefined 

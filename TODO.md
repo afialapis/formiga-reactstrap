@@ -1,28 +1,12 @@
-# Readme / revolution
+[ ] showValidity
 
-Once reviewed `formiga`, review here too
-
-## Demo
-
-Copy from `formiga` maybe
-
-# `xeira`
-
-When bundling CSS is ready, apply here
-
+- pass to FForm
+- inputs will read from it
 
 
 
 [ ] Expose event parameter on RDP onChange()
     so VAR api is consistent for all components => onChange(value, confirmed, event)
-
-[ ] SelectMultiple
-    - Review the usage of 'showValidity' prop
-    - Maybe it is better to just customize the entire component
-
-[ ] showValidity
-    - Add option to start as hidden (not showing green ticks at the beginning)
-
 
 
 [ ] RDP

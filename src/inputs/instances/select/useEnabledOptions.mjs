@@ -110,7 +110,7 @@ const useEnabledOptions = (options, allowedValues, disallowedValues) => {
   }, [options, allowedValues, disallowedValues])
 
   
-  return enabledOptions
+  return [enabledOptions, setEnabledOptions]
 }
 
 

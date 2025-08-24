@@ -4,7 +4,6 @@ const FISSList = (props) => {
   const {name, maxShownOptions= 10,
          listRef, optionsMap, onSelect, optActive
          } = props
-  
 
   const getListStyle= () => {
     // TODO

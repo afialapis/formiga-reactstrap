@@ -8,27 +8,13 @@ import FISSInput from './FISSInput.mjs'
 import FISSAction from './FISSAction.mjs'
 import FISSList from './FISSList.mjs'
 import withWrapControlled from '../../../helpers/props/withWrapControlled.mjs'
-import {useInput} from 'formiga'
+import {getValueForLabelFromOptions} from './getValueForLabelFromOptions.mjs'
 
 const getOptionsLabel = (options, value) => {
   const elOpt= options.find((opt) => opt.value==value)
   return elOpt?.label || ''
 }
 
-const trimFormigaProps = (props) => {
-  return {
-    originalValue: props?.defaultValue || props?.value,
-    transformValue: props?.transformValue,
-    checkValue: props?.checkValue,
-    allowedValues: props?.allowedValues,
-    disallowedValues: props?.disallowedValues,
-    doRepeat: props?.doRepeat,
-    doNotRepeat: props?.doNotRepeat,
-    decimals: props?.decimals,
-    validationMessage: props?.validationMessage,
-    inputFilter: props?.inputFilter,  
-  }
-}
 
 const FInputSelectSearchBase = (props) => {
   const {options, 
@@ -47,15 +33,9 @@ const FInputSelectSearchBase = (props) => {
   const [shownText, setShownText]= useState('')
   const [creating, setCreating]= useState(false)
 
-  const enabledOptions= useEnabledOptions(options, allowedValues, disallowedValues)
+  const [enabledOptions, setEnabledOptions]= useEnabledOptions(options, allowedValues, disallowedValues)
 
-  /*const input = useInputWrap(props, {
-    checkValue: props.checkValue!=undefined 
-                ? (v) => props.checkValue(parseValueDependOnOptions(v, enabledOptions))
-                : undefined    
-  })*/
-
-  const input = useInput(trimFormigaProps(props), {
+  const input = useInputWrap(props, {
     checkValue: props.checkValue!=undefined 
                 ? (v) => props.checkValue(parseValueDependOnOptions(v, enabledOptions))
                 : undefined    
@@ -71,17 +51,17 @@ const FInputSelectSearchBase = (props) => {
     }    
 
     document.addEventListener('mousedown', onClickOutside)
-
     return () => {
       document.removeEventListener('mousedown', onClickOutside)
     }
   })
 
   useEffect(() => {
-    const nShownText= getOptionsLabel(enabledOptions, value)
-    setShownText(nShownText)
-    
-  }, [enabledOptions, value])
+    if (! creating) {
+      const nShownText= getOptionsLabel(enabledOptions, value)
+      setShownText(nShownText)
+    }
+  }, [enabledOptions, value, creating])
   
   useEffect(() => {
     const sfilter= shownText ? shownText.toLowerCase() : ''
@@ -123,11 +103,19 @@ const FInputSelectSearchBase = (props) => {
     if (readOnly) return
     setShownText(event.target.value)
     handleSearchStart(event)
+    
     if (event.target.value.length==0) {
       setCreating(false)
+    } else {
+      const nValue= getValueForLabelFromOptions(event.target.value, enabledOptions)
+      if (!nValue.length) {
+        setCreating(true)
+        setValue(nValue, true, event) 
+        input.setValue(nValue)
+        input.validate()
+      }
     }
-        
-  }, [readOnly, handleSearchStart])
+  }, [readOnly, handleSearchStart, enabledOptions, setValue, input])
 
   const handleSearchAbort = useCallback((event) => {
     if (readOnly) return
@@ -186,18 +174,24 @@ const FInputSelectSearchBase = (props) => {
     return true
   }, [readOnly, isOpen, optActive, optionsMap, handleSelect])
 
-  const handleCreate = useCallback((event) => {
+  const handleCreate = useCallback(async (event) => {
     if (readOnly) return
 
     if (onCreate!=undefined) {
-      onCreate(shownText, event)
+      const result = await onCreate(shownText, event)
+      if (result !== undefined) {
+        setEnabledOptions(current => [...current, {value: result, label: shownText, disabled: false}])
+        setCreating(false)
+        handleChange(result, event)
+      }
+    } else {
+      console.error(`[formiga-reactstrap] onCreate is undefined for input ${input?.node?.type} ${input?.node?.name}`)
     }
-    setCreating(false)
-  }, [readOnly, shownText, onCreate])  
+    
+  }, [readOnly, shownText, onCreate, input, setEnabledOptions, handleChange])  
 
 
   return (
-
       <div className="formiga-reactstrap-select-search"
             ref = {wrapperRef}>
         
@@ -220,6 +214,7 @@ const FInputSelectSearchBase = (props) => {
             {/* Add or clear icon */}
             <FISSAction {...props}
                         shownText = {shownText}
+                        creatable = {creatable}
                         creating= {creating}
                         onCreate= {handleCreate}
                         onClear = {handleClear}/>    
