@@ -96,7 +96,6 @@ const FInputSelectSearchBase = (props) => {
   }, [shownText, enabledOptions, creatable])
 
   const handleChange = useCallback((tValue, event) => {
-    console.log(`FISearch handleChange ${tValue}`)
     if (readOnly) return
     const nValue= parseValueDependOnOptions(tValue, enabledOptions)
     setValue(nValue, true, event)
