@@ -14,7 +14,7 @@ import getValidClassnames from '../helpers/valid/getValidClassnames.mjs'
 const FInputAddon = (props) => {
   const {input, name, label, description, icon, children, inline= false, formClassName, 
     showValidity, keepHeight= false, formGroupStyle, inputGroupStyle, middleElement, bsSize,
-    formGroupProps}= props
+    formGroupProps, noMargin= false}= props
 
   //const originalValue = useRef(value)
   
@@ -34,7 +34,8 @@ const FInputAddon = (props) => {
   return (
     <FormGroup className={`formiga-reactstrap-form-group ${input?.hasChanged ? 'is-unsaved' : ''} ${inline===true ? 'inline' : ''} ${formClassName || ''} ${label!==undefined ? 'with-label' : ''} ${description!==undefined ? 'with-description' : ''} ${icon!==false ? 'with-icon' : ''}`}
                style={formGroupStyle}
-               {...formGroupProps || {}}>
+               {...formGroupProps || {}}
+               noMargin={noMargin}>
       {label!=undefined
        ? <Label for={name}
                 className="formiga-reactstrap-label">
