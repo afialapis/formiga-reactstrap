@@ -1,8 +1,8 @@
 import React from 'react'
-import {FInputCheckbox2, FInputSelect} from '../../../src'
-import {FForm} from '../../../src'
+//import {FInputCheckbox2, FInputSelect} from '../../../src'
+//import {FForm} from '../../../src'
 
-const BaseSidebar = ({options, resume, onChangeOption}) => {
+const BaseSidebar = ({/*options,*/ resume/*, onChangeOption*/}) => {
   return (
     <aside>
       {/*

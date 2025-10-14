@@ -27,7 +27,7 @@ const DemoSummary = ({ form }) => {
             } else {
               value = el.value.toString()
             }
-          } catch(e) { }
+          } catch(_err) { }
               
           return (
             <div className="log_field" key={el.name}>

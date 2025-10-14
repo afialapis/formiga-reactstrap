@@ -70,7 +70,7 @@ const useFloatSumProps = (decimalSign) => {
 
   const sumFloatList = (l) => {
     const fls= toFloatList(l)
-    console.log(fls)
+    //console.log(fls)
     const sum= fls.reduce((a,b) => a+b, 0) 
     return sum
   }

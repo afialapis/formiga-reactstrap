@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import {FInputFloat, FInputInt, FInputUInt, FInputFloatSum, FInputFloatSumModal} from '../../../src'
 
-function sumArray(a) {
-  try {
-    return a.reduce((x, y) => x + y, 0);
-  } catch(_) {
-    return 0.0
-  }
-}
+// function sumArray(a) {
+//   try {
+//     return a.reduce((x, y) => x + y, 0);
+//   } catch(_) {
+//     return 0.0
+//   }
+// }
 
 const DemoInputNumber = (options) => {
 
@@ -57,7 +57,7 @@ const DemoInputNumber = (options) => {
       <FInputFloat
               name        = {'size'}
               value       = {size}
-              onChange    = {(v, c) => { /*console.log(`changing size to ${typeof v} ${v} ${c}`);*/ setSize(v)}}
+              onChange    = {(v, _c) => { /*console.log(`changing size to ${typeof v} ${v} ${c}`);*/ setSize(v)}}
               label       = {"Still not sure... Your size?"}
               description = {"Some float (max 2 decimals, step = 0.01, greater than zero -trough gt-)."}
               step        = {0.01}
@@ -73,7 +73,7 @@ const DemoInputNumber = (options) => {
       <FInputFloatSum
               name        = {'km'}
               value       = {km}
-              onChange    = {(v, c) => { /*console.log(`changing km to ${typeof v} ${v}, totaling ${sumArray(v)} - ${c}`);*/ setKm(v)}}
+              onChange    = {(v, _c) => { /*console.log(`changing km to ${typeof v} ${v}, totaling ${sumArray(v)} - ${c}`);*/ setKm(v)}}
               label       = {"You are not a sporty guy, right? How far kilemeters did your last walks took?"}
               description = {"Some float (max 4 decimals, step = 0.01)."}
               step        = {0.01}
@@ -87,7 +87,7 @@ const DemoInputNumber = (options) => {
       <FInputFloatSumModal
               name        = {'kc'}
               value       = {kc}
-              onChange    = {(v, c) => { /*console.log(`changing km to ${typeof v} ${v}, totaling ${sumArray(v)} - ${c}`);*/ setKc(v)}}
+              onChange    = {(v, _c) => { /*console.log(`changing km to ${typeof v} ${v}, totaling ${sumArray(v)} - ${c}`);*/ setKc(v)}}
               label       = {"Don't lie: how much kilocalories did you eat in the last week?"}
               description = {"Some float (max 4 decimals, step = 0.01)."}
               step        = {0.01}

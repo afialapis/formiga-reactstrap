@@ -10,10 +10,10 @@ const _getTodayDate = (add= 0) => {
   return n
 }
 
-const getTodayUnix = (add= 0) => {
-  const n= _getTodayDate(add)
-  return n.getTime() / 1000
-}
+//const getTodayUnix = (add= 0) => {
+//  const n= _getTodayDate(add)
+//  return n.getTime() / 1000
+//}
 
 const getToday = (add= 0) => {
   const pad = (n) => n.toString().padStart(2, '0')

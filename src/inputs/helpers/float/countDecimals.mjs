@@ -5,7 +5,7 @@ const countDecimals = (f) => {
       return parseInt(s.split('-')[1])
     }
     return f.toString().split('.')[1].length
-  } catch(e) {
+  } catch(_) {
     return 0
   }
 }

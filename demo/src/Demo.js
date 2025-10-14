@@ -24,7 +24,7 @@ const MENU_ITEMS= [
 
 
 const Demo = () => {
-  const [options, setOptions]= useState({
+  const [options, _setOptions]= useState({
     keepHeight  : false,
     icon        : undefined,
     showValidity: {
@@ -51,7 +51,7 @@ const Demo = () => {
               return (
                 <div className="centered">
                   <a className={`afi-btn afi-btn-primary ${form.valid ? '' : 'disabled'}`}
-                    onClick={(ev) => {}}>
+                    onClick={(_ev) => {}}>
                     {form.valid ? 'Submit' : 'Invalid yet'}
                   </a>
                 </div>

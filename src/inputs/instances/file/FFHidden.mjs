@@ -3,7 +3,7 @@ import React from 'react'
 const FFHidden = (props) => {
   const {id, name, readOnly, 
          required, accept, bsSize,
-         onChange, hasValue, input, value} = props
+         onChange, hasValue, input/*, value*/} = props
   
   return (
     <input  style       = {{zIndex: "0", display: "inline", opacity: "0", visibility: "hidden"}}

@@ -24,15 +24,15 @@ const LIST_OPTIONS_MAP= [
 
 const DemoInputSelectSearch = (options) => {
   const [aword, setAWord]= useState('')
-  const [optionList, setOptionList]= useState(LIST_OPTIONS_MAP)
+  const [optionList, _setOptionList]= useState(LIST_OPTIONS_MAP)
 
-  const handleAddOption = (t) => {
-    setOptionList([
-      ...optionList,
-      //[10, t]
-      {value: 10, label: t}
-    ])
-  }
+  //const handleAddOption = (t) => {
+  //  setOptionList([
+  //    ...optionList,
+  //    //[10, t]
+  //    {value: 10, label: t}
+  //  ])
+  //}
 
 
   return (
@@ -48,7 +48,7 @@ const DemoInputSelectSearch = (options) => {
             description     = ""
             clearable       = {true}
             creatable       = {true}
-            onCreate        = {(text) => {return 123 /*handleAddOption(text); setAWord(10)*/ }}
+            onCreate        = {(_text) => {return 123 /*handleAddOption(text); setAWord(10)*/ }}
             {...options} 
             />
 
