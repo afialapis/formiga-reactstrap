@@ -1,6 +1,6 @@
 {
   "name": "formiga-reactstrap",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "description": "A Formiga implementation for Reactstrap",
   "author": "Donato Lorenzo <donato@afialapis.com>",
   "contributors": [
@@ -62,6 +62,6 @@
     "bootstrap": "^5.3.8",
     "react": "^19.2.0",
     "reactstrap": "^9.2.3",
-    "reactstrap-date-picker": "^3.0.0-beta.2"
+    "reactstrap-date-picker": "^3.0.0-beta.3"
   }
 }
